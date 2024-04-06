@@ -1,0 +1,80 @@
+body{
+    background-color:white;
+    overflow-y: hidden;
+    
+    
+ }
+ 
+ ::-webkit-scrollbar{
+   display: none;
+ }
+ 
+ 
+   
+   
+ 
+ 
+ 
+ 
+ #main-div {
+     
+ 
+     float: left;
+     margin-left:9%;
+     transform: rotate(-90deg);
+     transform:rotate(-90deg) translateY(-100px);
+     transform-origin: right top;
+     
+     
+     
+     
+     
+ 
+     
+     
+    
+    
+ 
+ }
+ 
+ 
+ #main-div > div {
+    
+     text-align: center;
+     vertical-align: top;
+     border: 1px solid;
+     border-radius: 20px;
+     
+     transform: rotate(90deg);
+     transform-origin: right top;
+     
+ }
+ 
+ 
+ 
+ 
+ 
+ div > h2{
+    color: rgb(0, 0, 0);
+    text-align: center;
+ }
+ 
+ .div-image{
+ 
+     height: 280px;
+     width: 220px;
+     border-radius: 20px;
+ 
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
