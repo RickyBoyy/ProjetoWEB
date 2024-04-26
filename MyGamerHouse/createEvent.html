@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="createEvent.css" />
+    <title>Create an Event</title>
+  </head>
+  <body>
+    <div class="createEvent_mainDisplay">
+      <h1>Create your event</h1>
+      <div class="upper_part">
+        <div class="Event_Title">
+          <label for="eventTitle">Title</label>
+          <input
+            type="text"
+            name="eventTitle"
+            placeholder="Write your title here!!"
+          />
+        </div>
+        <div class="Event_img">
+          <label for="event_img">Your event image...</label>
+          <input
+            type="file"
+            name="eventImage"
+            accept="image/*"
+            class="create_event"
+            id="event_image_input"
+            onchange="previewImage(event)"
+          />
+          <img
+            id="post_image_preview"
+            src="https://via.placeholder.com/550x300"
+            alt="create_event"
+          />
+        </div>
+      </div>
+      <div class="createEvent_mainDetails">
+        <h2>Now tell us the details:</h2>
+        <div class="location">
+          <label for="event_location">Show us the event location:</label>
+          <!--Fazer um input com google maps-->
+        </div>
+        <div class="time">
+          <label for="event_time">Tell us the time:</label>
+          <!--Meter um relógio para meter as horas-->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
