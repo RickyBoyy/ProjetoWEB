@@ -1,0 +1,36 @@
+.container {
+  max-width: 1200px;
+  width: 95%;
+  align-items: flex-start;
+}
+.slider-wrapper .image-list {
+  display: grid;
+  gap: 18px;
+  font-size: 0;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  grid-template-columns: repeat(10, 1fr);
+  align-items: flex-start;
+}
+
+/* Custom scrollbar */
+.slider-wrapper .image-list::-webkit-scrollbar {
+  display: none; /* Hide default scrollbar */
+}
+.slider-wrapper .image-list {
+  scrollbar-width: thin;
+}
+.slider-wrapper .image-list::-webkit-scrollbar-track {
+  background: transparent; /* Track color */
+}
+.slider-wrapper .image-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.slider-wrapper .image-list .image-item {
+  width: 200px;
+  height: 275px;
+  object-fit: cover;
+}
