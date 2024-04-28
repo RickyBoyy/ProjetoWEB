@@ -1,63 +1,46 @@
 import React from "react";
-import "../styles/slider.css";
-import "../App.css";
+import "../styles/home.css";
 
 const Home = () => {
   return (
-    <div id="indexBody" className="bg-primÃ¡rio-sutil">
-      <h1 className="secondTitle">Games</h1>
-      <iframe className="Index-iframe" src="Games.html" title="Games"></iframe>
-
-      <div className="container">
+    <div>
+      {/* Games Section */}
+      <section className="home-section">
+        <h1 className="section-title">Games</h1>
         <div className="slider-wrapper">
           <div className="image-list">
             {[...Array(7).keys()].map((index) => (
               <img
                 key={index}
-                src={`https://via.placeholder.com/300x550?text=Item-${
+                src={`https://via.placeholder.com/300x550?text=Game-${
                   index + 1
                 }`}
-                alt={`item-${index + 1}`}
+                alt={`Game-${index + 1}`}
                 className="image-item"
               />
             ))}
           </div>
         </div>
-        <div className="slider-scrollbar">
-          <div className="scrollbar-track">
-            <div className="scrollbar-thumb"></div>
-          </div>
-        </div>
-      </div>
+      </section>
 
-      <h1 className="secondTitle">Communities</h1>
-      <iframe
-        className="Index-iframe"
-        src="Comunidades.html"
-        title="Communities"
-      ></iframe>
-
-      <div className="container">
+      {/* Communities Section */}
+      <section className="home-section">
+        <h1 className="section-title">Communities</h1>
         <div className="slider-wrapper">
           <div className="image-list">
             {[...Array(7).keys()].map((index) => (
               <img
                 key={index}
-                src={`https://via.placeholder.com/150x150?text=Item-${
+                src={`https://via.placeholder.com/300x550?text=Community-${
                   index + 1
                 }`}
-                alt={`item-${index + 1}`}
+                alt={`Community-${index + 1}`}
                 className="image-item"
               />
             ))}
           </div>
         </div>
-        <div className="slider-scrollbar">
-          <div className="scrollbar-track">
-            <div className="scrollbar-thumb"></div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };

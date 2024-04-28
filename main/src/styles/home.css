@@ -1,0 +1,43 @@
+.home-section {
+  padding: 20px 0; /* Add padding between sections */
+}
+
+.section-title {
+  font-size: 24px; /* Adjust as needed */
+  color: #333; /* Adjust as needed */
+  margin-bottom: 10px; /* Add some space below the title */
+}
+
+.slider-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  padding-bottom: 20px; /* Add some space below the slider */
+}
+
+/* Custom scrollbar */
+.slider-wrapper::-webkit-scrollbar {
+  display: none; /* Hide default scrollbar for WebKit browsers */
+}
+
+.image-list {
+  display: flex;
+  gap: 18px;
+  font-size: 0;
+}
+
+.games .image-item {
+  width: 300px; /* Adjust image width for games */
+  height: 550px; /* Adjust image height for games */
+}
+
+.communities .image-item {
+  width: 150px; /* Adjust image width for communities */
+  height: 275px; /* Adjust image height for communities */
+}
+
+/* Adjust padding for communities slider */
+.communities .slider-wrapper {
+  padding-bottom: 10px; /* Adjust as needed */
+}

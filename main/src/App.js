@@ -9,11 +9,13 @@ import HomePage from "./pages/Home";
 import CommunitiesPage from "./pages/Community";
 import CreateEventPage from "./pages/CreateEvent";
 import CreatePostPage from "./pages/CreatePost";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Header></Header>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
