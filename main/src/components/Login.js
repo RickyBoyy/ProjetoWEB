@@ -45,7 +45,7 @@ const Login = () => {
           <div className="reference_signin">
             <p>If you don't have an account,</p>
             <a onClick={redirectToRegister} style={{ cursor: "default" }}>
-              register
+              register.
             </a>
           </div>
         </div>

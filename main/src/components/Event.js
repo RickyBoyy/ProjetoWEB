@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css"; // Import your CSS file here
+import "../App.css";
 
 const Event = () => {
   return (
