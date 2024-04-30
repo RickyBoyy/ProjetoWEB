@@ -5,6 +5,9 @@ const Login = () => {
   const redirectToHome = () => {
     window.location.href = "/";
   };
+  const redirectToRegister = () => {
+    window.location.href = "/register";
+  };
 
   return (
     <div className="main-login">
@@ -41,7 +44,9 @@ const Login = () => {
           </button>
           <div className="reference_signin">
             <p>If you don't have an account,</p>
-            <a href="SignIn.html">register</a>
+            <a onClick={redirectToRegister} style={{ cursor: "default" }}>
+              register
+            </a>
           </div>
         </div>
       </div>

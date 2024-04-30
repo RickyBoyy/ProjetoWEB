@@ -10,14 +10,16 @@ const Home = () => {
         <div className="slider-wrapper">
           <div className="image-list">
             {[...Array(7).keys()].map((index) => (
-              <img
-                key={index}
-                src={`https://via.placeholder.com/300x550?text=Game-${
-                  index + 1
-                }`}
-                alt={`Game-${index + 1}`}
-                className="image-item"
-              />
+              <div key={index} className="image-item-wrapper">
+                <img
+                  src={`https://via.placeholder.com/300x550?text=Game-${
+                    index + 1
+                  }`}
+                  alt={`Game-${index + 1}`}
+                  className="image-item"
+                />
+                <p className="item-name">Game {index + 1} Name</p>
+              </div>
             ))}
           </div>
         </div>
@@ -29,14 +31,16 @@ const Home = () => {
         <div className="slider-wrapper">
           <div className="image-list">
             {[...Array(7).keys()].map((index) => (
-              <img
-                key={index}
-                src={`https://via.placeholder.com/300x550?text=Community-${
-                  index + 1
-                }`}
-                alt={`Community-${index + 1}`}
-                className="image-item"
-              />
+              <div key={index} className="image-item-wrapper">
+                <img
+                  src={`https://via.placeholder.com/300x550?text=Community-${
+                    index + 1
+                  }`}
+                  alt={`Community-${index + 1}`}
+                  className="image-item"
+                />
+                <p className="item-name">Community {index + 1} Name</p>
+              </div>
             ))}
           </div>
         </div>

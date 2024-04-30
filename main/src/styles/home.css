@@ -1,24 +1,23 @@
 .home-section {
-  padding: 20px 0; /* Add padding between sections */
+  padding: 20px 0;
 }
 
 .section-title {
-  font-size: 24px; /* Adjust as needed */
-  color: #333; /* Adjust as needed */
-  margin-bottom: 10px; /* Add some space below the title */
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .slider-wrapper {
   display: flex;
   overflow-x: auto;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
-  padding-bottom: 20px; /* Add some space below the slider */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 20px;
 }
 
-/* Custom scrollbar */
 .slider-wrapper::-webkit-scrollbar {
-  display: none; /* Hide default scrollbar for WebKit browsers */
+  display: none;
 }
 
 .image-list {
@@ -28,16 +27,20 @@
 }
 
 .games .image-item {
-  width: 300px; /* Adjust image width for games */
-  height: 550px; /* Adjust image height for games */
+  width: 300px;
+  height: 550px;
 }
 
 .communities .image-item {
-  width: 150px; /* Adjust image width for communities */
-  height: 275px; /* Adjust image height for communities */
+  width: 150px;
+  height: 275px;
+}
+.item-name {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
 }
 
-/* Adjust padding for communities slider */
 .communities .slider-wrapper {
-  padding-bottom: 10px; /* Adjust as needed */
+  padding-bottom: 10px;
 }

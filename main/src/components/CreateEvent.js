@@ -8,7 +8,7 @@ const CreateEvent = () => {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      document.getElementById("post_image_preview").src = reader.result;
+      document.getElementById("event_image_preview").src = reader.result;
     };
 
     if (file) {

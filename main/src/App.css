@@ -678,6 +678,9 @@
 #Tagbody * {
   box-sizing: border-box;
 }
+.tag {
+  user-select: none;
+}
 
 .choose_tags {
   width: 100%;

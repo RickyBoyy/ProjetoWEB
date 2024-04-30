@@ -10,6 +10,8 @@ import CommunitiesPage from "./pages/Community";
 import CreateEventPage from "./pages/CreateEvent";
 import CreatePostPage from "./pages/CreatePost";
 import Header from "./components/Header";
+import PostPage from "./pages/Post";
+import TagsPage from "./pages/Tags";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/community" element={<CommunitiesPage />} />
           <Route path="/create_event" element={<CreateEventPage />} />
           <Route path="/create_post" element={<CreatePostPage />} />
+          <Route path="/post" element={<PostPage />} />
+          <Route path="/tags" element={<TagsPage />} />
         </Routes>
       </Router>
     </div>

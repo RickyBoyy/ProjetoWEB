@@ -47,7 +47,7 @@ const SignIn = () => {
               />
             </div>
             <div className="textfield_displayname">
-              <label htmlFor="Display_Name">E-mail</label>
+              <label htmlFor="Display_Name">Display Name</label>
               <input
                 type="text"
                 name="Display_Name"
