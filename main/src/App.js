@@ -12,6 +12,7 @@ import CreatePostPage from "./pages/CreatePost";
 import Header from "./components/Header";
 import PostPage from "./pages/Post";
 import TagsPage from "./pages/Tags";
+import GamePage from "./pages/Game";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/create_post" element={<CreatePostPage />} />
           <Route path="/post" element={<PostPage />} />
           <Route path="/tags" element={<TagsPage />} />
+          <Route path="/game" element={<GamePage />} />
         </Routes>
       </Router>
     </div>
