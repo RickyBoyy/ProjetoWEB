@@ -33,7 +33,6 @@ function App() {
           <Route path="/game" element={<GamePage />} />
         </Routes>
       </Router>
-      <Footer /> {/* Adicione o componente Footer fora do Router */}
     </div>
   );
 }
