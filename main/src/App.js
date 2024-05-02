@@ -1,4 +1,4 @@
-import logo from "./images/LogoOnlySymbol.png";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -13,6 +13,7 @@ import Header from "./components/Header";
 import PostPage from "./pages/Post";
 import TagsPage from "./pages/Tags";
 import GamePage from "./pages/Game";
+import Footer from "./pages/Footer"; // Importe o componente Footer
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/game" element={<GamePage />} />
         </Routes>
       </Router>
+      <Footer /> {/* Adicione o componente Footer fora do Router */}
     </div>
   );
 }
