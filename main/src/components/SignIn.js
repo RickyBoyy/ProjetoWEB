@@ -1,66 +1,91 @@
-import React from "react";
-import "./Style.css"; // Import your CSS file here
+import React, { useState } from "react";
+import "../App.css";
 
 const SignIn = () => {
-  const redirectToTags = () => {
-    // Implement redirection logic here
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [displayname, setDisplayName] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+    } else {
+      alert("Registration successful!");
+      window.location.href = "/tags";
+    }
   };
 
   return (
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="C:\Users\Asus FX516P 9775\Downloads\LogoOnlySymbol.png"
-        />
-        <title>Sign In</title>
-      </head>
-      <body id="Registerbody">
-        <div className="main_register">
-          <div className="left_register">
-            <div className="card_register">
-              <h1>Dive in!!</h1>
-              <div className="textfield_register_username">
-                <label htmlFor="Username">Username</label>
-                <input
-                  type="text"
-                  name="Username"
-                  placeholder="Username"
-                  maxLength="12"
-                />
-              </div>
-              <div className="textfield_email">
-                <label htmlFor="E-mail">E-mail</label>
-                <input type="text" name="E-mail" placeholder="E-mail" />
-              </div>
-              <div className="textfield_register_password">
-                <label htmlFor="Password">Password</label>
-                <input type="password" name="Password" placeholder="Password" />
-              </div>
-              <div className="textfield_confirm_password">
-                <label htmlFor="ConfirmPassword">Confirm Password</label>
-                <input
-                  type="password"
-                  name="ConfirmPassword"
-                  placeholder="Confirm Password"
-                />
-              </div>
-              <button className="btn_register" onClick={redirectToTags}>
-                Register
-              </button>
+    <div className="main_register">
+      <div className="left_register">
+        <div className="card_register">
+          <h1>Dive in!!</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="textfield_register_username">
+              <label htmlFor="Username">Username</label>
+              <input
+                type="text"
+                name="Username"
+                placeholder="Username"
+                maxLength="12"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </div>
-          </div>
-          <div className="right_register">
-            <h1>Join and talk about your favorite game!</h1>
-          </div>
+            <div className="textfield_email">
+              <label htmlFor="E-mail">E-mail</label>
+              <input
+                type="text"
+                name="E-mail"
+                placeholder="E-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="textfield_displayname">
+              <label htmlFor="Display_Name">Display Name</label>
+              <input
+                type="text"
+                name="Display_Name"
+                placeholder="Display Name"
+                value={displayname}
+                onChange={(e) => setDisplayName(e.target.value)}
+              />
+            </div>
+            <div className="textfield_register_password">
+              <label htmlFor="Password">Password</label>
+              <input
+                type="password"
+                name="Password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="textfield_confirm_password">
+              <label htmlFor="ConfirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                name="ConfirmPassword"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="btn_register">
+              Register
+            </button>
+          </form>
         </div>
-        <script src="tag.js"></script>
-      </body>
-    </html>
+      </div>
+      <div className="right_register">
+        <h1>Join and talk about your favorite game!</h1>
+      </div>
+    </div>
   );
 };
 

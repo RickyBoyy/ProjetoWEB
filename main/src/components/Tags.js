@@ -1,41 +1,85 @@
 import React from "react";
-import "./Style.css"; // Import your CSS file here
+import "../App.css";
 
 const Tags = () => {
-  const redirectToNav = () => {
-    // Implement redirection logic here
+  const redirectToHome = () => {
+    window.location.href = "/";
+  };
+  const handleSubmit = () => {
+    console.log("Submit selected tags");
+    redirectToHome();
+  };
+  const tags = [
+    "Action",
+    "Adventure",
+    "RPG",
+    "Strategy",
+    "Simulation",
+    "Puzzle",
+    "Horror",
+    "FPS",
+    "Sports",
+    "Racing",
+    "Platformer",
+    "Indie",
+    "Open World",
+    "Survival",
+    "Multiplayer",
+    "Stealth",
+    "Science Fiction",
+    "Fantasy",
+    "Historical",
+    "Exploration",
+    "Hack and Slash",
+    "Turn-Based",
+    "Card Game",
+    "MOBA",
+    "MMORPG",
+    "Co-op",
+    "Single Player",
+    "Tactical",
+    "Artificial Intelligence",
+    "Story-Driven",
+  ];
+
+  const toggleTag = (event) => {
+    const clickedTag = event.target;
+    const isSelected = clickedTag.classList.contains("selected");
+
+    if (isSelected) {
+      clickedTag.classList.remove("selected");
+      clickedTag.style.cursor = "default"; // Set cursor to default
+    } else {
+      const selectedTags = document.querySelectorAll(".tag.selected");
+      if (selectedTags.length < 4) {
+        clickedTag.classList.add("selected");
+        clickedTag.style.cursor = "pointer"; // Set cursor to pointer
+      } else {
+        alert("You can select up to 4 tags.");
+      }
+    }
   };
 
   return (
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="C:\Users\Asus FX516P 9775\Downloads\LogoOnlySymbol.png"
-        />
-        <title>Tags</title>
-      </head>
-      <body id="Tagbody">
-        <div className="choose_tags">
-          <div className="card_tags">
-            <h1>
-              What type of gamer are you?
-              <br />
-              Choose four tags:
-            </h1>
-            <div className="tag_placement" id="tag_placement"></div>
-            <button className="btn_done" onClick={redirectToNav}>
-              Done
-            </button>
-          </div>
+    <div className="choose_tags">
+      <div className="card_tags">
+        <h1>
+          What type of gamer are you?
+          <br />
+          Choose four tags:
+        </h1>
+        <div className="tag_placement">
+          {tags.map((tag, index) => (
+            <div key={index} className="tag" onClick={toggleTag}>
+              {tag}
+            </div>
+          ))}
         </div>
-        <script src="tag.js"></script>
-      </body>
-    </html>
+        <button className="btn_done" onClick={handleSubmit}>
+          Done
+        </button>
+      </div>
+    </div>
   );
 };
 
