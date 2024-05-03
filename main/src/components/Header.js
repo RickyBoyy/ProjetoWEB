@@ -13,6 +13,9 @@ const Header = () => {
   const redirectToCreateCommunity = () => {
     window.location.href = "/create_community";
   };
+  const redirectToCreateEvent = () => {
+    window.location.href = "/create_event";
+  };
 
   return (
     <header className="header">
@@ -32,6 +35,11 @@ const Header = () => {
           onClick={redirectToCreateCommunity}
         >
           Create Community
+        </button>
+      </div>
+      <div className="create-event-container">
+        <button className="create-event-button" onClick={redirectToCreateEvent}>
+          Create Event
         </button>
       </div>
       <div className="search-container">

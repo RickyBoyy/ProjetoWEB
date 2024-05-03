@@ -17,7 +17,7 @@
 }
 
 .login-container {
-  margin-right: 20px; /* Adjust as needed */
+  margin-right: 10px; /* Adjust as needed */
 }
 
 .search-container {
@@ -34,7 +34,7 @@
 .search-button {
   margin-left: 10px; /* Adjust as needed */
   padding: 5px 10px;
-  background-color: #007bff; /* Adjust as needed */
+  background-color: #aa3bfc; /* Adjust as needed */
   color: white; /* Adjust as needed */
   border: none;
   border-radius: 5px; /* Adjust as needed */
@@ -44,20 +44,31 @@
 /* Style the login button */
 .login-button {
   padding: 5px 10px;
-  background-color: #007bff; /* Adjust as needed */
+  background-color: #333; /* Adjust as needed */
   color: white; /* Adjust as needed */
   border: none;
   border-radius: 5px; /* Adjust as needed */
   cursor: pointer;
 }
 .create-community-container {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .create-community-button {
   padding: 5px 10px;
-  background-color: #007bff; /* Adjust as needed */
-  color: white; /* Adjust as needed */
+  background-color: #333;
+  color: white;
   border: none;
-  border-radius: 5px; /* Adjust as needed */
+  border-radius: 5px;
+  cursor: pointer;
+}
+.create-event-container {
+  margin-right: 10px;
+}
+.create-event-button {
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }

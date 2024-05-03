@@ -85,7 +85,7 @@ const SignIn = () => {
           </form>
           <div className="reference_signin">
             <p>If you already have an account,</p>
-            <a onClick={redirectToLogin} style={{ cursor: "default" }}>
+            <a onClick={redirectToLogin} style={{ cursor: "pointer" }}>
               login.
             </a>
           </div>
