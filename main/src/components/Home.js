@@ -1,8 +1,13 @@
 import React from "react";
 import "../styles/home.css";
 
-
 const Home = () => {
+  const redirectToGame = () => {
+    window.location.href = "/game";
+  };
+  const redirectToCommunity = () => {
+    window.location.href = "/community";
+  };
   return (
     <div>
       {/* Games Section */}
@@ -11,7 +16,11 @@ const Home = () => {
         <div className="slider-wrapper">
           <div className="image-list">
             {[...Array(7).keys()].map((index) => (
-              <div key={index} className="image-item-wrapper">
+              <div
+                key={index}
+                className="image-item-wrapper"
+                onClick={redirectToGame}
+              >
                 <img
                   src={`https://via.placeholder.com/300x550?text=Game-${
                     index + 1
@@ -32,7 +41,11 @@ const Home = () => {
         <div className="slider-wrapper">
           <div className="image-list">
             {[...Array(7).keys()].map((index) => (
-              <div key={index} className="image-item-wrapper">
+              <div
+                key={index}
+                className="image-item-wrapper"
+                onClick={redirectToCommunity}
+              >
                 <img
                   src={`https://via.placeholder.com/300x550?text=Community-${
                     index + 1
@@ -46,10 +59,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    
     </div>
-    
-    
   );
 };
 
