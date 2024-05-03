@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../images/LogoHorizontal.png";
-import "../App.css";
+import "../styles/header.css";
 
 const Header = () => {
   const redirectToLogin = () => {
@@ -9,6 +9,9 @@ const Header = () => {
 
   const redirectToHome = () => {
     window.location.href = "/";
+  };
+  const redirectToCreateCommunity = () => {
+    window.location.href = "/create_community";
   };
 
   return (
@@ -21,6 +24,14 @@ const Header = () => {
       <div className="login-container">
         <button className="login-button" onClick={redirectToLogin}>
           Login
+        </button>
+      </div>
+      <div className="create-community-container">
+        <button
+          className="create-community-button"
+          onClick={redirectToCreateCommunity}
+        >
+          Create Community
         </button>
       </div>
       <div className="search-container">

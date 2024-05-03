@@ -43,59 +43,6 @@ body {
     transform: rotate(360deg);
   }
 }
-/*Header*/
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #333; /* Adjust as needed */
-  color: white; /* Adjust as needed */
-}
-
-.logo-container {
-  margin-right: auto; /* Adjusted to push logo to left edge */
-}
-
-.logo {
-  max-width: 100px; /* Adjust as needed */
-  height: auto;
-}
-
-.login-container {
-  margin-right: 20px; /* Adjust as needed */
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  padding: 5px;
-  border: 1px solid #ccc; /* Adjust as needed */
-  border-radius: 5px; /* Adjust as needed */
-}
-
-.search-button {
-  margin-left: 10px; /* Adjust as needed */
-  padding: 5px 10px;
-  background-color: #007bff; /* Adjust as needed */
-  color: white; /* Adjust as needed */
-  border: none;
-  border-radius: 5px; /* Adjust as needed */
-  cursor: pointer;
-}
-
-/* Style the login button */
-.login-button {
-  padding: 5px 10px;
-  background-color: #007bff; /* Adjust as needed */
-  color: white; /* Adjust as needed */
-  border: none;
-  border-radius: 5px; /* Adjust as needed */
-  cursor: pointer;
-}
 
 /*Comunidades*/
 #Com-body {
@@ -342,21 +289,21 @@ body {
 .btn-login:hover {
   color: #aa3bfc;
 }
-.reference_signin {
+.reference_login {
   margin-top: 20px;
   text-align: center;
   color: azure;
 }
-.reference_signin p {
+.reference_login p {
   margin: 0;
 }
 
-.reference_signin a {
+.reference_login a {
   color: azure;
   text-decoration: none;
 }
 
-.reference_signin a:hover {
+.reference_login a:hover {
   text-decoration: underline;
 }
 
@@ -662,6 +609,23 @@ body {
   cursor: pointer;
   box-shadow: 0px 10px 40px -12px darkslateblue;
 }
+.reference_signin {
+  margin-top: 20px;
+  text-align: center;
+  color: azure;
+}
+.reference_signin p {
+  margin: 0;
+}
+
+.reference_signin a {
+  color: azure;
+  text-decoration: none;
+}
+
+.reference_signin a:hover {
+  text-decoration: underline;
+}
 
 .right_register {
   width: 50vw;
@@ -814,6 +778,45 @@ body {
   max-height: 550px;
   margin-top: 10px;
   border-radius: 5px;
+}
+/*Create Community*/
+
+.createCommunity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 20px; /* Adjust margin as needed */
+}
+
+.createcommunity_visualizers {
+  margin-bottom: 20px;
+  display: flex; /* Set to flex */
+  flex-direction: column; /* Arrange items in column */
+  align-items: flex-start; /* Align items to the start */
+  margin-top: 20px; /* Space between title and image input */
+}
+
+.create_community {
+  margin-top: 10px; /* Space below title */
+}
+
+.createCommunity_textEssentials {
+  display: flex; /* Set to flex */
+  flex-direction: column; /* Arrange items in column */
+  align-items: flex-start; /* Align items to the start */
+  margin-top: 20px; /* Space between image input and text essentials */
+}
+.createCommunity_textEssentials input[type="file"] {
+  margin-top: 5px; /* Space between label and input */
+}
+.createCommunity_textEssentials input[type="text"] {
+  margin-bottom: 10px; /* Space between input fields */
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+.createCommunity_textEssentials label,
+.createCommunity_textEssentials input {
+  margin-bottom: 10px; /* Space between label and input */
 }
 
 @media only screen and (max-width: 950px) {

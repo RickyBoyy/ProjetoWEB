@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #333; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+}
+
+.logo-container {
+  margin-right: auto; /* Adjusted to push logo to left edge */
+}
+
+.logo {
+  max-width: 200px; /* Adjust as needed */
+  height: auto;
+}
+
+.login-container {
+  margin-right: 20px; /* Adjust as needed */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 5px;
+  border: 1px solid #ccc; /* Adjust as needed */
+  border-radius: 5px; /* Adjust as needed */
+}
+
+.search-button {
+  margin-left: 10px; /* Adjust as needed */
+  padding: 5px 10px;
+  background-color: #007bff; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+  border: none;
+  border-radius: 5px; /* Adjust as needed */
+  cursor: pointer;
+}
+
+/* Style the login button */
+.login-button {
+  padding: 5px 10px;
+  background-color: #007bff; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+  border: none;
+  border-radius: 5px; /* Adjust as needed */
+  cursor: pointer;
+}
+.create-community-container {
+  margin-right: 20px;
+}
+.create-community-button {
+  padding: 5px 10px;
+  background-color: #007bff; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+  border: none;
+  border-radius: 5px; /* Adjust as needed */
+  cursor: pointer;
+}

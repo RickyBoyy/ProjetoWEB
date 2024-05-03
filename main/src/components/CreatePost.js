@@ -21,7 +21,7 @@ const CreatePost = () => {
       <div className="createpost_textEssentials">
         <h1>Create your post</h1>
         <div className="tittle">
-          <label htmlFor="tittle">First, the title...</label>
+          <label htmlFor="title">First, the title...</label>
           <b></b>
           <input
             type="text"

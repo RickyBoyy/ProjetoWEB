@@ -14,6 +14,7 @@ import PostPage from "./pages/Post";
 import TagsPage from "./pages/Tags";
 import GamePage from "./pages/Game";
 import Footer from "./pages/Footer"; // Importe o componente Footer
+import CreateCommunitiesPage from "./pages/CreateCommunity";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/post" element={<PostPage />} />
           <Route path="/tags" element={<TagsPage />} />
           <Route path="/game" element={<GamePage />} />
+          <Route path="/create_community" element={<CreateCommunitiesPage />} />
         </Routes>
       </Router>
     </div>
