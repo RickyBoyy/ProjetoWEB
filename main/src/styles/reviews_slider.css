@@ -1,0 +1,63 @@
+.container {
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-right: 60px;
+  margin-left: 60px;
+  margin-top: 20px;
+}
+
+.slider-inner {
+  height: 100%;
+  overflow-y: scroll;
+  margin: auto;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+}
+
+.card_review {
+  color: white;
+  flex-direction: row;
+  display: flex;
+  padding: 30px 35px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  background-color: #652ec7;
+  box-shadow: 0px 10px 40px #00000056;
+}
+
+.card_review .user-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.card_review .review_content {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  margin-left: auto;
+}
+.review_content .review_part {
+  margin-right: auto;
+  margin-left: auto;
+  gap: 10px;
+}
+
+.user_info .profile_pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.score {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  align-items: center;
+  font-size: larger;
+}
