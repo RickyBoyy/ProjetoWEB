@@ -1,17 +1,24 @@
 import React from "react";
 import "../App.css";
+import profilePic from "../images/1547006.jpg";
+import "../styles/reviews_slider.css";
 
 const Game = () => {
+  const redirectToReviewsFromGames = () => {
+    window.location.href = "/reviews";
+  };
+  const redirectToVideosFromGames = () => {
+    window.location.href = "/videos";
+  };
   return (
-    <div>
-      <h1 className="Game-title">Game</h1>
+    <div className="Game_Page">
       <div id="Game-desc">
         <img src="https://via.placeholder.com/300x550" alt="" />
         <div id="GameRating-desc">
-          <h2>Rating</h2>
+          <h3>Overall Rating:</h3>
           <h3>0/10</h3>
-          <p>Description here...</p>
         </div>
+        <p>Description here...</p>
       </div>
       <div className="linha-horizontal"></div>
       <h1 className="Game-title">Guides and Tutorials</h1>
@@ -64,44 +71,64 @@ const Game = () => {
         ></iframe>
       </div>
 
-      <button className="button-more">See more</button>
+      <button className="button-more" onClick={redirectToVideosFromGames}>
+        See more
+      </button>
 
       <div className="linha-horizontal"></div>
 
       <h1 className="Game-title">Reviews</h1>
-      <div className="review">
-        <img
-          className="GameRev-profile"
-          src="https://via.placeholder.com/150"
-          alt=""
-        />
-        <p className="GameRev-desc">Review here</p>
-        <p className="GameRev-grade">0/10</p>
+      <div className="container">
+        <div className="card_review">
+          <div className="user-info">
+            <img
+              src={profilePic}
+              alt="user_profile_picture"
+              style={{
+                width: "150px",
+                height: "150px",
+                borderRadius: "50%",
+                marginRight: "10px",
+              }}
+            />
+            <h4>User Display Name</h4>
+          </div>
+          <div className="review_content">
+            <p>
+              The review will go here and occupy the middle space between the
+              rating and the user-info.
+            </p>
+          </div>
+          <h5 className="score">8/10</h5>
+        </div>
+        <div className="card_review">
+          <div className="user-info">
+            <img
+              src={profilePic}
+              alt="user_profile_picture"
+              style={{
+                width: "150px",
+                height: "150px",
+                borderRadius: "50%",
+                marginRight: "10px",
+              }}
+            />
+            <h4>User Display Name</h4>
+          </div>
+          <div className="review_content">
+            <p>
+              The review will go here and occupy the middle space between the
+              rating and the user-info.
+            </p>
+          </div>
+          <h5 className="score">8/10</h5>
+        </div>
+        <button className="button-more" onClick={redirectToReviewsFromGames}>
+          See more
+        </button>
       </div>
-      <div className="Game-review">
-        <img
-          className="GameRev-profile"
-          src="https://via.placeholder.com/150"
-          alt=""
-        />
-        <p className="GameRev-desc">Review here</p>
-        <p className="GameRev-grade">0/10</p>
-      </div>
-      <div className="Game-review">
-        <img
-          className="GameRev-profile"
-          src="https://via.placeholder.com/150"
-          alt=""
-        />
-        <p className="GameRev-desc">Review here</p>
-        <p className="GameRev-grade">0/10</p>
-      </div>
-
-      <button className="button-more">See more</button>
 
       <div className="linha-horizontal"></div>
-
-      <iframe src="GamesComunity.html" frameBorder="0"></iframe>
     </div>
   );
 };

@@ -87,6 +87,9 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+.Game_Page {
+  color: white;
+}
 
 #Games-div {
   float: left;
@@ -115,15 +118,20 @@ body {
 }
 
 #Game-desc {
+  margin-top: 60px;
   display: flex;
+  margin-left: 150px;
+  margin-right: auto;
+}
+
+.Game-desc .GameRating-desc {
+  flex: row;
+  display: flex;
+  align-items: center;
 }
 
 .Game-title {
   margin-left: 2%;
-}
-
-#GamesRating-desc {
-  margin-left: 3%;
 }
 
 .linha-horizontal {
@@ -149,30 +157,26 @@ body {
 }
 
 .button-more {
-  margin-left: 45%;
-  margin-top: 10%;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .GameRev-profile {
   border-radius: 100px;
 }
-
+.Game_Page .container {
+  margin-bottom: 20px;
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-top: 20px;
+}
 .Game-review {
   margin-left: 2%;
   margin-top: 5%;
   display: flex;
   border: 1px solid;
   border-radius: 20px;
-}
-
-.Game-review > .GameRev-grade {
-  margin-top: 3%;
-  margin-left: 70%;
-}
-
-.Game-review > .GameRev-desc {
-  margin-left: 10%;
-  margin-top: 3%;
 }
 
 /*Login*/
