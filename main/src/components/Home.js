@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/home.css";
+import "../styles/footer.css";
+import Calendar from "react-calendar";
 
 const Home = () => {
+  const [date, setDate] = useState(new Date());
+
+  const onChange = (newDate) => {
+    setDate(newDate);
+  };
+
   const redirectToGame = () => {
     window.location.href = "/game";
   };
@@ -57,6 +65,13 @@ const Home = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      <section className="home_calendar">
+        <h1 className="section-title">Event calendar</h1>
+
+        <div className="calendar_wrapper">
+          <Calendar onChange={onChange} value={date} />
         </div>
       </section>
     </div>

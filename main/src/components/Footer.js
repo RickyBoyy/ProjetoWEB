@@ -1,13 +1,13 @@
 import React from "react";
 import "../styles/home.css";
-import fb from "../images/facebook.svg"; // Importe a imagem
-import insta from "../images/instagram.svg"; // Importe a imagem
-import linkedin from "../images/linkedin.svg"; // Importe a imagem
-import twitter from "../images/twitter.svg"; // Importe a imagem
+import fb from "../images/facebook.svg";
+import insta from "../images/instagram.svg";
+import linkedin from "../images/linkedin.svg";
+import twitter from "../images/twitter.svg";
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="sb_footer section_padding">
         <div className="sb_footer-links">
           <div className="sb_footer">
@@ -80,7 +80,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
