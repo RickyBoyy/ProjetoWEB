@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  mygamerhouse:
+    build: ./main
+    container_name: mygamerhouse_c
+    ports:
+      - "3000:3000" # Corrected port mapping syntax
+    stdin_open: true
+    tty: true

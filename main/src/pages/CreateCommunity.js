@@ -1,14 +1,13 @@
-import Community from "../components/Community";
-import Create from "../components/Community";
+import CreateCommunity from "../components/CreateCommunity";
 
 import React from "react";
 
-const CommunitiesPage = () => {
+const CreateCommunitiesPage = () => {
   return (
     <div>
-      <Community />
+      <CreateCommunity />
     </div>
   );
 };
 
-export default CommunitiesPage;
+export default CreateCommunitiesPage;

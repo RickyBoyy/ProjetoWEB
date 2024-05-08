@@ -1,9 +1,7 @@
-// src/pages/Footer.js
-
 import React from "react";
-import MyFooter from "../components/Footer"; // Renomeie a importação para evitar conflito de nomes
+import MyFooter from "../components/Footer";
 
-const FooterPage = () => { // Renomeie a função para evitar conflito de nomes
+const FooterPage = () => {
   return (
     <div>
       <MyFooter />
