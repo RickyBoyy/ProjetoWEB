@@ -32,6 +32,7 @@ function App() {
           <Route path="/tags" element={<TagsPage />} />
           <Route path="/game" element={<GamePage />} />
         </Routes>
+        
       </Router>
     </div>
   );

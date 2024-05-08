@@ -9,7 +9,8 @@ import twitter from "../images/twitter.svg" // Importe a imagem
 
 const Footer = () => {
     return (
-        <div className="footer">
+        
+        <footer className="footer">
             <div className="sb_footer section_padding">
                 <div className="sb_footer-links">
                     <div className="sb_footer">
@@ -58,7 +59,7 @@ const Footer = () => {
                     <a href="#"><div><p>Cookie Declarations</p></div></a>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };
 
