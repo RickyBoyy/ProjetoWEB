@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
+
 import MapContainer from "./Maps";
 import DateTimePicker from "react-datetime-picker";
 
@@ -29,6 +30,7 @@ const CreateEvent = () => {
       <div className="title_container">
         <h1>Create your event</h1>
       </div>
+      <div className="linha_horizontal_event"></div>
       <div className="all_it">
         <div className="upper_elements">
           <div className="Event_Title">
@@ -70,8 +72,8 @@ const CreateEvent = () => {
             </div>
 
             <div className="time">
-              <label htmlFor="event_time">Tell us the time:</label>
-              <DateTimePicker onChange={setValue} value={value} />
+              <input type="date"></input>
+              <input type="time"></input>
             </div>
           </div>
         </div>

@@ -38,7 +38,6 @@ function App() {
           <Route path="/maps" element={<MapPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
         </Routes>
-        
       </Router>
     </div>
   );
