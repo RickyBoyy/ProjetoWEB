@@ -5,6 +5,15 @@ services:
     build: ./main
     container_name: mygamerhouse_c
     ports:
-      - "3000:3000" # Corrected port mapping syntax
+      - "3000:3000"
     stdin_open: true
     tty: true
+  db:
+    image: postgis/postgis
+    container_name: postgres-db
+    environment:
+      POSTGRES_PASSWORD: housegamermy
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db_scripts:/docker-entrypoint-initdb.d

@@ -45,37 +45,47 @@ body {
 }
 
 /*Comunidades*/
-#Com-body {
-  background-color: #120052;
-  overflow-y: hidden;
-}
-::-webkit-scrollbar {
-  display: none;
+
+.community {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-#Com-div {
-  float: left;
-  margin-left: 9%;
-  transform: rotate(-90deg);
-  transform: rotate(-90deg) translateY(-100px);
-  transform-origin: right top;
+.community img {
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-#Com-div > div {
-  text-align: center;
-  vertical-align: top;
-  transform: rotate(90deg);
-  transform-origin: right top;
+.community-content {
+  flex: 1;
 }
 
-.ComImg-div > .Comh2 {
-  color: rgb(0, 0, 0);
-  text-align: center;
+.community-name {
+  margin-bottom: 5px;
 }
 
-.Com-image {
-  height: 280px;
-  width: 220px;
+.btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.community-description {
+  flex: 2;
+  margin-bottom: 10px;
+  height: 100px;
+  margin-right: 10px;
+  width: calc(100% - 160px);
+}
+
+.community-description-section {
+  display: flex;
+  align-items: center;
 }
 
 /*Games*/
@@ -91,49 +101,46 @@ body {
   color: white;
 }
 
-#Games-div {
-  float: left;
-  margin-left: 5%;
-  transform: rotate(-90deg);
-  transform: rotate(-90deg) translateY(-100px);
-  transform-origin: right top;
-}
-
-#Games-div > .SubGame-div {
-  text-align: center;
-  vertical-align: top;
-
-  transform: rotate(90deg);
-  transform-origin: right top;
-}
-
-.SubGame-div > .NameGame-h2 {
-  color: rgb(0, 0, 0);
-  text-align: center;
-}
-
-.Games-image {
-  height: 280px;
-  width: 220px;
-}
-
-#Game-desc {
-  margin-top: 60px;
+.game_main_details {
   display: flex;
-  margin-left: 150px;
-  margin-right: auto;
+
+  margin-left: 12%;
+  margin-top: 50px;
 }
 
-.Game-desc .GameRating-desc {
-  flex: row;
+.game_main_reference {
+  margin-right: 20px;
+  flex-direction: column;
+  display: flex;
+  row-gap: 15%;
+}
+.game_img {
+  flex-shrink: 0; /* Prevents the image from shrinking */
+}
+.upper_game {
+  flex-direction: row;
   display: flex;
   align-items: center;
+  margin-left: 50px;
+}
+.upper_game > * {
+  margin-right: 10px; /* Add margin between items */
 }
 
-.Game-title {
-  margin-left: 2%;
+.rating {
+  font-size: x-large;
 }
 
+.description {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  border: 1px solid white;
+  height: 100;
+  padding: 30px 35px;
+  border-radius: 20px;
+  color: white;
+}
 .linha-horizontal {
   align-self: center;
   width: 80%;
@@ -786,17 +793,29 @@ body {
 
 .createCommunity {
   display: flex;
+
+  margin-left: 200px;
+  margin-top: 50px;
+  color: white;
+}
+.createcommunity_visuals {
   flex-direction: column;
+  display: flex;
   align-items: flex-start;
-  margin-left: 20px;
+}
+.create_community_title {
+  font-style: oblique;
+}
+.create_community_essentials {
+  flex-direction: row;
+  display: flex;
+  align-items: flex-start;
 }
 
-.createcommunity_visualizers {
-  margin-bottom: 20px;
-  display: flex;
+.imag_community {
   flex-direction: column;
+  display: flex;
   align-items: flex-start;
-  margin-top: 20px;
 }
 
 .create_community {
@@ -804,15 +823,82 @@ body {
 }
 
 .createCommunity_textEssentials {
+  margin-left: 150px;
+  margin-top: 30px;
+}
+.card_create_community {
+  width: 140%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  background: #652ec7;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px #00000056;
+}
+.card_create_community > h2 {
+  color: white;
+  font-weight: 800;
+  margin: 10;
+}
+.community_name_essential {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 20px;
+  justify-content: center;
+  margin: 10px 0px;
 }
-.createCommunity_textEssentials input[type="file"] {
-  margin-top: 5px;
+.community_name_essential label {
+  font-size: larger;
+  font-style: initial;
 }
-.createCommunity_textEssentials input[type="text"] {
+.community_name_essential > input {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #201b2c;
+  color: azure;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+  box-sizing: border-box;
+}
+.community_description_essential {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.community_description_essential label {
+  font-size: larger;
+  font-style: initial;
+}
+.community_description_essential > textarea {
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #201b2c;
+  color: azure;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+  box-sizing: content-box;
+  width: calc(100% - 30px);
+}
+.linha_horizontal_community {
+  align-self: flex-start;
+  width: 110%;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 40px;
+}
+
+.createCommunity_textEssentials textarea[type="text"] {
   margin-bottom: 10px;
   font-size: 16px;
 }
@@ -821,6 +907,8 @@ body {
 .createCommunity_textEssentials input {
   margin-bottom: 10px;
 }
+
+/*Create Events*/
 .createEvent_mainDisplay {
   display: flex;
   flex-direction: column;

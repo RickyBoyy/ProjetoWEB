@@ -3,18 +3,34 @@ import "../App.css";
 
 const Community = () => {
   return (
-    <div id="Com-body">
-      <div id="Com-div">
-        <div className="ComImg-div">
-          <a>
-            <img
-              className="Com-image"
-              src="https://via.placeholder.com/150"
-              alt=""
-            />
-          </a>
-          <h2 id="Com-h2">Community</h2>
+    <div>
+      <h1>Communities</h1>
+      <div className="community">
+        <div className="community-content">
+          <div className="community-description-section">
+            <img src="https://via.placeholder.com/150x150" alt="" />
+            <textarea
+              className="community-description"
+              placeholder="Descrição da primeira comunidade"
+            ></textarea>
+          </div>
+          <div className="community-name">Nome da primeira comunidade</div>
         </div>
+        <button className="btn">Entrar</button>
+      </div>
+
+      <div className="community">
+        <div className="community-content">
+          <div className="community-description-section">
+            <img src="https://via.placeholder.com/150x150" alt="" />
+            <textarea
+              className="community-description"
+              placeholder="Descrição da segunda comunidade"
+            ></textarea>
+          </div>
+          <div className="community-name">Nome da segunda comunidade</div>
+        </div>
+        <button className="btn">Entrar</button>
       </div>
     </div>
   );

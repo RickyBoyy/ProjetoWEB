@@ -12,16 +12,29 @@ const Game = () => {
   };
   return (
     <div className="Game_Page">
-      <div id="Game-desc">
-        <img src="https://via.placeholder.com/300x550" alt="" />
-        <div id="GameRating-desc">
-          <h3>Overall Rating:</h3>
-          <h3>0/10</h3>
+      <div className="game_main_details">
+        <div className="game_img">
+          <img
+            src="https://via.placeholder.com/300x550?text=Game"
+            alt="game_cover"
+          ></img>
+          <h2 className="game_name">Game</h2>
         </div>
-        <p>Description here...</p>
+        <div className="game_main_reference">
+          <div className="game_profile">
+            <div className="upper_game">
+              <h2 className="name_overall">Overall Rating:</h2>
+
+              <span className="rating">0/10</span>
+            </div>
+            <div className="description">
+              <p>The game description will be here</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="linha-horizontal"></div>
-      <h1 className="Game-title">Guides and Tutorials</h1>
+      <h1 className="Videos-title">Guides and Tutorials</h1>
       <div className="vid-game">
         <iframe
           className="video1-game"
@@ -94,10 +107,12 @@ const Game = () => {
             <h4>User Display Name</h4>
           </div>
           <div className="review_content">
-            <p>
-              The review will go here and occupy the middle space between the
-              rating and the user-info.
-            </p>
+            <div className="review_part">
+              <p>
+                The review will go here and occupy the middle space between the
+                rating and the user-info.
+              </p>
+            </div>
           </div>
           <h5 className="score">8/10</h5>
         </div>
@@ -116,10 +131,12 @@ const Game = () => {
             <h4>User Display Name</h4>
           </div>
           <div className="review_content">
-            <p>
-              The review will go here and occupy the middle space between the
-              rating and the user-info.
-            </p>
+            <div className="review_part">
+              <p>
+                The review will go here and occupy the middle space between the
+                rating and the user-info.
+              </p>
+            </div>
           </div>
           <h5 className="score">8/10</h5>
         </div>
