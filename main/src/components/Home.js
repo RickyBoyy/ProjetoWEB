@@ -40,7 +40,7 @@ const Home = () => {
     window.location.href = "/game";
   };
   const redirectToCommunity = () => {
-    window.location.href = "/community";
+    window.location.href = "/communities";
   };
   return (
     <div>

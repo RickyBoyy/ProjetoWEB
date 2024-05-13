@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 
-const Tags = () => {
+const Tags = ({}) => {
+  const [randomTags, setRandomTags] = useState([]);
+
   const redirectToHome = () => {
     window.location.href = "/";
+  };
+
+  const generateRandomTags = () => {
+    const numberOfTags = Math.floor(Math.random() * 5) + 1;
+    const shuffledTags = tags.sort(() => 0.5 - Math.random());
+    const selectedTags = shuffledTags.slice(0, numberOfTags);
+    setRandomTags(selectedTags);
   };
   const handleSubmit = () => {
     console.log("Submit selected tags");

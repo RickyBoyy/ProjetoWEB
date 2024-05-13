@@ -51,41 +51,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-}
-
-.community img {
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.community-content {
-  flex: 1;
-}
-
-.community-name {
-  margin-bottom: 5px;
-}
-
-.btn {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.community-description {
-  flex: 2;
-  margin-bottom: 10px;
-  height: 100px;
-  margin-right: 10px;
-  width: calc(100% - 160px);
-}
-
-.community-description-section {
-  display: flex;
-  align-items: center;
+  color: white;
 }
 
 /*Games*/
@@ -648,6 +614,105 @@ body {
   font-size: 3vw;
   color: white;
 }
+/*Communities*/
+/* App.css */
+.Communities {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  user-select: none;
+  cursor: default !important;
+}
+
+.PageTitle {
+  text-align: center;
+}
+
+.communities-listing {
+  display: flex;
+}
+
+.card-container {
+  display: flex; /* Add flex display */
+  flex-direction: column; /* Set flex direction to column */
+  justify-content: space-between;
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.communities-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.community-icon {
+  margin-right: 10px;
+}
+.community-icon img {
+  background-color: #652ec7;
+}
+
+.community-name h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.community-misc h5 {
+  margin: 0;
+  font-size: 1rem;
+  color: #777;
+}
+
+.community-body {
+  padding-bottom: 20px;
+  margin-top: 60px;
+  height: 120px;
+  border: 1px solid #ddd;
+  background-color: #282c34;
+  border-radius: 5px;
+  color: white;
+}
+
+.community-description {
+  font-size: 1rem;
+  color: #333;
+}
+
+.community-tags {
+  margin-bottom: 10px;
+}
+
+.join_community {
+  background-color: #652ec7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 25px;
+  width: 100%;
+  user-select: none;
+}
+
+.join_community:hover {
+  background-color: #0056b3;
+}
+.join_community:not(:hover) {
+  cursor: auto; /* Override cursor style for non-hover state */
+}
 
 /*Tags*/
 
@@ -827,7 +892,7 @@ body {
   margin-top: 30px;
 }
 .card_create_community {
-  width: 140%;
+  width: 240%;
   display: flex;
   justify-content: center;
   align-items: center;
