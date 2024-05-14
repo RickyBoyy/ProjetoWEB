@@ -5,7 +5,21 @@
   padding: 10px 20px;
   background-color: #333; /* Adjust as needed */
   color: white; /* Adjust as needed */
+  
+
+  
+
 }
+
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+   background-color: #333; /* Add any desired background color */
+  z-index: 1000; /* Set a high z-index to ensure it appears above other content */
+}
+
 
 .logo-container {
   margin-right: auto; /* Adjusted to push logo to left edge */

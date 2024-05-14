@@ -40,6 +40,13 @@ body {
   height: 320px; /* Adjust height as needed */
 }
 
+.games .image-item {
+  width: 320px; /* Adjust width as needed */
+  height: 320px; /* Adjust height as needed */
+}
+
+
+
 
 
 .item-name {

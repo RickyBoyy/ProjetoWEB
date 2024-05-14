@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import gaminglogin from "../animations/Login_animation.svg"
+
 
 const Login = () => {
   const redirectToHome = () => {
@@ -19,7 +19,7 @@ const Login = () => {
           They respawn.
         </h1>
         <img
-          src={gaminglogin}
+          src="../Login_animation2.svg"
           className="left-login-image"
           alt="Gaming"
         />
