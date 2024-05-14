@@ -7,6 +7,7 @@ const Communities = () => {
       <div className="PageTitle">
         <h1>Communities</h1>
       </div>
+
       <div className="communities-listing">
         <div className="card-container">
           <div className="card-content">

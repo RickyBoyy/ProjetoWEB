@@ -39,7 +39,7 @@ const Home = () => {
   const redirectToGame = () => {
     window.location.href = "/game";
   };
-  const redirectToCommunity = () => {
+  const redirectToCommunities = () => {
     window.location.href = "/communities";
   };
   return (
@@ -85,6 +85,11 @@ const Home = () => {
             ))}
           </div>
         </div>
+        <div className="button_for_more">
+          <button className="the_button" onClick={redirectToCommunities}>
+            More Games?
+          </button>
+        </div>
       </section>
 
       {/* Communities Section */}
@@ -96,7 +101,7 @@ const Home = () => {
               <div
                 key={index}
                 className="image-item-wrapper"
-                onClick={redirectToCommunity}
+                onClick={redirectToCommunities}
               >
                 <img
                   src={`https://via.placeholder.com/300x550?text=Community-${
@@ -108,7 +113,18 @@ const Home = () => {
                 <p className="item-name">Community {index + 1} Name</p>
               </div>
             ))}
+
+            <div className="button_for_more">
+              <button className="the_button" onClick={redirectToCommunities}>
+                More?
+              </button>
+            </div>
           </div>
+        </div>
+        <div className="button_for_more">
+          <button className="the_button" onClick={redirectToCommunities}>
+            More Communities?
+          </button>
         </div>
       </section>
     </div>

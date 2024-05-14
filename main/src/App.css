@@ -615,7 +615,7 @@ body {
   color: white;
 }
 /*Communities*/
-/* App.css */
+
 .Communities {
   max-width: 1200px;
   margin: 0 auto;
@@ -626,6 +626,7 @@ body {
 
 .PageTitle {
   text-align: center;
+  color: white;
 }
 
 .communities-listing {

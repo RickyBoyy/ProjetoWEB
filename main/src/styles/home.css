@@ -45,3 +45,21 @@ body {
   color: white;
   text-align: center;
 }
+.button_for_more {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.the_button {
+  background-color: #652ec7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.the_button:hover {
+  background-color: #aa3bfc;
+}
