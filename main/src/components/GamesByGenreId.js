@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function GamesByGenreId({ gamesList }) {
     useEffect(() => {
         console.log("GameList", gamesList);
-    }, []);
+    }, [gamesList]);
 
     return (
         <div>
@@ -11,11 +12,11 @@ function GamesByGenreId({ gamesList }) {
 
             <div className="games-list">
                 {gamesList.map((item) => (
-                    <div className="games-list-container" key={item.id}>
+                    <Link to={`/games/${item.id}`} key={item.id} className="games-list-container">
                         <img src={item.background_image} className="games-image" alt={item.name} />
                         <h2>{item.name} <span className="review-tag">{item.metacritic}</span></h2>
                         <h2>⭐{item.rating}💬{item.reviews_count}🔥{item.suggestions_count}</h2>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
