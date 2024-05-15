@@ -22,10 +22,12 @@ const Reviews = () => {
               <h4>User Display Name</h4>
             </div>
             <div className="review_content">
-              <p>
-                The review will go here and occupy the middle space between the
-                rating and the user-info.
-              </p>
+              <div className="review_part">
+                <p>
+                  The review will go here and occupy the middle space between
+                  the rating and the user-info.
+                </p>
+              </div>
             </div>
             <h5 className="score">8/10</h5>
           </div>
@@ -44,10 +46,12 @@ const Reviews = () => {
               <h4>User Display Name</h4>
             </div>
             <div className="review_content">
-              <p>
-                The review will go here and occupy the middle space between the
-                rating and the user-info
-              </p>
+              <div className="review_part">
+                <p>
+                  The review will go here and occupy the middle space between
+                  the rating and the user-info.
+                </p>
+              </div>
             </div>
             <h5 className="score">8/10</h5>
           </div>
@@ -66,10 +70,12 @@ const Reviews = () => {
               <h4>User Display Name</h4>
             </div>
             <div className="review_content">
-              <p>
-                The review will go here and occupy the middle space between the
-                rating and the user-info
-              </p>
+              <div className="review_part">
+                <p>
+                  The review will go here and occupy the middle space between
+                  the rating and the user-info.
+                </p>
+              </div>
             </div>
             <h5 className="score">8/10</h5>
           </div>
@@ -88,10 +94,12 @@ const Reviews = () => {
               <h4>User Display Name</h4>
             </div>
             <div className="review_content">
-              <p>
-                The review will go here and occupy the middle space between the
-                rating and the user-info
-              </p>
+              <div className="review_part">
+                <p>
+                  The review will go here and occupy the middle space between
+                  the rating and the user-info.
+                </p>
+              </div>
             </div>
             <h5 className="score">8/10</h5>
           </div>
@@ -110,10 +118,12 @@ const Reviews = () => {
               <h4>User Display Name</h4>
             </div>
             <div className="review_content">
-              <p>
-                The review will go here and occupy the middle space between the
-                rating and the user-info
-              </p>
+              <div className="review_part">
+                <p>
+                  The review will go here and occupy the middle space between
+                  the rating and the user-info.
+                </p>
+              </div>
             </div>
             <h5 className="score">8/10</h5>
           </div>

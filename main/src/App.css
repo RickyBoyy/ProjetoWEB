@@ -177,37 +177,13 @@ width: 100%;
 }
 
 /*Comunidades*/
-#Com-body {
-  background-color: #120052;
-  overflow-y: hidden;
-}
-::-webkit-scrollbar {
-  display: none;
-}
 
-#Com-div {
-  float: left;
-  margin-left: 9%;
-  transform: rotate(-90deg);
-  transform: rotate(-90deg) translateY(-100px);
-  transform-origin: right top;
-}
-
-#Com-div > div {
-  text-align: center;
-  vertical-align: top;
-  transform: rotate(90deg);
-  transform-origin: right top;
-}
-
-.ComImg-div > .Comh2 {
-  color: rgb(0, 0, 0);
-  text-align: center;
-}
-
-.Com-image {
-  height: 280px;
-  width: 220px;
+.community {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: white;
 }
 
 /*Games*/
@@ -223,49 +199,46 @@ width: 100%;
   color: white;
 }
 
-#Games-div {
-  float: left;
-  margin-left: 5%;
-  transform: rotate(-90deg);
-  transform: rotate(-90deg) translateY(-100px);
-  transform-origin: right top;
-}
-
-#Games-div > .SubGame-div {
-  text-align: center;
-  vertical-align: top;
-
-  transform: rotate(90deg);
-  transform-origin: right top;
-}
-
-.SubGame-div > .NameGame-h2 {
-  color: rgb(0, 0, 0);
-  text-align: center;
-}
-
-.Games-image {
-  height: 280px;
-  width: 220px;
-}
-
-#Game-desc {
-  margin-top: 60px;
+.game_main_details {
   display: flex;
-  margin-left: 150px;
-  margin-right: auto;
+
+  margin-left: 12%;
+  margin-top: 50px;
 }
 
-.Game-desc .GameRating-desc {
-  flex: row;
+.game_main_reference {
+  margin-right: 20px;
+  flex-direction: column;
+  display: flex;
+  row-gap: 15%;
+}
+.game_img {
+  flex-shrink: 0; /* Prevents the image from shrinking */
+}
+.upper_game {
+  flex-direction: row;
   display: flex;
   align-items: center;
+  margin-left: 50px;
+}
+.upper_game > * {
+  margin-right: 10px; /* Add margin between items */
 }
 
-.Game-title {
-  margin-left: 2%;
+.rating {
+  font-size: x-large;
 }
 
+.description {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  border: 1px solid white;
+  height: 100;
+  padding: 30px 35px;
+  border-radius: 20px;
+  color: white;
+}
 .linha-horizontal {
   align-self: center;
   width: 80%;
@@ -773,6 +746,106 @@ width: 100%;
   font-size: 3vw;
   color: white;
 }
+/*Communities*/
+
+.Communities {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  user-select: none;
+  cursor: default !important;
+}
+
+.PageTitle {
+  text-align: center;
+  color: white;
+}
+
+.communities-listing {
+  display: flex;
+}
+
+.card-container {
+  display: flex; /* Add flex display */
+  flex-direction: column; /* Set flex direction to column */
+  justify-content: space-between;
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.communities-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.community-icon {
+  margin-right: 10px;
+}
+.community-icon img {
+  background-color: #652ec7;
+}
+
+.community-name h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.community-misc h5 {
+  margin: 0;
+  font-size: 1rem;
+  color: #777;
+}
+
+.community-body {
+  padding-bottom: 20px;
+  margin-top: 60px;
+  height: 120px;
+  border: 1px solid #ddd;
+  background-color: #282c34;
+  border-radius: 5px;
+  color: white;
+}
+
+.community-description {
+  font-size: 1rem;
+  color: #333;
+}
+
+.community-tags {
+  margin-bottom: 10px;
+}
+
+.join_community {
+  background-color: #652ec7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 25px;
+  width: 100%;
+  user-select: none;
+}
+
+.join_community:hover {
+  background-color: #0056b3;
+}
+.join_community:not(:hover) {
+  cursor: auto; /* Override cursor style for non-hover state */
+}
 
 /*Tags*/
 
@@ -918,17 +991,29 @@ width: 100%;
 
 .createCommunity {
   display: flex;
+
+  margin-left: 200px;
+  margin-top: 50px;
+  color: white;
+}
+.createcommunity_visuals {
   flex-direction: column;
+  display: flex;
   align-items: flex-start;
-  margin-left: 20px;
+}
+.create_community_title {
+  font-style: oblique;
+}
+.create_community_essentials {
+  flex-direction: row;
+  display: flex;
+  align-items: flex-start;
 }
 
-.createcommunity_visualizers {
-  margin-bottom: 20px;
-  display: flex;
+.imag_community {
   flex-direction: column;
+  display: flex;
   align-items: flex-start;
-  margin-top: 20px;
 }
 
 .create_community {
@@ -936,15 +1021,82 @@ width: 100%;
 }
 
 .createCommunity_textEssentials {
+  margin-left: 150px;
+  margin-top: 30px;
+}
+.card_create_community {
+  width: 240%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  background: #652ec7;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px #00000056;
+}
+.card_create_community > h2 {
+  color: white;
+  font-weight: 800;
+  margin: 10;
+}
+.community_name_essential {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 20px;
+  justify-content: center;
+  margin: 10px 0px;
 }
-.createCommunity_textEssentials input[type="file"] {
-  margin-top: 5px;
+.community_name_essential label {
+  font-size: larger;
+  font-style: initial;
 }
-.createCommunity_textEssentials input[type="text"] {
+.community_name_essential > input {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #201b2c;
+  color: azure;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+  box-sizing: border-box;
+}
+.community_description_essential {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.community_description_essential label {
+  font-size: larger;
+  font-style: initial;
+}
+.community_description_essential > textarea {
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #201b2c;
+  color: azure;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+  box-sizing: content-box;
+  width: calc(100% - 30px);
+}
+.linha_horizontal_community {
+  align-self: flex-start;
+  width: 110%;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 40px;
+}
+
+.createCommunity_textEssentials textarea[type="text"] {
   margin-bottom: 10px;
   font-size: 16px;
 }
@@ -953,6 +1105,8 @@ width: 100%;
 .createCommunity_textEssentials input {
   margin-bottom: 10px;
 }
+
+/*Create Events*/
 .createEvent_mainDisplay {
   display: flex;
   flex-direction: column;
@@ -968,6 +1122,7 @@ width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 100px;
+  font-style: oblique;
 }
 .all_it {
   flex-direction: row;
@@ -1008,7 +1163,14 @@ width: 100%;
   outline: none;
   box-sizing: border-box;
 }
-
+.linha_horizontal_event {
+  align-self: flex-start;
+  width: 80%;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 40px;
+  margin-left: 100px;
+}
 .Event_img label {
   margin-bottom: 5px;
 }
@@ -1029,21 +1191,26 @@ width: 100%;
   margin-top: 20px;
 }
 
+.react-datetime-picker__wrapper {
+  flex-direction: row;
+  display: flex;
+}
+
 .actual_details {
-  flex-direction: column; /* Changed flex-direction to column */
+  flex-direction: column;
   display: flex;
   gap: 20px;
 }
 
 .location {
   display: flex;
-  flex-direction: column; /* Changed flex-direction to column */
-  align-items: center; /* Align items in the center horizontally */
-  margin-top: 20px; /* Added margin-top for separation */
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .location h2 {
-  margin-bottom: 10px; /* Adjusted margin for better separation */
+  margin-bottom: 10px;
 }
 
 .maps_location {
@@ -1069,6 +1236,55 @@ width: 100%;
   height: 100vh;
 }
 
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.time {
+  flex-direction: column;
+  display: flex;
+}
+.time input[type="date"] {
+  background-color: #652ec7;
+  padding: 15px;
+  font-family: "Roboto Mono", monospace;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Style the calendar picker indicator */
+.time input[type="date"]::-webkit-calendar-picker-indicator {
+  background-color: #ffffff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.time input[type="time"] {
+  background-color: #652ec7;
+  padding: 15px;
+  font-family: "Roboto Mono", monospace;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Style the arrow button for the time input */
+.time input[type="time"]::-webkit-calendar-picker-indicator {
+  background-color: #ffffff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
 @media only screen and (max-width: 950px) {
   .card-login {
     flex-direction: column;

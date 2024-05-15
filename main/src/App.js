@@ -6,7 +6,7 @@ import ProfilePage from "./pages/Profile";
 import SignInPage from "./pages/SignIn";
 import LoginPage from "./pages/Login";
 import HomePage from "./pages/Home";
-import CommunitiesPage from "./pages/Community";
+import CommunitiesPage from "./pages/Communities";
 import CreateEventPage from "./pages/CreateEvent";
 import CreatePostPage from "./pages/CreatePost";
 import Header from "./components/Header";
@@ -30,7 +30,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/register" element={<SignInPage />} />
-          <Route path="/community" element={<CommunitiesPage />} />
+          <Route path="/communities" element={<CommunitiesPage />} />
           <Route path="/create_event" element={<CreateEventPage />} />
           <Route path="/create_post" element={<CreatePostPage />} />
           <Route path="/post" element={<PostPage />} />
@@ -43,7 +43,6 @@ function App() {
 
           
         </Routes>
-        
       </Router>
     </div>
   );
