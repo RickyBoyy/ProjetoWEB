@@ -14,7 +14,7 @@ const MapContainer = () => {
   return (
     <LoadScript googleMapsApiKey={apiKey}>
       <GoogleMap
-        mapContainerStyle={{ width: "100%", height: "740px" }}
+        mapContainerStyle={{ width: "100vw", height: "100vh" }}
         center={mapOptions.center}
         zoom={mapOptions.zoom}
       />
