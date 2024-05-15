@@ -44,6 +44,140 @@ body {
   }
 }
 
+
+/*Banner*/
+
+.banner {
+  width: 100%; /* Set the width to 100% to make sure the image fills its container */
+  height: 900px; /* Set the height to your desired fixed height */
+  object-fit: cover; /* Scale the image while maintaining its aspect ratio and cropping any overflow */
+}
+
+.banner-title{
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+.banner-btn{
+background-color: #1D4ED8;
+color: white;
+
+border-radius: 20px;
+}
+
+.banner-home{
+  position: relative;
+  margin-top: 10px;
+}
+
+.banner-case{
+  position: absolute;
+  padding: 5px;
+background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
+width: 100%;
+
+  
+  bottom: 0;
+ 
+} 
+
+/*GamesByGenreId*/
+
+.games-list-title{
+    color: white;
+    font: bold;
+    font-size: 30px;
+
+}
+
+.games-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust 250px as needed */
+  gap: 10px; /* Space between items */
+}
+
+.games-list-container {
+  background-color: #f9f9f943; /* Optional: Add background color */
+  padding: 10px; /* Optional: Add padding */
+  border: 1px solid #ddd; /* Optional: Add border */
+  border-radius: 8px; /* Optional: Add border radius */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow */
+  margin-left: 5px; /* Add margin to the left */
+  color: white;
+}
+
+.games-image {
+  width: 100%;
+  height: 200px; /* Fixed height */
+  object-fit: cover; /* Ensures image covers the container without distortion */
+  border-radius: 4px; /* Optional: Add border radius to image */
+}
+
+.review-tag {
+  background-color: yellow;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-left: 8px; /* Add some margin for better spacing */
+}
+
+
+
+/*TrendingGames*/
+
+.trending-games{
+  
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates 4 columns with equal width */
+    color: white;
+    margin-top: 5px;
+    gap: 3px;
+  
+  
+}
+
+.trending-games-image{
+  height: 264px;
+  border-radius: 0.5rem; 
+  object-fit: cover;
+}
+
+.trending-games-port{
+  background-color: #76a8f75e;
+}
+
+.trending-games-port:hover{
+  scale: 1.5  ;
+  transition:  ease-in-out;
+  animation-duration: 300 ;
+}
+
+.review-tag{
+  padding: 0.25rem; /* p-1: Padding de 0.25rem */
+  border-radius: 0.125rem; /* rounded-sm: Bordas levemente arredondadas */
+  margin-left: 0.5rem; /* ml-2: Margem à esquerda de 0.5rem */
+  font-size: 0.625rem; /* text-[10px]: Tamanho de fonte de 0.625rem */
+  background-color: #D1FAE5; /* bg-green-100: Cor de fundo verde-100 */
+  color: #047857; /* text-green-700: Cor do texto verde-700 */
+  font-weight: 500; 
+}
+
+.trending-games-name{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.trending-games-title{
+  color: white;
+  font: bold;
+  font-size: 30px;
+  
+}
+
+
 .event_landing_page {
   max-width: 650px;
   margin: 60px 100px;
@@ -90,6 +224,7 @@ body {
   max-width: 300px; /* Adjust width as needed */
   height: auto; /* Maintain aspect ratio */
 }
+
 /*Comunidades*/
 
 .community {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
-import gamingregister from "../animations/Register_animation.svg"
+
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -95,7 +95,7 @@ const SignIn = () => {
       <div className="right_register">
         <h1>Join and talk about your favorite game!</h1>
         <img
-          src={gamingregister}
+          src="Register_animation2.svg"
           className="left-login-image"
           alt="Gaming"
         />

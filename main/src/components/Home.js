@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from "react"; // Import useEffect from 'react'
-
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
 import "../styles/home.css";
 import "../styles/footer.css";
+import Calendar from "react-calendar";
 import GlobalApi from "../Services/GlobalApi";
 
 const Home = () => {
   const [date, setDate] = useState(new Date());
   const [genreList, setGenreList] = useState([]);
+  const [gamesList, setGamesList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,83 +21,94 @@ const Home = () => {
         if (response && response.results) {
           setGenreList(response.results);
         } else {
-          console.error("Invalid response:", response);
+          setError('Invalid response');
         }
       } catch (error) {
-        console.error("Error fetching genre list:", error);
+        setError('Error fetching genre list');
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  const getGenreList = () => {
-    GlobalApi.getGenreList()
-      .then((response) => {
-        console.log(response.data.results);
-        setGenreList(response.data.results); // Update state with fetched data
-      })
-      .catch((error) => {
-        console.error("Error fetching genre list:", error);
-      });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await GlobalApi.getGames({ page_size: 2000 });
+        console.log('Response:', response); // Log the response object
+        if (response && response.results) {
+          setGamesList(response.results);
+        } else {
+          setError('Invalid response');
+        }
+      } catch (error) {
+        console.error('Fetch error:', error); // Log the error object
+        setError('Error fetching games');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
+  const onChange = (newDate) => {
+    setDate(newDate);
   };
 
-  const redirectToGame = () => {
-    window.location.href = "/game";
+  const redirectToGameList = (genreId) => {
+    navigate(`/gamelist/${genreId}`);
   };
-  const redirectToCommunities = () => {
-    window.location.href = "/communities";
+
+  const redirectToCommunity = () => {
+    navigate("/community");
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   const redirectToEvent = () => {
     window.location.href = "/event";
   };
   return (
     <div>
-      {/* Games Section */}
+      {/* Genre Section */}
       <section className="genres">
         <h1 className="section-title">Genres</h1>
         <div className="slider-wrapper">
           <div className="image-list">
-            {genreList &&
-              genreList.map((item) => (
-                <div className="image-item-wrapper" key={item.id}>
-                  <img
-                    src={item.image_background}
-                    className="image-item"
-                    alt={item.name}
-                  />
-                  <p className="item-name">{item.name}</p>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
-      <section className="home-section">
-        <h1 className="section-title">Games</h1>
-        <div className="slider-wrapper">
-          <div className="image-list">
-            {[...Array(7).keys()].map((index) => (
-              <div
-                key={index}
-                className="image-item-wrapper"
-                onClick={redirectToGame}
-              >
+            {genreList.map((item) => (
+              <div className="image-item-wrapper" key={item.id} onClick={() => redirectToGameList(item.id)}>
                 <img
-                  src={`https://via.placeholder.com/300x550?text=Game-${
-                    index + 1
-                  }`}
-                  alt={`Community-${index + 1}`}
+                  src={item.image_background}
                   className="image-item"
+                  alt={item.name}
                 />
-                <p className="item-name">Game {index + 1} Name</p>
+                <p className="item-name">{item.name}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="button_for_more">
-          <button className="the_button" onClick={redirectToCommunities}>
-            More Games?
-          </button>
+      </section>
+
+      {/* Games Section */}
+      <section className="games">
+        <h1 className="section-title">Games</h1>
+        <div className="slider-wrapper">
+          <div className="image-list">
+            {gamesList.length > 0 && gamesList.map((item) => (
+              <div className="image-item-wrapper" key={item.id}>
+                <img
+                  src={item.background_image}
+                  className="image-item"
+                  alt={item.name}
+                />
+                <p className="item-name">{item.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -104,12 +121,10 @@ const Home = () => {
               <div
                 key={index}
                 className="image-item-wrapper"
-                onClick={redirectToCommunities}
+                onClick={redirectToCommunity}
               >
                 <img
-                  src={`https://via.placeholder.com/300x550?text=Community-${
-                    index + 1
-                  }`}
+                  src={`https://via.placeholder.com/300x550?text=Community-${index + 1}`}
                   alt={`Community-${index + 1}`}
                   className="image-item"
                 />
@@ -118,12 +133,9 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="button_for_more">
-          <button className="the_button" onClick={redirectToCommunities}>
-            More Communities?
-          </button>
-        </div>
       </section>
+
+    
       <section className="home-section">
         <h1 className="section-title">Events</h1>
         <div className="slider-wrapper">
