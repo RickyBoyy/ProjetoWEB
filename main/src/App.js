@@ -18,6 +18,8 @@ import CreateCommunitiesPage from "./pages/CreateCommunity";
 import MapPage from "./pages/Maps";
 import ReviewsPage from "./pages/Reviews";
 
+import GameListPage from "./pages/GameList";
+
 import Game from "./components/Game";
 
 import EventPage from "./pages/Event";
@@ -42,6 +44,7 @@ function App() {
           <Route path="/create_community" element={<CreateCommunitiesPage />} />
           <Route path="/maps" element={<MapPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/gamelist/:genreId" element={<GameListPage />} />
         </Routes>
       </Router>
     </div>
