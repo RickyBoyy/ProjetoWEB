@@ -48,12 +48,23 @@ body {
   max-width: 650px;
   margin: 60px 100px;
   font-size: x-large;
-  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 .event_landing_page .info {
-  flex-grow: 1; /* Allow the .info section to grow to fill the available space */
+  flex-grow: 1;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-left: 40px;
+
+  flex-direction: column; /* Allow the .info section to grow to fill the available space */
 }
 
 .event_landing_page .info h2 {
@@ -1147,12 +1158,6 @@ body {
 
 .location h2 {
   margin-bottom: 10px;
-}
-
-.maps_location {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .maps_location input {

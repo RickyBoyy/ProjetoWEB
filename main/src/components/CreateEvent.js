@@ -6,10 +6,9 @@ import DateTimePicker from "react-datetime-picker";
 
 const CreateEvent = () => {
   const [value, setValue] = useState(new Date());
-  const apiKey = "AIzaSyAVcNMQUzkUOyrTdetXMPQ7jKqA6BnEMrQ";
 
   const redirectToMaps = () => {
-    window.location.href = "/map/${apiKey}";
+    window.location.href = "/maps";
   };
 
   const previewImage = (event) => {
