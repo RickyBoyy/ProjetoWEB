@@ -11,7 +11,7 @@ const Home = () => {
   const [gamesList, setGamesList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
   useEffect(() => {
@@ -21,10 +21,10 @@ const Home = () => {
         if (response && response.results) {
           setGenreList(response.results);
         } else {
-          setError('Invalid response');
+          setError("Invalid response");
         }
       } catch (error) {
-        setError('Error fetching genre list');
+        setError("Error fetching genre list");
       } finally {
         setLoading(false);
       }
@@ -37,15 +37,15 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await GlobalApi.getGames({ page_size: 2000 });
-        console.log('Response:', response); // Log the response object
+        console.log("Response:", response); // Log the response object
         if (response && response.results) {
           setGamesList(response.results);
         } else {
-          setError('Invalid response');
+          setError("Invalid response");
         }
       } catch (error) {
-        console.error('Fetch error:', error); // Log the error object
-        setError('Error fetching games');
+        console.error("Fetch error:", error); // Log the error object
+        setError("Error fetching games");
       } finally {
         setLoading(false);
       }
@@ -53,7 +53,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  
+
   const onChange = (newDate) => {
     setDate(newDate);
   };
@@ -64,6 +64,9 @@ const Home = () => {
 
   const redirectToCommunity = () => {
     navigate("/community");
+  };
+  const redirectTCommunities = () => {
+    navigate("/communities");
   };
 
   if (loading) return <div>Loading...</div>;
@@ -80,7 +83,11 @@ const Home = () => {
         <div className="slider-wrapper">
           <div className="image-list">
             {genreList.map((item) => (
-              <div className="image-item-wrapper" key={item.id} onClick={() => redirectToGameList(item.id)}>
+              <div
+                className="image-item-wrapper"
+                key={item.id}
+                onClick={() => redirectToGameList(item.id)}
+              >
                 <img
                   src={item.image_background}
                   className="image-item"
@@ -98,16 +105,17 @@ const Home = () => {
         <h1 className="section-title">Games</h1>
         <div className="slider-wrapper">
           <div className="image-list">
-            {gamesList.length > 0 && gamesList.map((item) => (
-              <div className="image-item-wrapper" key={item.id}>
-                <img
-                  src={item.background_image}
-                  className="image-item"
-                  alt={item.name}
-                />
-                <p className="item-name">{item.name}</p>
-              </div>
-            ))}
+            {gamesList.length > 0 &&
+              gamesList.map((item) => (
+                <div className="image-item-wrapper" key={item.id}>
+                  <img
+                    src={item.background_image}
+                    className="image-item"
+                    alt={item.name}
+                  />
+                  <p className="item-name">{item.name}</p>
+                </div>
+              ))}
           </div>
         </div>
       </section>
@@ -124,7 +132,9 @@ const Home = () => {
                 onClick={redirectToCommunity}
               >
                 <img
-                  src={`https://via.placeholder.com/300x550?text=Community-${index + 1}`}
+                  src={`https://via.placeholder.com/300x550?text=Community-${
+                    index + 1
+                  }`}
                   alt={`Community-${index + 1}`}
                   className="image-item"
                 />
@@ -135,7 +145,6 @@ const Home = () => {
         </div>
       </section>
 
-    
       <section className="home-section">
         <h1 className="section-title">Events</h1>
         <div className="slider-wrapper">
