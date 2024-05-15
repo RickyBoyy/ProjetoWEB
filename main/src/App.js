@@ -17,7 +17,11 @@ import Footer from "./pages/Footer"; // Importe o componente Footer
 import CreateCommunitiesPage from "./pages/CreateCommunity";
 import MapPage from "./pages/Maps";
 import ReviewsPage from "./pages/Reviews";
+
 import GameListPage from "./pages/GameList"
+
+
+import EventPage from "./pages/Event";
 
 
 function App() {
@@ -36,6 +40,7 @@ function App() {
           <Route path="/post" element={<PostPage />} />
           <Route path="/tags" element={<TagsPage />} />
           <Route path="/game" element={<GamePage />} />
+          <Route path="/event" element={<EventPage />} />
           <Route path="/create_community" element={<CreateCommunitiesPage />} />
           <Route path="/maps" element={<MapPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />

@@ -6,7 +6,7 @@ body {
   font-family: "TT Firs Neue", sans-serif;
 }
 .App {
-  text-align: center;
+  text-align: baseline;
 }
 
 .App-logo {
@@ -43,6 +43,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
 
 /*Banner*/
 
@@ -176,6 +177,43 @@ width: 100%;
   
 }
 
+
+.event_landing_page {
+  max-width: 650px;
+  margin: 60px 100px;
+  font-size: x-large;
+  flex-direction: row;
+  display: flex;
+  align-items: flex-start;
+}
+.event_landing_page .info {
+  flex-grow: 1; /* Allow the .info section to grow to fill the available space */
+}
+
+.event_landing_page .info h2 {
+  color: #652ec7;
+  font-size: 55px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 60px;
+  margin-bottom: 30px;
+}
+
+.event_landing_page .info p {
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: #652ec7;
+}
+.image-container {
+  flex-shrink: 0; /* Prevents the image from shrinking */
+}
+
+.event-image {
+  max-width: 300px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
 /*Comunidades*/
 
 .community {
@@ -198,7 +236,15 @@ width: 100%;
 .Game_Page {
   color: white;
 }
+.Reviews-title {
+  margin-top: 30px;
+  text-align: center;
+}
 
+.Videos-title {
+  margin-top: 30px;
+  text-align: center;
+}
 .game_main_details {
   display: flex;
 
@@ -261,10 +307,35 @@ width: 100%;
   margin-left: 30%;
 }
 
-.button-more {
+.button-more-reviews {
   margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 425px;
+  align-self: center;
+  background-color: #652ec7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button-more-reviews :hover {
+  background-color: #aa3bfc;
+}
+.button-more-videos {
+  margin-top: 40px;
+  margin-left: 560px;
+  align-self: center;
+  background-color: #652ec7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button-more-videos :hover {
+  background-color: #aa3bfc;
 }
 
 .GameRev-profile {
@@ -753,7 +824,7 @@ width: 100%;
   margin: 0 auto;
   padding: 20px;
   user-select: none;
-  cursor: default !important;
+  cursor: default;
 }
 
 .PageTitle {

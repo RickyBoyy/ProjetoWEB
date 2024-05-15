@@ -69,6 +69,9 @@ const Home = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  const redirectToEvent = () => {
+    window.location.href = "/event";
+  };
   return (
     <div>
       {/* Genre Section */}
@@ -137,6 +140,29 @@ const Home = () => {
         <h1 className="section-title">Event calendar</h1>
         <div className="calendar_wrapper">
           <Calendar onChange={onChange} value={date} />
+        </div>
+      </section>
+      <section className="home-section">
+        <h1 className="section-title">Events</h1>
+        <div className="slider-wrapper">
+          <div className="image-list">
+            {[...Array(11).keys()].map((index) => (
+              <div
+                key={index}
+                className="image-item-wrapper"
+                onClick={redirectToEvent}
+              >
+                <img
+                  src={`https://via.placeholder.com/200x300?text=Event-${
+                    index + 1
+                  }`}
+                  alt={`Community-${index + 1}`}
+                  className="image-item"
+                />
+                <p className="item-name">Date {index + 1} Event</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

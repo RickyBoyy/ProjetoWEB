@@ -84,13 +84,16 @@ const Game = () => {
         ></iframe>
       </div>
 
-      <button className="button-more" onClick={redirectToVideosFromGames}>
+      <button
+        className="button-more-videos"
+        onClick={redirectToVideosFromGames}
+      >
         See more
       </button>
 
       <div className="linha-horizontal"></div>
 
-      <h1 className="Game-title">Reviews</h1>
+      <h1 className="Reviews-title">Reviews</h1>
       <div className="container">
         <div className="card_review">
           <div className="user-info">
@@ -140,7 +143,10 @@ const Game = () => {
           </div>
           <h5 className="score">8/10</h5>
         </div>
-        <button className="button-more" onClick={redirectToReviewsFromGames}>
+        <button
+          className="button-more-reviews"
+          onClick={redirectToReviewsFromGames}
+        >
           See more
         </button>
       </div>
