@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/home.css";
 import "../styles/footer.css";
 import Calendar from "react-calendar";
@@ -11,8 +11,8 @@ const Home = () => {
   const [gamesList, setGamesList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,14 +37,14 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await GlobalApi.getGames({ page_size: 2000 });
-        console.log('Response:', response); // Log the response object
+        console.log('Response:', response);
         if (response && response.results) {
           setGamesList(response.results);
         } else {
           setError('Invalid response');
         }
       } catch (error) {
-        console.error('Fetch error:', error); // Log the error object
+        console.error('Fetch error:', error);
         setError('Error fetching games');
       } finally {
         setLoading(false);
@@ -53,7 +53,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  
+
   const onChange = (newDate) => {
     setDate(newDate);
   };
@@ -72,6 +72,7 @@ const Home = () => {
   const redirectToEvent = () => {
     window.location.href = "/event";
   };
+
   return (
     <div>
       {/* Genre Section */}
@@ -99,14 +100,14 @@ const Home = () => {
         <div className="slider-wrapper">
           <div className="image-list">
             {gamesList.length > 0 && gamesList.map((item) => (
-              <div className="image-item-wrapper" key={item.id}>
+              <Link to={`/games/${item.id}`} key={item.id} className="image-item-wrapper">
                 <img
                   src={item.background_image}
                   className="image-item"
                   alt={item.name}
                 />
                 <p className="item-name">{item.name}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -135,7 +136,6 @@ const Home = () => {
         </div>
       </section>
 
-    
       <section className="home-section">
         <h1 className="section-title">Events</h1>
         <div className="slider-wrapper">
@@ -147,9 +147,7 @@ const Home = () => {
                 onClick={redirectToEvent}
               >
                 <img
-                  src={`https://via.placeholder.com/200x300?text=Event-${
-                    index + 1
-                  }`}
+                  src={`https://via.placeholder.com/200x300?text=Event-${index + 1}`}
                   alt={`Community-${index + 1}`}
                   className="image-item"
                 />

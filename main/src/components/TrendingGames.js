@@ -9,7 +9,7 @@ function TrendingGames({ gamesList }) {
     // No need to check if gamesList is an array since it should be passed correctly from the parent component
 
     return (
-        <div>
+        <div className="trending-games-container">
             <h2 className="trending-games-title">Trending Games</h2>
         <div className="trending-games">
             {gamesList.map((item, index) => index < 4 && (

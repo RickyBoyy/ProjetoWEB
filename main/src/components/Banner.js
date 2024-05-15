@@ -15,7 +15,6 @@ function Banner ({gameBanner}){
         <div className="banner-home">
             <div className="banner-case">
             <h2 className="banner-title">{gameBanner.name}</h2>
-            <button className="banner-btn">Get Now</button>
             </div>
             <img className="banner" src={gameBanner} alt="Game Banner" />
         </div>

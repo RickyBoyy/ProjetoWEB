@@ -38,7 +38,9 @@ const getGameListByGenreId = async (id) => {
     try {
         const response = await axiosInstance.get('/games', {
             params: {
-                genres: id
+                genres: id,
+                page_size:2000
+               
             }
         });
         return response.data;

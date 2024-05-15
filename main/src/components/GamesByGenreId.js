@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import "../App.css";
+
 function GamesByGenreId({ gamesList }) {
     useEffect(() => {
         console.log("GameList", gamesList);
     }, [gamesList]);
 
     return (
-        <div>
+        <div className="game-list-container">
             <h2 className="games-list-title">Games</h2>
 
             <div className="games-list">
