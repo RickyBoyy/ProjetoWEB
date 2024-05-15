@@ -135,13 +135,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Event Calendar Section */}
-      <section className="home_calendar">
-        <h1 className="section-title">Event calendar</h1>
-        <div className="calendar_wrapper">
-          <Calendar onChange={onChange} value={date} />
-        </div>
-      </section>
+    
       <section className="home-section">
         <h1 className="section-title">Events</h1>
         <div className="slider-wrapper">
