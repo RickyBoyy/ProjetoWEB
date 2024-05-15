@@ -2,24 +2,15 @@ import React from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 const MapContainer = () => {
-  const mapStyles = {
-    height: "100vh",
-    width: "100%",
-  };
-
-  const defaultCenter = {
-    lat: 40.712776,
-    lng: -74.005974,
-  };
-
   return (
-    <LoadScript googleMapsApiKey="AIzaSyAVcNMQUzkUOyrTdetXMPQ7jKqA6BnEMrQ">
-      <GoogleMap
-        mapContainerStyle={mapStyles}
-        zoom={13}
-        center={defaultCenter}
-      ></GoogleMap>
-    </LoadScript>
+    <iframe
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVcNMQUzkUOyrTdetXMPQ7jKqA6BnEMrQ&q&libraries=places"
+      className="maps_frame"
+      width="100%"
+      height="100%"
+      loading="lazy"
+      allowFullScreen
+    ></iframe>
   );
 };
 
