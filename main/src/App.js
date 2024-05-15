@@ -13,16 +13,16 @@ import Header from "./components/Header";
 import PostPage from "./pages/Post";
 import TagsPage from "./pages/Tags";
 import GamePage from "./pages/Game";
-import Footer from "./pages/Footer"; // Importe o componente Footer
+import Footer from "./pages/Footer";
 import CreateCommunitiesPage from "./pages/CreateCommunity";
 import MapPage from "./pages/Maps";
 import ReviewsPage from "./pages/Reviews";
 
-import GameListPage from "./pages/GameList"
-import Game from "./components/Game"
+import GameListPage from "./pages/GameList";
+
+import Game from "./components/Game";
 
 import EventPage from "./pages/Event";
-
 
 function App() {
   return (
@@ -39,14 +39,12 @@ function App() {
           <Route path="/create_post" element={<CreatePostPage />} />
           <Route path="/post" element={<PostPage />} />
           <Route path="/tags" element={<TagsPage />} />
-          <Route path="/games/:id" element={<GamePage/>} />
+          <Route path="/games/:id" element={<GamePage />} />
           <Route path="/event" element={<EventPage />} />
           <Route path="/create_community" element={<CreateCommunitiesPage />} />
           <Route path="/maps" element={<MapPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
-          <Route path="/gamelist/:genreId" element={<GameListPage />}  />
-
-          
+          <Route path="/gamelist/:genreId" element={<GameListPage />} />
         </Routes>
       </Router>
     </div>

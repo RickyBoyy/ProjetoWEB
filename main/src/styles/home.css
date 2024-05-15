@@ -58,15 +58,18 @@ body {
 }
 
 
+
 .games .image-item {
   width: 320px; /* Adjust width as needed */
   height: 320px; /* Adjust height as needed */
 }
 
-
-
-
-
+.image-item-wrapper:hover {
+  cursor: pointer;
+  scale: 1.1;
+  transition: ease-in-out;
+  animation-duration: 300;
+}
 
 .item-name {
   font-size: 16px;

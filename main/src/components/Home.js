@@ -12,7 +12,8 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate();
+
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,10 +22,10 @@ const Home = () => {
         if (response && response.results) {
           setGenreList(response.results);
         } else {
-          setError('Invalid response');
+          setError("Invalid response");
         }
       } catch (error) {
-        setError('Error fetching genre list');
+        setError("Error fetching genre list");
       } finally {
         setLoading(false);
       }
@@ -38,14 +39,20 @@ const Home = () => {
       try {
         const response = await GlobalApi.getGames({ page_size: 2000 });
         console.log('Response:', response);
+
+        console.log("Response:", response); // Log the response object
         if (response && response.results) {
           setGamesList(response.results);
         } else {
-          setError('Invalid response');
+          setError("Invalid response");
         }
       } catch (error) {
+ 
         console.error('Fetch error:', error);
         setError('Error fetching games');
+
+        console.error("Fetch error:", error); // Log the error object
+        setError("Error fetching games");
       } finally {
         setLoading(false);
       }
@@ -65,6 +72,9 @@ const Home = () => {
   const redirectToCommunity = () => {
     navigate("/community");
   };
+  const redirectTCommunities = () => {
+    navigate("/communities");
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -81,7 +91,11 @@ const Home = () => {
         <div className="slider-wrapper">
           <div className="image-list">
             {genreList.map((item) => (
-              <div className="image-item-wrapper" key={item.id} onClick={() => redirectToGameList(item.id)}>
+              <div
+                className="image-item-wrapper"
+                key={item.id}
+                onClick={() => redirectToGameList(item.id)}
+              >
                 <img
                   src={item.image_background}
                   className="image-item"
@@ -99,6 +113,7 @@ const Home = () => {
         <h1 className="section-title">Games</h1>
         <div className="slider-wrapper">
           <div className="image-list">
+
             {gamesList.length > 0 && gamesList.map((item) => (
               <Link to={`/games/${item.id}`} key={item.id} className="image-item-wrapper">
                 <img
@@ -109,6 +124,18 @@ const Home = () => {
                 <p className="item-name">{item.name}</p>
               </Link>
             ))}
+
+            {gamesList.length > 0 &&
+              gamesList.map((item) => (
+                <div className="image-item-wrapper" key={item.id}>
+                  <img
+                    src={item.background_image}
+                    className="image-item"
+                    alt={item.name}
+                  />
+                  <p className="item-name">{item.name}</p>
+                </div>
+              ))}
           </div>
         </div>
       </section>
@@ -125,7 +152,9 @@ const Home = () => {
                 onClick={redirectToCommunity}
               >
                 <img
-                  src={`https://via.placeholder.com/300x550?text=Community-${index + 1}`}
+                  src={`https://via.placeholder.com/300x550?text=Community-${
+                    index + 1
+                  }`}
                   alt={`Community-${index + 1}`}
                   className="image-item"
                 />
