@@ -19,7 +19,7 @@ import MapPage from "./pages/Maps";
 import ReviewsPage from "./pages/Reviews";
 
 import GameListPage from "./pages/GameList"
-
+import Game from "./components/Game"
 
 import EventPage from "./pages/Event";
 
@@ -39,7 +39,7 @@ function App() {
           <Route path="/create_post" element={<CreatePostPage />} />
           <Route path="/post" element={<PostPage />} />
           <Route path="/tags" element={<TagsPage />} />
-          <Route path="/game" element={<GamePage />} />
+          <Route path="/games/:id" element={<GamePage/>} />
           <Route path="/event" element={<EventPage />} />
           <Route path="/create_community" element={<CreateCommunitiesPage />} />
           <Route path="/maps" element={<MapPage />} />
