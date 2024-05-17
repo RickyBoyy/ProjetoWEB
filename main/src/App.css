@@ -996,6 +996,83 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
   cursor: auto; /* Override cursor style for non-hover state */
 }
 
+/*Community*/
+
+
+.container2 {
+  max-width: 800px;
+  margin: 0 auto; 
+  padding: 20px;
+}
+
+.community-header2 {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px; 
+}
+
+.community-image2 {
+  border-radius: 50%;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.community-name2 {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
+
+.add-post-button2 {
+  float: right;
+}
+.add-post-button2 {
+  background-color: #652ec7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-post-button2:hover {
+  background-color: #aa3bfc;
+}
+.post2 {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 100px;
+  position: relative;
+  clear: both;
+  min-height: 400px; 
+  box-sizing: border-box; 
+}
+
+.post-content2 {
+  position: relative;
+  text-align: center;
+  
+}
+
+.post-image2 {
+  width: 350px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.post-description2 {
+  border: 1px solid #ddd;
+  margin-top: 20px; 
+  color: white;
+}
+
 /*Tags*/
 
 #Tagbody {
