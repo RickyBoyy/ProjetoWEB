@@ -4,7 +4,6 @@
 }
 body {
   font-family: "TT Firs Neue", sans-serif;
-  
 }
 .App {
   text-align: baseline;
@@ -67,36 +66,11 @@ body {
 
 .banner-home {
   position: relative;
-
- 
-
 }
 
 .banner-case {
   position: absolute;
   padding: 5px;
-
-background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
- width: 100%;
- bottom: 0;
-
-  
- 
- 
-} 
-
-/*GamesByGenreId*/
-
-.game-list-container{
-  margin-top: 30px;
-}
-
-.games-list-title{
-    color: white;
-    font: bold;
-    font-size: 30px;
-    margin-left: 20px;
-
   background-image: linear-gradient(to top, #1f2937 0%, transparent 100%);
   width: 100%;
   bottom: 0;
@@ -107,7 +81,6 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
 .game-list-container {
   margin-top: 30px;
 }
-
 
 .games-list-title {
   color: white;
@@ -165,14 +138,6 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
   gap: 3px;
 }
 
-
-.trending-games-title{
-  margin-left: 20px;
-}
-
-.trending-games-image{
-}
-
 .trending-games-title {
   margin-left: 20px;
 }
@@ -183,20 +148,6 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
   object-fit: cover;
 }
 
-.trending-games-container{
-  margin-top: 30px;
-}
-
-.trending-games-port{
-  background-color: #76a8f75e;
-}
-
-.trending-games-port:hover{
-  cursor: pointer;
-  scale: 1.1  ;
-  transition:  ease-in-out;
-  animation-duration: 300 ;
-}
 .trending-games-container {
   margin-top: 30px;
 }
@@ -893,8 +844,6 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
   color: white;
 }
 
-.maps_frame {
-}
 /*Communities*/
 
 .Communities {
