@@ -46,7 +46,7 @@ function App() {
           <Route path="/maps" element={<MapPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/gamelist/:genreId" element={<GameListPage />} />   
-          <Route path="/comunity" element={<CommunityPage/>} />
+          <Route path="/community" element={<CommunityPage/>} />
         </Routes>
       </Router>
     </div>

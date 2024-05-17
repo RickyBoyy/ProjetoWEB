@@ -1008,19 +1008,30 @@ body {
   
 }
 
-.post-image2 {
-  width: 350px;
-  height: 350px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
 
 .post-description2 {
   border: 1px solid #ddd;
   margin-top: 20px; 
+  margin-left: 25px ;
+  margin-right: 25px;
   color: white;
 }
+
+.right-aligned {
+  display: flex;
+  align-items: center;
+  margin-left: 20px; 
+  box-sizing: border-box; 
+}
+
+/*Post*/
+.post-container {
+  max-width: 800px; /* Defina a largura máxima desejada */
+  margin: 20px auto 0 /* Centralize horizontalmente */
+}
+
+
+
 
 /*Tags*/
 
