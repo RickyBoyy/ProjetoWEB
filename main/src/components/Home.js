@@ -72,6 +72,7 @@ const Home = () => {
   const redirectToCommunity = () => {
     navigate("/community");
   };
+
   const redirectTCommunities = () => {
     navigate("/communities");
   };
