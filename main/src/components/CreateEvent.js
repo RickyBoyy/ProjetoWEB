@@ -71,8 +71,20 @@ const CreateEvent = () => {
             </div>
 
             <div className="time">
-              <input type="date"></input>
-              <input type="time"></input>
+              <div className="card-event-details">
+                <h2 className="date_time_title">Specifics</h2>
+
+                <div className="textEssentials">
+                  <div className="date_stat">
+                    <label htmlFor="date">Date:</label>
+                    <input type="date"></input>
+                  </div>
+                  <div className="time_stat">
+                    <label htmlFor="time">Time:</label>
+                    <input type="time"></input>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

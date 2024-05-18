@@ -947,17 +947,16 @@ body {
 
 /*Community*/
 
-
 .container2 {
   max-width: 800px;
-  margin: 0 auto; 
+  margin: 0 auto;
   padding: 20px;
 }
 
 .community-header2 {
   text-align: center;
   padding: 20px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .community-image2 {
@@ -998,21 +997,19 @@ body {
   margin-top: 100px;
   position: relative;
   clear: both;
-  min-height: 400px; 
-  box-sizing: border-box; 
+  min-height: 400px;
+  box-sizing: border-box;
 }
 
 .post-content2 {
   position: relative;
   text-align: center;
-  
 }
-
 
 .post-description2 {
   border: 1px solid #ddd;
-  margin-top: 20px; 
-  margin-left: 25px ;
+  margin-top: 20px;
+  margin-left: 25px;
   margin-right: 25px;
   color: white;
 }
@@ -1020,18 +1017,15 @@ body {
 .right-aligned {
   display: flex;
   align-items: center;
-  margin-left: 20px; 
-  box-sizing: border-box; 
+  margin-left: 20px;
+  box-sizing: border-box;
 }
 
 /*Post*/
 .post-container {
   max-width: 800px; /* Defina a largura máxima desejada */
-  margin: 20px auto 0 /* Centralize horizontalmente */
+  margin: 20px auto 0; /* Centralize horizontalmente */
 }
-
-
-
 
 /*Tags*/
 
@@ -1177,8 +1171,7 @@ body {
 
 .createCommunity {
   display: flex;
-
-  margin-left: 200px;
+  margin-left: 50px;
   margin-top: 50px;
   color: white;
 }
@@ -1194,6 +1187,7 @@ body {
   flex-direction: row;
   display: flex;
   align-items: flex-start;
+  gap: 120px;
 }
 
 .imag_community {
@@ -1207,11 +1201,10 @@ body {
 }
 
 .createCommunity_textEssentials {
-  margin-left: 150px;
   margin-top: 30px;
 }
 .card_create_community {
-  width: 240%;
+  width: 40vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1276,10 +1269,11 @@ body {
 }
 .linha_horizontal_community {
   align-self: flex-start;
-  width: 110%;
+  width: 100%;
   height: 2px;
   background-color: white;
   margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .createCommunity_textEssentials textarea[type="text"] {
@@ -1313,7 +1307,7 @@ body {
 .all_it {
   flex-direction: row;
   display: flex;
-  gap: 350px;
+  gap: 150px;
 }
 .upper_elements {
   display: flex;
@@ -1385,7 +1379,7 @@ body {
 .actual_details {
   flex-direction: column;
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .location {
@@ -1437,6 +1431,18 @@ body {
   flex-direction: column;
   display: flex;
 }
+.card-event-details {
+  margin-top: 20px;
+  width: 40vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  background: #652ec7;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px #00000056;
+}
 .time input[type="date"] {
   background-color: #652ec7;
   padding: 15px;
@@ -1446,9 +1452,21 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
+  background-color: #282c34;
+  align-items: flex-start;
+  justify-content: center;
+}
+.date_stat {
+  flex-direction: column;
+  display: flex;
   margin-top: 20px;
 }
+.time_stat {
+  flex-direction: column;
 
+  display: flex;
+  margin-top: 20px;
+}
 /* Style the calendar picker indicator */
 .time input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #ffffff;
@@ -1465,7 +1483,12 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  margin-top: 20px;
+  background-color: #282c34;
+  align-items: flex-start;
+  justify-content: center;
+}
+.textEssentials {
+  align-items: left;
 }
 
 /* Style the arrow button for the time input */

@@ -24,11 +24,7 @@ const Header = () => {
           <img src={logo} alt="Logo" className="logo" />
         </a>
       </div>
-      <div className="login-container">
-        <button className="login-button" onClick={redirectToLogin}>
-          Login
-        </button>
-      </div>
+
       <div className="create-community-container">
         <button
           className="create-community-button"
@@ -45,6 +41,11 @@ const Header = () => {
       <div className="search-container">
         <input type="text" placeholder="Search..." className="search-input" />
         <button className="search-button">Search</button>
+      </div>
+      <div className="login-container">
+        <button className="login-button" onClick={redirectToLogin}>
+          Login
+        </button>
       </div>
     </header>
   );
