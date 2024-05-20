@@ -25,7 +25,7 @@ const Login = () => {
         />
       </div>
       <div className="right-login">
-        <div className="card-login">
+        <form className="card-login" action="/Login" method="post">
           <h1>Welcome back!!</h1>
           <div className="textfield-login">
             <label htmlFor="usuario">Username</label>
@@ -40,16 +40,15 @@ const Login = () => {
             <label htmlFor="password">Password</label>
             <input type="password" name="password" placeholder="Password" />
           </div>
-          <button className="btn-login" onClick={redirectToHome}>
-            Login
-          </button>
+          <button className="btn-login" type="submit">Login</button>
+          
           <div className="reference_signin">
             <p>If you don't have an account,</p>
             <a onClick={redirectToRegister} style={{ cursor: "pointer" }}>
               register.
             </a>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

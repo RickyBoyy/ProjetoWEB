@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom"; // Importar o componente Link do react-router-dom
 import "../App.css";
 
 function TrendingGames({ gamesList }) {
@@ -6,21 +7,20 @@ function TrendingGames({ gamesList }) {
         console.log(gamesList);
     }, [gamesList]);
 
-    // No need to check if gamesList is an array since it should be passed correctly from the parent component
-
     return (
         <div className="trending-games-container">
             <h2 className="trending-games-title">Trending Games</h2>
-        <div className="trending-games">
-            {gamesList.map((item, index) => index < 4 && (
-                <div className="trending-games-port" key={index}> {/* Adding a key to each mapped item */}
-                    <img className="trending-games-image" src={item.background_image} alt={`Trending game ${index + 1}`} />
-                    <h2 className="trending-games-name">{item.name}</h2>
-                </div>
-            ))}
+            <div className="trending-games">
+                {gamesList.map((item, index) => index < 4 && (
+                    // Envolver cada jogo em destaque com um Link
+                    <Link to={`/games/${item.id}`} key={index} className="trending-games-port">
+                        <img className="trending-games-image" src={item.background_image} alt={`Trending game ${index + 1}`} />
+                        <h2 className="trending-games-name">{item.name}</h2>
+                    </Link>
+                ))}
+            </div>
         </div>
-        </div>
-    );
+    );  
 }
 
 export default TrendingGames;

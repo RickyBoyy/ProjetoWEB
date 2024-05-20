@@ -7,6 +7,27 @@
   color: white; /* Adjust as needed */
 }
 
+.suggestions-dropdown {
+  position: absolute;
+  margin-top: 12%;
+  background-color: black;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+}
+
+.suggestions-dropdown li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+
 .header-fixed {
   position: fixed;
   top: 0;

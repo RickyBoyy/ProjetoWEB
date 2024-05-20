@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiKey = "d0ee56e7217a47749aabaee06fcfc3f1"; // Replace "your_api_key_here" with your actual API key
+const apiKey = "d0ee56e7217a47749aabaee06fcfc3f1";
 const baseURL = 'https://api.rawg.io/api';
 
 const axiosInstance = axios.create({
@@ -39,8 +39,7 @@ const getGameListByGenreId = async (id) => {
         const response = await axiosInstance.get('/games', {
             params: {
                 genres: id,
-                page_size:2000
-               
+                page_size: 2000
             }
         });
         return response.data;
@@ -50,8 +49,51 @@ const getGameListByGenreId = async (id) => {
     }
 };
 
-export default {
+const searchGames = async (query) => {
+    try {
+        const response = await axiosInstance.get('/games', {
+            params: {
+                search: query,
+                page_size: 2000
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error searching for games:', error);
+        throw error;
+    }
+};
+const searchSuggestions = async (query) => {
+    try {
+      const response = await axiosInstance.get('/games', {
+        params: {
+          search: query,
+          page_size: 5  // Limitar o número de sugestões
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching search suggestions:', error);
+      throw error;
+    }
+  };
+  const getGameDetailsById = async (id) => {
+    try {
+      const response = await axiosInstance.get(`/games/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching game details:', error);
+      throw error;
+    }
+  };
+  
+  // Add this method to your API exports
+  export default {
     getGenreList,
     getGames,
     getGameListByGenreId,
-};
+    searchGames,
+    searchSuggestions,
+    getGameDetailsById
+  };
+  

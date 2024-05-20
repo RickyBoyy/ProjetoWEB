@@ -1,98 +1,66 @@
-import React from "react";
-import "../App.css";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import GlobalApi from "../Services/GlobalApi";
 import profilePic from "../images/1547006.jpg";
+import "../App.css";
 import "../styles/reviews_slider.css";
 
 const Game = () => {
+  const { id } = useParams();
+  const [gameDetails, setGameDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchGameDetails = async () => {
+      try {
+        const response = await GlobalApi.getGameDetailsById(id);
+        setGameDetails(response);
+      } catch (error) {
+        setError('Error fetching game details');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGameDetails();
+  }, [id]);
+
   const redirectToReviewsFromGames = () => {
     window.location.href = "/reviews";
   };
+
   const redirectToVideosFromGames = () => {
     window.location.href = "/videos";
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!gameDetails) return <div>No game details found</div>;
+
   return (
     <div className="Game_Page">
       <div className="game_main_details">
         <div className="game_img">
-          <img
-            src="https://via.placeholder.com/300x550?text=Game"
+          <img className="game-cover"
+            src={gameDetails.background_image}
             alt="game_cover"
-          ></img>
-          <h2 className="game_name">Game</h2>
+          />
+          <h2 className="game_name">{gameDetails.name}</h2>
         </div>
         <div className="game_main_reference">
           <div className="game_profile">
             <div className="upper_game">
               <h2 className="name_overall">Overall Rating:</h2>
-
-              <span className="rating">0/10</span>
+              <span className="rating">{gameDetails.rating}/5</span>
             </div>
             <div className="description">
-              <p>The game description will be here</p>
+              <p>{gameDetails.description_raw}</p>
             </div>
           </div>
         </div>
       </div>
       <div className="linha-horizontal"></div>
-      <h1 className="Videos-title">Guides and Tutorials</h1>
-      <div className="vid-game">
-        <iframe
-          className="video1-game"
-          width="250"
-          height="150"
-          src="https://www.youtube.com/embed/xvFZjo5PgG0?si=JqesFoL8jh9RpUX2"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
-        <iframe
-          className="video2-game"
-          width="250"
-          height="150"
-          src="https://www.youtube.com/embed/xvFZjo5PgG0?si=JqesFoL8jh9RpUX2"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
-      </div>
-      <div className="vid-game">
-        <iframe
-          className="video1-game"
-          width="250"
-          height="150"
-          src="https://www.youtube.com/embed/xvFZjo5PgG0?si=JqesFoL8jh9RpUX2"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
-        <iframe
-          className="video2-game"
-          width="250"
-          height="150"
-          src="https://www.youtube.com/embed/xvFZjo5PgG0?si=JqesFoL8jh9RpUX2"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
-      </div>
-
-      <button
-        className="button-more-videos"
-        onClick={redirectToVideosFromGames}
-      >
-        See more
-      </button>
-
-      <div className="linha-horizontal"></div>
-
       <h1 className="Reviews-title">Reviews</h1>
       <div className="container">
         <div className="card_review">

@@ -1,8 +1,16 @@
+import { useState, useEffect } from "react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import GlobalApi from "../Services/GlobalApi";
 import logo from "../images/LogoHorizontal.png";
 import "../styles/header.css";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const navigate = useNavigate();
+
   const redirectToLogin = () => {
     window.location.href = "/login";
   };
@@ -10,12 +18,45 @@ const Header = () => {
   const redirectToHome = () => {
     window.location.href = "/";
   };
+
   const redirectToCreateCommunity = () => {
     window.location.href = "/create_community";
   };
+
   const redirectToCreateEvent = () => {
     window.location.href = "/create_event";
   };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/?search=${searchQuery}`);
+  };
+
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      if (searchQuery) {
+        try {
+          const response = await GlobalApi.searchSuggestions(searchQuery);
+          if (response && response.results) {
+            setSuggestions(response.results);
+            setShowSuggestions(true);
+          } else {
+            setSuggestions([]);
+            setShowSuggestions(false);
+          }
+        } catch (error) {
+          console.error('Error fetching search suggestions:', error);
+          setSuggestions([]);
+          setShowSuggestions(false);
+        }
+      } else {
+        setSuggestions([]);
+        setShowSuggestions(false);
+      }
+    };
+
+    fetchSuggestions();
+  }, [searchQuery]);
 
   return (
     <header className="header">
@@ -39,8 +80,34 @@ const Header = () => {
         </button>
       </div>
       <div className="search-container">
-        <input type="text" placeholder="Search..." className="search-input" />
-        <button className="search-button">Search</button>
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Search..."
+            className="search-input"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
+          />
+          <button type="submit" className="search-button">Search</button>
+        </form>
+        {showSuggestions && suggestions.length > 0 && (
+          <ul className="suggestions-dropdown">
+            {suggestions.map((suggestion) => (
+              <li
+                key={suggestion.id}
+                onClick={() => {
+                  setSearchQuery(suggestion.name);
+                  setShowSuggestions(false);
+                  navigate(`/?search=${suggestion.name}`);
+                }}
+              >
+                {suggestion.name}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       <div className="login-container">
         <button className="login-button" onClick={redirectToLogin}>
