@@ -1006,6 +1006,14 @@ body {
   text-align: center;
 }
 
+.post-image2 {
+  width: 350px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 .post-description2 {
   border: 1px solid #ddd;
   margin-top: 20px;
@@ -1486,6 +1494,56 @@ body {
   background-color: #282c34;
   align-items: flex-start;
   justify-content: center;
+}
+.textEssentials {
+  align-items: left;
+
+  align-items: flex-start;
+  justify-content: center;
+}
+.date_holder {
+  flex-direction: column;
+  display: flex;
+  margin-top: 20px;
+}
+.time_holder {
+  flex-direction: column;
+
+  display: flex;
+  margin-top: 20px;
+}
+.card_time {
+  margin-top: 20px;
+  width: 40vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  background: #652ec7;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px #00000056;
+}
+
+.icon-date,
+.icon-time {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+}
+
+.icon-date {
+  background-image: url("./images/image.png"); /* Replace with your calendar icon */
+}
+
+.icon-time {
+  background-image: url(""); /* Replace with your time icon */
 }
 .textEssentials {
   align-items: left;

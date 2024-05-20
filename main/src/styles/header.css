@@ -27,6 +27,7 @@
 
 .login-container {
   margin-left: 10px; /* Adjust as needed */
+  margin-left: 20px; /* Increased to create more space between search button and login */
 }
 
 .search-container {
@@ -37,7 +38,8 @@
 .search-input {
   padding: 5px;
   border: 1px solid #ccc; /* Adjust as needed */
-  border-radius: 5px; /* Adjust as needed */
+  border-radius: 5px;
+  /* Adjust as needed */
 }
 
 .search-button {
