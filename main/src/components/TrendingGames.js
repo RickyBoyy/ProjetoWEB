@@ -20,7 +20,7 @@ function TrendingGames({ gamesList }) {
                 ))}
             </div>
         </div>
-    );
+    );  
 }
 
 export default TrendingGames;
