@@ -6,6 +6,8 @@ import DateTimePicker from "react-datetime-picker";
 
 const CreateEvent = () => {
   const [value, setValue] = useState(new Date());
+  const [locationName, setLocationName] = useState(""); // Declare the state variable for location name
+  const [showMap, setShowMap] = useState(false);
 
   const redirectToMaps = () => {
     window.location.href = "/maps";
@@ -22,6 +24,14 @@ const CreateEvent = () => {
     if (file) {
       reader.readAsDataURL(file);
     }
+  };
+  const handleLocationSelect = (name) => {
+    setLocationName(name);
+    setShowMap(false); // Hide the map after selecting a location
+  };
+
+  const openMap = () => {
+    setShowMap(true);
   };
 
   return (
@@ -68,6 +78,7 @@ const CreateEvent = () => {
               <button onClick={redirectToMaps} className="location_button">
                 Open Google Maps
               </button>
+              <p>Selected Location: {locationName}</p>
             </div>
 
             <div className="time">

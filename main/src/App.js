@@ -44,7 +44,6 @@ function App() {
           <Route path="/gamelist/:genreId" element={<GameListPage />} />
           <Route path="/community" element={<CommunityPage />} />
         </Routes>
-        <Footer />
       </Router>
     </div>
   );
