@@ -65,11 +65,7 @@ const Header = () => {
           <img src={logo} alt="Logo" className="logo" />
         </a>
       </div>
-      <div className="login-container">
-        <button className="login-button" onClick={redirectToLogin}>
-          Login
-        </button>
-      </div>
+
       <div className="create-community-container">
         <button
           className="create-community-button"
@@ -112,6 +108,11 @@ const Header = () => {
             ))}
           </ul>
         )}
+      </div>
+      <div className="login-container">
+        <button className="login-button" onClick={redirectToLogin}>
+          Login
+        </button>
       </div>
     </header>
   );

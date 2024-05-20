@@ -407,6 +407,16 @@ const Home = () => {
     navigate("/community");
   };
 
+
+
+  const redirectTCommunities = () => {
+    navigate("/communities");
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+
   const redirectToEvent = () => {
     window.location.href = "/event";
   };

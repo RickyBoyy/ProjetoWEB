@@ -5,10 +5,6 @@
   padding: 10px 20px;
   background-color: #333; /* Adjust as needed */
   color: white; /* Adjust as needed */
-  
-
-  
-
 }
 
 .suggestions-dropdown {
@@ -37,10 +33,9 @@
   top: 0;
   left: 0;
   width: 100%;
-   background-color: #333; /* Add any desired background color */
+  background-color: #333; /* Add any desired background color */
   z-index: 1000; /* Set a high z-index to ensure it appears above other content */
 }
-
 
 .logo-container {
   margin-right: auto; /* Adjusted to push logo to left edge */
@@ -52,7 +47,7 @@
 }
 
 .login-container {
-  margin-right: 10px; /* Adjust as needed */
+  margin-left: 10px; /* Adjust as needed */
 }
 
 .search-container {
