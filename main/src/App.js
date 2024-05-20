@@ -17,11 +17,7 @@ import Footer from "./pages/Footer";
 import CreateCommunitiesPage from "./pages/CreateCommunity";
 import MapPage from "./pages/Maps";
 import ReviewsPage from "./pages/Reviews";
-
 import GameListPage from "./pages/GameList";
-
-import Game from "./components/Game";
-
 import EventPage from "./pages/Event";
 import CommunityPage from "./pages/Community";
 
@@ -29,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header></Header>
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -45,9 +41,10 @@ function App() {
           <Route path="/create_community" element={<CreateCommunitiesPage />} />
           <Route path="/maps" element={<MapPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
-          <Route path="/gamelist/:genreId" element={<GameListPage />} />   
-          <Route path="/community" element={<CommunityPage/>} />
+          <Route path="/gamelist/:genreId" element={<GameListPage />} />
+          <Route path="/community" element={<CommunityPage />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
