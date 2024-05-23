@@ -68,7 +68,6 @@ const CreateEvent = () => {
           </div>
         </div>
         <div className="createEvent_mainDetails">
-          <h2>Now tell us the details:</h2>
           <div className="actual_details">
             <div className="location">
               <label htmlFor="event_location">

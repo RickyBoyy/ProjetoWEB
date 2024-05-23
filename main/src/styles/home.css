@@ -17,9 +17,6 @@ body {
 
 /* Adicione mais estilos conforme necessário */
 
-
-
-
 .home-section {
   padding: 20px 0;
 }
@@ -65,22 +62,26 @@ body {
   background: conic-gradient(from 90deg at 1px 1px, #0000 25%, #652ec7 0);
 }
 
-.image-item-wrapper:hover{
+.image-item-wrapper:hover {
   cursor: pointer;
   scale: 1.1;
-  transition:  ease-in-out;
-  animation-duration: 300 ;
+  transition: ease-in-out;
+  animation-duration: 300;
 }
-
-
 
 .games .image-item {
   width: 320px; /* Adjust width as needed */
   height: 320px; /* Adjust height as needed */
 }
 
-.search-results .image-item{
-  width:320px;
+.image-item .image-size {
+  width: 300px;
+  height: 550px;
+  object-fit: cover; /* Adjust this based on how you want the images to scale */
+}
+
+.search-results .image-item {
+  width: 320px;
   height: 320px;
 }
 
