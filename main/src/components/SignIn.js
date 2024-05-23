@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
 
-
 const SignIn = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -9,16 +8,39 @@ const SignIn = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [displayname, setDisplayName] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
     } else {
-      alert("Registration successful!");
-      window.location.href = "/tags";
+      try {
+        const response = await fetch("http://localhost:4000/adduser", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_name: username,
+            user_email: email,
+            user_password: password,
+            user_displayname: displayname,
+          }),
+        });
+
+        if (response.ok) {
+          alert("Registration successful!");
+          window.location.href = "/tags";
+        } else {
+          const errorData = await response.json();
+          alert(`Registration failed: ${errorData.error}`);
+        }
+      } catch (error) {
+        alert(`Registration failed: ${error.message}`);
+      }
     }
   };
+
   const redirectToLogin = () => {
     window.location.href = "/login";
   };
@@ -41,20 +63,20 @@ const SignIn = () => {
               />
             </div>
             <div className="textfield_email">
-              <label htmlFor="E-mail">E-mail</label>
+              <label htmlFor="Email">E-mail</label>
               <input
-                type="text"
-                name="E-mail"
+                type="email"
+                name="Email"
                 placeholder="E-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="textfield_displayname">
-              <label htmlFor="Display_Name">Display Name</label>
+              <label htmlFor="DisplayName">Display Name</label>
               <input
                 type="text"
-                name="Display_Name"
+                name="DisplayName"
                 placeholder="Display Name"
                 value={displayname}
                 onChange={(e) => setDisplayName(e.target.value)}

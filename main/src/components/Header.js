@@ -1,18 +1,23 @@
-import { useState, useEffect } from "react";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import GlobalApi from "../Services/GlobalApi";
-import logo from "../images/LogoHorizontal.png";
-import "../styles/header.css";
+import React, { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import GlobalApi from '../Services/GlobalApi';
+import logo from '../images/LogoHorizontal.png';
+import '../styles/header.css';
+import { AuthContext } from '../Contexts/AuthContext';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
+  const { user, logout } = useContext(AuthContext);
 
   const redirectToLogin = () => {
     window.location.href = "/login";
+  };
+
+  const redirectToProfile = () => {
+    window.location.href = "/profile";
   };
 
   const redirectToHome = () => {
@@ -110,9 +115,15 @@ const Header = () => {
         )}
       </div>
       <div className="login-container">
-        <button className="login-button" onClick={redirectToLogin}>
-          Login
-        </button>
+        {user ? (
+          <button className="profile-button" onClick={redirectToProfile}>
+            Profile
+          </button>
+        ) : (
+          <button className="login-button" onClick={redirectToLogin}>
+            Login
+          </button>
+        )}
       </div>
     </header>
   );

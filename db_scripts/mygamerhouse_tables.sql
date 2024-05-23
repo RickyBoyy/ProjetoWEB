@@ -1,11 +1,13 @@
-CREATE TABLE user (
+
+CREATE TABLE "user" (
   user_id SERIAL PRIMARY KEY,
   user_name VARCHAR(100) NOT NULL,
   user_password VARCHAR(100) NOT NULL,
-  user_description text not null,
+  user_displayname VARCHAR(100) NOT NULL,
+  user_email VARCHAR(100) NOT NULL,
+  user_description text,
   profile_pic VARCHAR(255)
 );
-
 CREATE TABLE games (
   game_id SERIAL PRIMARY KEY,
   game_name VARCHAR(100) NOT NULL,
@@ -32,14 +34,7 @@ CREATE TABLE tag_game (
   CONSTRAINT tag_game_fk_games FOREIGN KEY (game_id) REFERENCES games(game_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT tag_game_fk_tags FOREIGN KEY (tag_game_id) REFERENCES tags(tag_id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
-CREATE Table tag_community(
 
-  community_id INT NOT NULL,
-  tag_community_id INT NOT NULL,
-  CONSTRAINT tag_community_fk_community FOREIGN KEY (community_id) REFERENCES community(community_id) on DELETE no ACTION on UPDATE no ACTION,
-  CONSTRAINT tag_community_fk_tags FOREIGN KEY (tag_community_id) REFERENCES tags(tag_id) ON DELETE NO ACTION ON UPDATE NO ACTION
-
-);
 
 CREATE TABLE community (
   community_id SERIAL PRIMARY KEY,
@@ -72,10 +67,3 @@ CREATE Table reviews (
 
 );
 
-CREATE TABLE videos (
-  video_id SERIAL PRIMARY KEY,
-  video_title VARCHAR(50) NOT NULL,
-  video_description Text not null,
-  game_id INT NOT NULL,
-  CONSTRAINT videos_fk_games FOREIGN KEY (game_id) REFERENCES games(game_id) ON DELETE NO ACTION ON UPDATE NO ACTION
-);

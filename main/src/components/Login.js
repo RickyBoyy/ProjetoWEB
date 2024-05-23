@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 
-
 const Login = () => {
-  const redirectToHome = () => {
-    window.location.href = "/";
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:4000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_name: username,
+          user_password: password,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Login successful!");
+        window.location.href = "/";  // Redireciona para a página inicial
+      } else {
+        const errorData = await response.json();
+        alert(`Login failed: ${errorData.error}`);
+      }
+    } catch (error) {
+      alert(`Login failed: ${error.message}`);
+    }
   };
+
   const redirectToRegister = () => {
     window.location.href = "/register";
   };
@@ -25,20 +51,28 @@ const Login = () => {
         />
       </div>
       <div className="right-login">
-        <form className="card-login" action="/Login" method="post">
+        <form className="card-login" onSubmit={handleSubmit}>
           <h1>Welcome back!!</h1>
           <div className="textfield-login">
-            <label htmlFor="usuario">Username</label>
+            <label htmlFor="Username">Username</label>
             <input
               type="text"
               name="Username"
               placeholder="Username"
               maxLength="15"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="textfield-login">
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" placeholder="Password" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <button className="btn-login" type="submit">Login</button>
           
