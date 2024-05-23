@@ -3,6 +3,52 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  cursor: default;
+  user-select: none;
+}
+/*Main Tittle*/
+.header-home {
+  height: 65vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(../images/image0_0.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; /* Horizontal centering */
+  background-position-y: 40%;
+  position: relative;
+
+  padding: 50px;
+}
+
+.page-heading {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  font-family: "TT Firs Neue", sans-serif;
+  font-size: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: default;
+}
+
+.page-heading-primary {
+  display: block;
+  font-size: 3.125rem;
+  font-weight: 300;
+  color: #652ec7;
+}
+
+.page-heading-secondary {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4.5px;
 }
 
 /*Grafico*/
@@ -17,11 +63,9 @@ body {
 
 /* Adicione mais estilos conforme necessário */
 
-
-
-
 .home-section {
   padding: 20px 0;
+  margin-top: 40px;
 }
 
 .section-title {
@@ -50,6 +94,9 @@ body {
   gap: 18px;
   font-size: 0;
 }
+.genres {
+  margin-top: 40px;
+}
 
 .genres .image-item {
   width: 320px; /* Adjust width as needed */
@@ -65,22 +112,29 @@ body {
   background: conic-gradient(from 90deg at 1px 1px, #0000 25%, #652ec7 0);
 }
 
-.image-item-wrapper:hover{
+.image-item-wrapper:hover {
   cursor: pointer;
   scale: 1.1;
-  transition:  ease-in-out;
-  animation-duration: 300 ;
+  transition: ease-in-out;
+  animation-duration: 300;
 }
-
-
+.games {
+  margin-top: 40px;
+}
 
 .games .image-item {
   width: 320px; /* Adjust width as needed */
   height: 320px; /* Adjust height as needed */
 }
 
-.search-results .image-item{
-  width:320px;
+.image-item .image-size {
+  width: 300px;
+  height: 550px;
+  object-fit: cover; /* Adjust this based on how you want the images to scale */
+}
+
+.search-results .image-item {
+  width: 320px;
   height: 320px;
 }
 

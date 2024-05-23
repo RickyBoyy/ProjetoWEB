@@ -72,33 +72,26 @@ body {
   position: absolute;
   padding: 5px;
 
-
-background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
- width: 100%;
- bottom: 0;
-
-  
- 
- 
-} 
+  background-image: linear-gradient(to top, #1f2937 0%, transparent 100%);
+  width: 100%;
+  bottom: 0;
+}
 
 /*GamesByGenreId*/
 
-.game-list-main{
+.game-list-main {
   margin-top: 30px;
 }
 
-.game-list-container{
+.game-list-container {
   margin-top: 30px;
 }
 
-.games-list-title{
-    color: white;
-    font: bold;
-    font-size: 30px;
-    margin-left: 20px;
-
-
+.games-list-title {
+  color: white;
+  font: bold;
+  font-size: 30px;
+  margin-left: 20px;
 
   background-image: linear-gradient(to top, #1f2937 0%, transparent 100%);
   width: 100%;
@@ -288,26 +281,27 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
 ::-webkit-scrollbar {
   display: none;
 }
-.game_main_details{
+.game_main_details {
   margin-right: 10%;
 }
 
-.game_main_details, .game_main_reference, .container {
+.game_main_details,
+.game_main_reference,
+.container {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.game-cover{
-
+.game-cover {
   height: 500px;
-  width:450px;
+  width: 450px;
   image-rendering: -webkit-optimize-contrast; /* Safari e Chrome */
-    image-rendering: -moz-crisp-edges; /* Firefox */
-    image-rendering: crisp-edges; /* Padrão */
-    -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: crisp-edges; /* Padrão */
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
-.game_name{
+.game_name {
   text-align: center;
 }
 
@@ -318,14 +312,16 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
   margin: 20px 0;
 }
 
-.vid-game, .container {
+.vid-game,
+.container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
 }
 
-.video1-game, .card_review {
+.video1-game,
+.card_review {
   margin: 10px;
 }
 
@@ -886,6 +882,9 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
   cursor: pointer;
   box-shadow: 0px 10px 40px -12px darkslateblue;
 }
+.btn_register:hover {
+  color: #aa3bfc;
+}
 .reference_signin {
   margin-top: 20px;
   text-align: center;
@@ -1077,7 +1076,7 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
 }
 
 .post-image2 {
-  width: 350px;
+  width: 700px;
   height: 350px;
   margin-left: auto;
   margin-right: auto;
@@ -1093,6 +1092,7 @@ background-image: linear-gradient(to top, #1F2937 0%, transparent 100%);
 }
 
 .right-aligned {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   margin-left: 20px;
