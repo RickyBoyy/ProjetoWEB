@@ -3,6 +3,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  cursor: default;
+  user-select: none;
 }
 /*Main Tittle*/
 .header-home {
@@ -12,7 +14,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; /* Horizontal centering */
-  background-position-y: 30%;
+  background-position-y: 40%;
   position: relative;
 
   padding: 50px;
@@ -23,7 +25,7 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #aaa;
+  color: white;
   white-space: nowrap;
   margin: 0;
   padding: 0;
@@ -31,6 +33,7 @@ body {
   font-size: 100%;
   box-sizing: border-box;
   text-align: center;
+  cursor: default;
 }
 
 .page-heading-primary {
@@ -62,6 +65,7 @@ body {
 
 .home-section {
   padding: 20px 0;
+  margin-top: 40px;
 }
 
 .section-title {
@@ -90,6 +94,9 @@ body {
   gap: 18px;
   font-size: 0;
 }
+.genres {
+  margin-top: 40px;
+}
 
 .genres .image-item {
   width: 320px; /* Adjust width as needed */
@@ -110,6 +117,9 @@ body {
   scale: 1.1;
   transition: ease-in-out;
   animation-duration: 300;
+}
+.games {
+  margin-top: 40px;
 }
 
 .games .image-item {

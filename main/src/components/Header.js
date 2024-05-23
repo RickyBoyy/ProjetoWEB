@@ -6,7 +6,7 @@ import logo from "../images/LogoHorizontal.png";
 import "../styles/header.css";
 
 const Header = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Header = () => {
             setShowSuggestions(false);
           }
         } catch (error) {
-          console.error('Error fetching search suggestions:', error);
+          console.error("Error fetching search suggestions:", error);
           setSuggestions([]);
           setShowSuggestions(false);
         }
@@ -66,6 +66,14 @@ const Header = () => {
         </a>
       </div>
 
+      <div class="genre-dropbar">
+        <button class="dropbtn">Genres</button>
+        <div class="dropdown-content">
+          <a href="#">Action</a>
+          <a href="#">Adventure</a>
+          <a href="#">Comedy</a>
+        </div>
+      </div>
       <div className="create-community-container">
         <button
           className="create-community-button"
@@ -90,7 +98,9 @@ const Header = () => {
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setShowSuggestions(false)}
           />
-          <button type="submit" className="search-button">Search</button>
+          <button type="submit" className="search-button">
+            Search
+          </button>
         </form>
         {showSuggestions && suggestions.length > 0 && (
           <ul className="suggestions-dropdown">
