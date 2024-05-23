@@ -4,6 +4,49 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+/*Main Tittle*/
+.header-home {
+  height: 65vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(../images/image0_0.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; /* Horizontal centering */
+  background-position-y: 30%;
+  position: relative;
+
+  padding: 50px;
+}
+
+.page-heading {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #aaa;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  font-family: "TT Firs Neue", sans-serif;
+  font-size: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.page-heading-primary {
+  display: block;
+  font-size: 3.125rem;
+  font-weight: 300;
+  color: #652ec7;
+}
+
+.page-heading-secondary {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4.5px;
+}
 
 /*Grafico*/
 .graphics {
