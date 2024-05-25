@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+
+.page-event {
+  background-color: #212121;
+  /* padding-top: 50px; */
+  padding-bottom: 40px;
+  font-family: "TT Firs Neue", sans-serif;
+}
+
+.cover {
+  background-color: rgb(54, 53, 58);
+  height: 360px;
+  background-image: url("https://goo.gl/NA3iQP");
+  background-position: center center;
+  background-size: cover;
+}
+
+.cover .heading {
+  font-family: "TT Firs Neue";
+  font-size: 243px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  /* padding-top: 20vh; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #652ec7;
+  transition: font-size 0.3s;
+}
+
+.cover .heading::first-letter {
+  color: #652ec7;
+}
+
+.container {
+  display: block;
+}
+
+.event-block {
+  display: block;
+  padding: 5vh 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.upcoming-sec {
+  padding: 5vh 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.upcoming-sec .heading {
+  font-size: 30px;
+  color: #fff;
+}
+
+.upcoming-event-list {
+  color: #ccc;
+}
+
+.upcoming-event-list .event-block .sec-1,
+.upcoming-event-list .event-block .sec-2 {
+  padding-bottom: 3vh;
+}
+
+.upcoming-event-list .event-block .sec-1 table .month {
+  text-transform: uppercase;
+  color: #652ec7;
+  font-size: 30px;
+}
+
+.upcoming-event-list .event-block .sec-1 table .month-date-devider {
+  width: 5vh;
+  margin: 1vh 0;
+  background-color: #3cbfaf;
+  height: 5px;
+}
+
+.upcoming-event-list .event-block .sec-1 table .date {
+  font-size: 60px;
+  font-weight: bolder;
+  line-height: normal;
+}
+
+.upcoming-event-list .event-block .sec-1 table .title {
+  padding-left: 20px;
+  vertical-align: top;
+  font-size: 30px;
+}
+
+.upcoming-event-list .event-block .sec-2 img {
+  width: 85%;
+  max-height: 900px;
+}
+
+.upcoming-event-list .event-block .sec-3 .title {
+  font-size: 30px;
+  padding-bottom: 2vh;
+  align-items: center;
+}
+.upcoming-event-list .event-block .sec-3 {
+  text-align: center; /* Center-align text within sec-3 */
+}
+
+.upcoming-event-list .event-block .sec-3 .venue table td,
+.upcoming-event-list .event-block .sec-3 .time table td {
+  vertical-align: top;
+  text-align: left; /* Align table cell content to the left */
+}
+
+.upcoming-event-list .event-block .sec-3 .venue table td i,
+.upcoming-event-list .event-block .sec-3 .venue table td .dim-color a,
+.upcoming-event-list .event-block .sec-3 .time table td i,
+.upcoming-event-list .event-block .sec-3 .time table td .dim-color {
+  display: inline-block;
+}
+
+.upcoming-event-list .event-block .sec-3 .venue table td i,
+.upcoming-event-list .event-block .sec-3 .time table td i {
+  margin-right: 5px; /* Add some spacing between the icon and the text */
+}
+
+.upcoming-event-list .event-block .sec-3 .time {
+  padding-bottom: 3vh;
+  align-items: center;
+}
+
+.upcoming-event-list .event-block .sec-3 .sort-story {
+  /* padding-bottom: 3vh; */
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upcoming-event-list .event-block .sec-3 .group-of-btn {
+  padding-top: 3vh;
+}
+
+.upcoming-event-list .event-block .sec-3 .group-of-btn .book-ticket {
+  background-color: #652ec7;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.page-heading {
+  text-transform: uppercase;
+  color: #fff;
+  padding-bottom: 17px;
+  word-break: break-all;
+  padding: 10px;
+}
+
+.page-heading::first-letter {
+  color: #652ec7;
+}
+
+@media (min-width: 992px) {
+  .upcoming-event-list .event-block .sec-1 table .title {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .page-event .cover .heading {
+    font-size: 180px;
+    padding-top: 7vh;
+  }
+  .upcoming-event-list .event-block .sec-3 .title {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-event .cover .heading {
+    font-size: 140px;
+    padding-top: 11vh;
+  }
+}
+
+@media (max-width: 575px) {
+  .page-event .cover {
+    height: 214px;
+  }
+
+  .page-event .cover .heading {
+    font-size: 70px;
+  }
+
+  .upcoming-event-list .event-block .sec-1 table .month {
+    font-size: 14px;
+  }
+
+  .upcoming-event-list .event-block .sec-1 table .date {
+    font-size: 36px;
+  }
+
+  .upcoming-event-list .event-block .sec-1 table .title {
+    padding-left: 20px;
+    font-size: 20px;
+    vertical-align: top;
+  }
+}
