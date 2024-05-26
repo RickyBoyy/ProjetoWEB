@@ -1312,32 +1312,45 @@ body {
 .createEvent_mainDisplay {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 20px;
+
   color: white;
 }
 
-.upper_part {
-  gap: 20px;
-}
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
 .title_container {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 100px;
-  font-style: oblique;
+  background-color: rgb(54, 53, 58);
+  height: 350px;
+
+  background-position: center center;
+  background-size: cover;
+  margin-right: auto;
+}
+.title_container .heading {
+  font-family: "TT Firs Neue";
+  font-size: 150px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  /* padding-top: 20vh; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #652ec7;
+  transition: font-size 0.3s;
+  margin-left: 20px;
 }
 .all_it {
   flex-direction: row;
   display: flex;
-  gap: 150px;
+  margin-top: 30px;
+  gap: 10%;
 }
 .upper_elements {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-right: auto;
+
   margin-left: 100px;
-  max-width: 1200px;
 }
 
 .Event_Title {
@@ -1441,6 +1454,9 @@ body {
 .map_container.expanded {
   height: 100vh;
 }
+.date_time_title {
+  size: 40px;
+}
 
 *,
 *:before,
@@ -1454,9 +1470,9 @@ body {
   display: flex;
 }
 .card-event-details {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 40vw;
-  height: 40vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -1482,6 +1498,10 @@ body {
   flex-direction: column;
   display: flex;
   margin-top: 20px;
+}
+.date_label {
+  align-self: baseline;
+  margin-bottom: 10px;
 }
 .time_stat {
   flex-direction: column;
@@ -1569,6 +1589,59 @@ body {
   padding: 5px;
   cursor: pointer;
   border-radius: 3px;
+}
+.create_event_body {
+  margin-left: 30px;
+}
+
+.any_description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  margin-left: 100px;
+}
+
+.any_description label {
+  font-size: 18px;
+  align-self: first baseline;
+}
+
+.any_description textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  width: 85%;
+
+  height: 300px; /* Fixed height */
+}
+
+.create_event_buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.create_event_buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create_event_buttons button[type="submit"] {
+  background-color: #652ec7;
+  color: white;
+}
+
+.create_event_buttons button[type="reset"] {
+  background-color: #282c34;
+  color: white;
 }
 @media only screen and (max-width: 950px) {
   .card-login {
