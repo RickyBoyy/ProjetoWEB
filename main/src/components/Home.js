@@ -213,6 +213,11 @@ const Home = () => {
               ))}
           </div>
         </div>
+        <div className="button_for_more">
+          <button className="the_button" onClick={redirectToGameList}>
+            See more
+          </button>
+          </div>
       </section>
 
       <section className="home-section">
@@ -237,6 +242,11 @@ const Home = () => {
             ))}
           </div>
         </div>
+        <div className="button_for_more">
+          <button className="the_button" onClick={redirectToCommunity}>
+            See more
+          </button>
+          </div>
       </section>
 
       <section className="home-section">
