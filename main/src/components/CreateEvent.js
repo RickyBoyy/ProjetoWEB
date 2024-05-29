@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 
-import MapContainer from "./Maps";
-import DateTimePicker from "react-datetime-picker";
-
 const CreateEvent = () => {
-  const [value, setValue] = useState(new Date());
-  const [locationName, setLocationName] = useState(""); // Declare the state variable for location name
-  const [showMap, setShowMap] = useState(false);
+  const [title, setTitle] = useState("");
+  const [eventDate, setEventDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+  const [eventTime, setEventTime] = useState("");
+  const [locationName, setLocationName] = useState("");
 
-  const redirectToMaps = () => {
-    window.location.href = "/maps";
+  useEffect(() => {
+    const savedLocationName = localStorage.getItem("locationName");
+    console.log("Fetched from localStorage:", savedLocationName);
+    if (savedLocationName) {
+      setLocationName(savedLocationName);
+    }
+  }, []);
+
+  const handleDateChange = (date) => {
+    setEventDate(date);
   };
-  const redirectToHome = () => {
-    window.location.href = "/";
+
+  const handleTimeChange = (event) => {
+    setEventTime(event.target.value);
   };
 
   const previewImage = (event) => {
@@ -28,19 +37,18 @@ const CreateEvent = () => {
       reader.readAsDataURL(file);
     }
   };
-  const handleLocationSelect = (name) => {
-    setLocationName(name);
-    setShowMap(false); // Hide the map after selecting a location
+  const redirectToMaps = () => {
+    window.location.href = "/maps";
   };
 
-  const openMap = () => {
-    setShowMap(true);
+  const redirectToHome = () => {
+    window.location.href = "/";
   };
 
   return (
     <div className="createEvent_mainDisplay">
       <div className="title_container">
-        <div class="heading">Create your event</div>
+        <div className="heading">Create your event</div>
       </div>
       <div className="create_event_body">
         <div className="all_it">
@@ -51,6 +59,8 @@ const CreateEvent = () => {
                 type="text"
                 name="eventTitle"
                 placeholder="Write your title here!!"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </div>
             <div className="Event_img">
@@ -90,13 +100,22 @@ const CreateEvent = () => {
                       <label htmlFor="date" className="date_label">
                         Date:
                       </label>
-                      <input type="date"></input>
+
+                      <input
+                        type="date"
+                        value={eventDate}
+                        onChange={handleDateChange}
+                      ></input>
                     </div>
                     <div className="time_stat">
                       <label htmlFor="time" className="date_label">
                         Time:
                       </label>
-                      <input type="time"></input>
+                      <input
+                        type="time"
+                        value={eventTime}
+                        onChange={handleTimeChange}
+                      />
                     </div>
                   </div>
                 </div>

@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import GlobalApi from "../Services/GlobalApi";
 
-
-
-
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5percent from "@amcharts/amcharts5/percent";
@@ -18,7 +15,6 @@ import {
 } from "@amcharts/amcharts5/xy";
 import AnimatedTheme from "@amcharts/amcharts5/themes/Animated";
 import { Tooltip } from "@amcharts/amcharts5";
-
 
 import "../styles/home.css";
 import "../styles/footer.css";
@@ -97,17 +93,8 @@ const Home = () => {
     fetchSearchResults();
   }, [searchQuery]);
 
-
-
-
   // Inside the useEffect block where you create the chart
-  
-  
-  
-  
-  
 
- 
   const onChange = (newDate) => {
     setDate(newDate);
   };
@@ -166,12 +153,6 @@ const Home = () => {
         </section>
       )}
 
-   
-
-
-     
-
-
       <section className="genres">
         <h1 className="section-title">Genres</h1>
         <div className="slider-wrapper">
@@ -213,6 +194,11 @@ const Home = () => {
               ))}
           </div>
         </div>
+        <div className="button_for_more">
+          <button className="the_button" onClick={redirectToGameList}>
+            See more
+          </button>
+        </div>
       </section>
 
       <section className="home-section">
@@ -236,6 +222,11 @@ const Home = () => {
               </div>
             ))}
           </div>
+        </div>
+        <div className="button_for_more">
+          <button className="the_button" onClick={redirectToCommunity}>
+            See more
+          </button>
         </div>
       </section>
 
