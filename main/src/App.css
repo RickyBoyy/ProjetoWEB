@@ -523,114 +523,63 @@ body {
 
 /*Profile*/
 
-#Profilebody {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #201b2c;
-  padding: 0;
-}
 
-.profile_main {
-  width: 100vw;
+.main-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 100vh;
+  
 }
 
-.profile_pic {
-  margin-top: 5%;
-  margin-right: 20px;
-  margin-left: 5%;
-}
-
-.profile_pic img {
-  width: 150px;
-}
-
-.textfield_username {
-  margin-left: 10%;
-}
-
-.description-profile {
+.left-profile {
   width: 50%;
-  margin-left: 10%;
-  margin-top: 20px;
-}
-
-.description-profile > .label-profile {
-  color: azure;
-  margin-bottom: 10px;
-}
-
-.description-profile > #input-profile {
-  width: 100%;
-  border: 1px solid;
+  padding: 20px;
+  background-color: #652ec7;
   border-radius: 10px;
-  padding: 15px;
-  background: #201b2c;
-  color: azure;
-  font-size: 12pt;
-  box-shadow: 0px 10px 40px #00000056;
-  outline: none;
-  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  align-self: flex-start; 
+  margin: 20px; 
 }
 
-.description-profile > .input-profile::placeholder {
-  color: white;
+.profile-header {
+  display: flex;
+  align-items: center;
 }
 
-#changeBackgroundButton {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-color: #ccc;
-  border: none;
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
+.profile-header h1 {
+  margin-right: 10px;
 }
 
-#changeBackgroundButton::after {
-  content: "";
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid #fff;
-  border-top: 2px solid #fff;
-  background-color: transparent;
-  pointer-events: none;
+.profile-text {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
 
-#changeBackgroundButtonPrev {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-color: #ccc;
-  border: none;
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
+.profile-details {
+  padding-top: 20px;
 }
 
-#changeBackgroundButtonPrev::after {
-  content: "";
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid #fff;
-  border-top: 2px solid #fff;
-  background-color: transparent;
-  pointer-events: none;
+.right-profile {
+  width: 50%;
+  height: 100%;
 }
 
-#buttons-profile {
-  display: inline-block;
-  margin-left: 55%;
+.right-profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Adicionando um espaço de 5 pixels entre as tags */
+}
+
 
 /*SignUp*/
 
@@ -1127,69 +1076,88 @@ body {
 }
 /*CreatePost*/
 
-#CreatePost {
-  margin: 0;
-  font-family: Arial, sans-serif;
+
+/* Container principal do componente */
+.createpost_mainDisplay {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #652ec7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#CreatePost * {
-  box-sizing: border-box;
-}
 
 .createpost_textEssentials {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   margin-bottom: 20px;
 }
 
-.createpost_content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 .createpost_textEssentials h1 {
-  margin: 0;
-}
-
-.createpost_textEssentials .tittle,
-.createpost_textEssentials .description {
+  font-size: 24px;
   margin-bottom: 10px;
+  color: #444;
 }
 
-.createpost_textEssentials input,
-.createpost_content input[type="file"] {
-  width: calc(100% - 20px);
+.createpost_textEssentials label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.createpost_textEssentials input[type="text"] {
+  width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.createpost_content input[type="text"] {
-  width: 100%;
+.createpost_textEssentials input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo para a seção de conteúdo */
+.createpost_content {
+  margin-bottom: 20px;
 }
 
 .createpost_content label {
-  cursor: pointer;
-  background-color: #3498db;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.createpost_content label:hover {
-  background-color: #2980b9;
+.createpost_content input[type="file"] {
+  display: block;
+  margin-bottom: 15px;
 }
 
 .createpost_content img {
-  max-width: 550px;
-  max-height: 550px;
-  margin-top: 10px;
-  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }
+
+/* Adicional: Botão de envio (se necessário) */
+.createpost_button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.createpost_button:hover {
+  background-color: #0056b3;
+}
+
 /*Create Community*/
 
 .createCommunity {

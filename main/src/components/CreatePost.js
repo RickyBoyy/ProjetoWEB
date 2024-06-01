@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 
 const CreatePost = () => {
-  // Function to handle image preview
+  // Função para pré-visualizar a imagem
   const previewImage = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -20,9 +20,8 @@ const CreatePost = () => {
     <div id="CreatePost" className="createpost_mainDisplay">
       <div className="createpost_textEssentials">
         <h1>Create your post</h1>
-        <div className="tittle">
+        <div className="title">
           <label htmlFor="title">First, the title...</label>
-          <b></b>
           <input
             type="text"
             name="postTitle"
@@ -31,7 +30,6 @@ const CreatePost = () => {
         </div>
         <div className="description">
           <label htmlFor="description">Second, your description...</label>
-          <b></b>
           <input
             type="text"
             name="postDescription"
@@ -55,6 +53,7 @@ const CreatePost = () => {
           alt="create_post"
         />
       </div>
+      <button type="submit" className="createpost_button">Submit Post</button>
     </div>
   );
 };

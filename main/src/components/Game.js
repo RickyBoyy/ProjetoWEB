@@ -42,7 +42,8 @@ const Game = () => {
     <div className="Game_Page">
       <div className="game_main_details">
         <div className="game_img">
-          <img className="game-cover"
+          <img
+            className="game-cover"
             src={gameDetails.background_image}
             alt="game_cover"
           />
@@ -108,17 +109,18 @@ const Game = () => {
                 rating and the user-info.
               </p>
             </div>
+            <h5 className="score">8/10</h5>
           </div>
-          <h5 className="score">8/10</h5>
         </div>
-        <button
-          className="button-more-reviews"
-          onClick={redirectToReviewsFromGames}
-        >
-          See more
-        </button>
+        <div className="button_for_more">
+          <button
+            className="the_button"
+            onClick={redirectToReviewsFromGames}
+          >
+            See more
+          </button>
+        </div>
       </div>
-
       <div className="linha-horizontal"></div>
     </div>
   );
