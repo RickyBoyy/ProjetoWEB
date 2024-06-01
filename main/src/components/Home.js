@@ -224,7 +224,7 @@ const Home = () => {
           </div>
         </div>
         <div className="button_for_more">
-          <button className="the_button" onClick={redirectToCommunity}>
+          <button className="the_button" onClick={redirectTCommunities}>
             See more
           </button>
         </div>
