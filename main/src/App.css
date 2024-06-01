@@ -523,13 +523,11 @@ body {
 
 /*Profile*/
 
-
 .main-profile {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-  
 }
 
 .left-profile {
@@ -577,7 +575,6 @@ body {
   flex-wrap: wrap;
   gap: 5px; /* Adicionando um espaço de 5 pixels entre as tags */
 }
-
 
 /*SignUp*/
 
@@ -1142,7 +1139,7 @@ body {
 
 .createCommunity {
   display: flex;
-  margin-left: 50px;
+
   margin-top: 50px;
   color: white;
 }
@@ -1153,12 +1150,18 @@ body {
 }
 .create_community_title {
   font-style: oblique;
+  margin-top: 30px;
 }
 .create_community_essentials {
   flex-direction: row;
   display: flex;
   align-items: flex-start;
   gap: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  align-items: center;
 }
 
 .imag_community {
@@ -1256,7 +1259,29 @@ body {
 .createCommunity_textEssentials input {
   margin-bottom: 10px;
 }
+.create_community_buttons {
+  gap: 30px;
+  margin-top: 10px;
+}
 
+.create_community_buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.create_community_buttons button[type="submit"] {
+  background-color: #652ec7;
+  color: white;
+}
+
+.create_community_buttons button[type="reset"] {
+  background-color: #282c34;
+  color: white;
+}
 /*Create Events*/
 .createEvent_mainDisplay {
   display: flex;
