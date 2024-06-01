@@ -537,6 +537,8 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+  align-self: flex-start; 
+  margin: 20px; 
 }
 
 .profile-header {
@@ -1072,69 +1074,88 @@ body {
 }
 /*CreatePost*/
 
-#CreatePost {
-  margin: 0;
-  font-family: Arial, sans-serif;
+
+/* Container principal do componente */
+.createpost_mainDisplay {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #652ec7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#CreatePost * {
-  box-sizing: border-box;
-}
 
 .createpost_textEssentials {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   margin-bottom: 20px;
 }
 
-.createpost_content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 .createpost_textEssentials h1 {
-  margin: 0;
-}
-
-.createpost_textEssentials .tittle,
-.createpost_textEssentials .description {
+  font-size: 24px;
   margin-bottom: 10px;
+  color: #444;
 }
 
-.createpost_textEssentials input,
-.createpost_content input[type="file"] {
-  width: calc(100% - 20px);
+.createpost_textEssentials label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.createpost_textEssentials input[type="text"] {
+  width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.createpost_content input[type="text"] {
-  width: 100%;
+.createpost_textEssentials input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo para a seção de conteúdo */
+.createpost_content {
+  margin-bottom: 20px;
 }
 
 .createpost_content label {
-  cursor: pointer;
-  background-color: #3498db;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.createpost_content label:hover {
-  background-color: #2980b9;
+.createpost_content input[type="file"] {
+  display: block;
+  margin-bottom: 15px;
 }
 
 .createpost_content img {
-  max-width: 550px;
-  max-height: 550px;
-  margin-top: 10px;
-  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }
+
+/* Adicional: Botão de envio (se necessário) */
+.createpost_button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.createpost_button:hover {
+  background-color: #0056b3;
+}
+
 /*Create Community*/
 
 .createCommunity {
