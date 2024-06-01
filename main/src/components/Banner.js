@@ -16,6 +16,7 @@ function Banner ({gameBanner}){
             <div className="banner-case">
             <h2 className="banner-title">{gameBanner.name}</h2>
             </div>
+            
             <img className="banner" src={gameBanner} alt="Game Banner" />
         </div>
     )

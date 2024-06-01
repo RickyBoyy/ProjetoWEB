@@ -46,9 +46,10 @@ body {
 /*Banner*/
 
 .banner {
-  width: 100%; /* Set the width to 100% to make sure the image fills its container */
-  height: 900px; /* Set the height to your desired fixed height */
+  width: 100vw; /* Set the width to 100% to make sure the image fills its container */
+  height: 90vh; /* Set the height to your desired fixed height */
   object-fit: cover; /* Scale the image while maintaining its aspect ratio and cropping any overflow */
+
 }
 
 .banner-title {

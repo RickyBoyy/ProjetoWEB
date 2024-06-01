@@ -20,10 +20,13 @@ import ReviewsPage from "./pages/Reviews";
 import GameListPage from "./pages/GameList";
 import EventPage from "./pages/Event";
 import CommunityPage from "./pages/Community";
+import { AuthProvider } from './Contexts/AuthContext'
+import ChartsPage from "./pages/Charts";
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
         <Header />
         <Routes>
@@ -43,8 +46,10 @@ function App() {
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/gamelist/:genreId" element={<GameListPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route path="/charts" element={<ChartsPage/>} />
         </Routes>
       </Router>
+      </AuthProvider>
     </div>
   );
 }

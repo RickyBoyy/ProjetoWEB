@@ -1,34 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import GlobalApi from "../Services/GlobalApi";
-
-
-
-
-import * as am5 from "@amcharts/amcharts5";
-import * as am5xy from "@amcharts/amcharts5/xy";
-import * as am5percent from "@amcharts/amcharts5/percent";
-import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import { Root, color, themes } from "@amcharts/amcharts5";
-import {
-  ColumnSeries,
-  XYChart,
-  CategoryAxis,
-  ValueAxis,
-} from "@amcharts/amcharts5/xy";
-import AnimatedTheme from "@amcharts/amcharts5/themes/Animated";
-import { Tooltip } from "@amcharts/amcharts5";
-
+import { AuthContext } from "../Contexts/AuthContext";
 
 import "../styles/home.css";
 import "../styles/footer.css";
 
 const Home = () => {
-  const [date, setDate] = useState(new Date());
   const [genreList, setGenreList] = useState([]);
+  const [communities, setCommunities] = useState([]);
   const [gamesList, setGamesList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loadingCharts, setLoadingCharts] = useState(true);
   const [error, setError] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
 
@@ -41,13 +23,9 @@ const Home = () => {
     const fetchGenreList = async () => {
       try {
         const response = await GlobalApi.getGenreList();
-        if (response && response.results) {
-          setGenreList(response.results);
-        } else {
-          setError("Invalid response");
-        }
+        setGenreList(response.results);
       } catch (error) {
-        setError("Error fetching genre list");
+        setError("Error fetching genre list: " + error.message);
       } finally {
         setLoading(false);
       }
@@ -57,16 +35,29 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    const fetchCommunities = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/community');
+        if (!response.ok) {
+          throw new Error('Failed to fetch communities');
+        }
+        const data = await response.json();
+        setCommunities(data);
+      } catch (error) {
+        console.error('Error fetching communities:', error);
+      }
+    };
+
+    fetchCommunities();
+  }, []);
+
+  useEffect(() => {
     const fetchGamesList = async () => {
       try {
         const response = await GlobalApi.getGames({ page_size: 2000 });
-        if (response && response.results) {
-          setGamesList(response.results);
-        } else {
-          setError("Invalid response");
-        }
+        setGamesList(response.results);
       } catch (error) {
-        setError("Error fetching games");
+        setError("Error fetching games: " + error.message);
       } finally {
         setLoading(false);
       }
@@ -81,13 +72,9 @@ const Home = () => {
         setLoading(true);
         try {
           const response = await GlobalApi.searchGames(searchQuery);
-          if (response && response.results) {
-            setSearchResults(response.results);
-          } else {
-            setError("Invalid response");
-          }
+          setSearchResults(response.results);
         } catch (error) {
-          setError("Error searching for games");
+          setError("Error searching for games: " + error.message);
         } finally {
           setLoading(false);
         }
@@ -97,35 +84,13 @@ const Home = () => {
     fetchSearchResults();
   }, [searchQuery]);
 
-
-
-
-  // Inside the useEffect block where you create the chart
-  
-  
-  
-  
-  
-
- 
-  const onChange = (newDate) => {
-    setDate(newDate);
-  };
-
   const redirectToGameList = (genreId) => {
     navigate(`/gamelist/${genreId}`);
   };
 
-  const redirectToCommunity = () => {
-    navigate("/community");
+  const redirectToCommunity = (communityId) => {
+    navigate(`/community/${communityId}`);
   };
-
-  const redirectTCommunities = () => {
-    navigate("/communities");
-  };
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   const redirectToEvent = () => {
     window.location.href = "/event";
@@ -136,10 +101,10 @@ const Home = () => {
 
   return (
     <div>
-      <div class="header-home">
-        <h1 class="page-heading">
-          <span class="page-heading-primary">THE HOUSE</span>
-          <span class="page-heading-secondary">
+      <div className="header-home">
+        <h1 className="page-heading">
+          <span className="page-heading-primary">THE HOUSE</span>
+          <span className="page-heading-secondary">
             Your Games, Your Communities, YOUR HOUSE!!
           </span>
         </h1>
@@ -165,12 +130,6 @@ const Home = () => {
           </div>
         </section>
       )}
-
-   
-
-
-     
-
 
       <section className="genres">
         <h1 className="section-title">Genres</h1>
@@ -219,22 +178,32 @@ const Home = () => {
         <h1 className="section-title">Communities</h1>
         <div className="slider-wrapper">
           <div className="image-list">
-            {[...Array(7).keys()].map((index) => (
-              <div
-                key={index}
-                className="image-item-wrapper"
-                onClick={redirectToCommunity}
-              >
-                <img
-                  src={`https://via.placeholder.com/300x550?text=Community-${
-                    index + 1
-                  }`}
-                  alt={`Community-${index + 1}`}
-                  className="image-item"
-                />
-                <p className="item-name">Community {index + 1} Name</p>
-              </div>
-            ))}
+            {communities && communities.map((community) => {
+              // Construct the image URL
+              const imageUrl = `http://localhost:4000/${community.community_image}`;
+              
+              // Log the URL to the console for debugging
+              console.log('Community Image URL:', imageUrl);
+
+              return (
+                <div
+                  key={community.community_id}
+                  className="image-item-wrapper"
+                  onClick={() => redirectToCommunity(community.community_id)}
+                >
+                  <img
+                    src={imageUrl}
+                    alt={community.community_name}
+                    className="image-item"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://via.placeholder.com/200x300?text=Image+Not+Available";
+                    }}
+                  />
+                  <p className="item-name">{community.community_name}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -250,9 +219,7 @@ const Home = () => {
                 onClick={redirectToEvent}
               >
                 <img
-                  src={`https://via.placeholder.com/200x300?text=Event-${
-                    index + 1
-                  }`}
+                  src={`https://via.placeholder.com/200x300?text=Event-${index + 1}`}
                   alt={`Event-${index + 1}`}
                   className="image-item"
                 />

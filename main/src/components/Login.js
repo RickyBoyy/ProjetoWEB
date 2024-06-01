@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import "../App.css";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../Contexts/AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { loginUser } = useContext(AuthContext); // Add this line
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,8 +22,10 @@ const Login = () => {
       });
 
       if (response.ok) {
+        const userData = await response.json(); // Assuming server responds with user data
         alert("Login successful!");
-        window.location.href = "/";  // Redireciona para a página inicial
+        loginUser(userData); // Update user state in context
+        window.location.href = "/"; // Redirect to home page
       } else {
         const errorData = await response.json();
         alert(`Login failed: ${errorData.error}`);
@@ -31,6 +34,10 @@ const Login = () => {
       alert(`Login failed: ${error.message}`);
     }
   };
+
+
+
+
 
   const redirectToRegister = () => {
     window.location.href = "/register";

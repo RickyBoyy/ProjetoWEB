@@ -7,35 +7,28 @@ import { AuthContext } from '../Contexts/AuthContext';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [genreList, setGenreList] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
 
-  const redirectToLogin = () => {
-    window.location.href = "/login";
-  };
+  useEffect(() => {
+    const fetchGenreList = async () => {
+      try {
+        const response = await GlobalApi.getGenreList();
+        setGenreList(response.results);
+      } catch (error) {
+        setError("Error fetching genre list: " + error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const redirectToProfile = () => {
-    window.location.href = "/profile";
-  };
-
-  const redirectToHome = () => {
-    window.location.href = "/";
-  };
-
-  const redirectToCreateCommunity = () => {
-    window.location.href = "/create_community";
-  };
-
-  const redirectToCreateEvent = () => {
-    window.location.href = "/create_event";
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    navigate(`/?search=${searchQuery}`);
-  };
+    fetchGenreList();
+  }, []);
 
   useEffect(() => {
     const fetchSuggestions = async () => {
@@ -63,32 +56,56 @@ const Header = () => {
     fetchSuggestions();
   }, [searchQuery]);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/?search=${searchQuery}`);
+  };
+
+  const redirectTo = (path) => {
+    navigate(path);
+  };
+  const redirectToGameList = (genreId) => {
+    navigate(`/gamelist/${genreId}`);
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  
+
   return (
     <header className="header">
       <div className="logo-container">
-        <a href="/" className="logo-button" onClick={redirectToHome}>
+        <button className="logo-button" onClick={() => redirectTo("/")}>
           <img src={logo} alt="Logo" className="logo" />
-        </a>
+        </button>
       </div>
-
-      <div class="genre-dropbar">
-        <button class="dropbtn">Genres</button>
-        <div class="dropdown-content">
-          <a href="#">Action</a>
-          <a href="#">Adventure</a>
-          <a href="#">Comedy</a>
+      <div className="genre-dropbar">
+        <button className="dropbtn">Genres</button>
+        <div className="dropdown-content">
+        {genreList.map((item) => (
+              <div
+                className="image-item-wrapper"
+                key={item.id}
+                onClick={() => redirectToGameList(item.id)}
+              >
+                <p className="genre-name">{item.name}</p>
+              </div>
+            ))}
         </div>
       </div>
       <div className="create-community-container">
         <button
           className="create-community-button"
-          onClick={redirectToCreateCommunity}
+          onClick={() => redirectTo("/create_community")}
         >
           Create Community
         </button>
       </div>
       <div className="create-event-container">
-        <button className="create-event-button" onClick={redirectToCreateEvent}>
+        <button
+          className="create-event-button"
+          onClick={() => redirectTo("/create_event")}
+        >
           Create Event
         </button>
       </div>
@@ -126,11 +143,16 @@ const Header = () => {
       </div>
       <div className="login-container">
         {user ? (
-          <button className="profile-button" onClick={redirectToProfile}>
-            Profile
-          </button>
+          <>
+            <button className="profile-button" onClick={() => redirectTo("/profile")}>
+              Profile
+            </button>
+            <button className="logout-button" onClick={logout}>
+              Logout
+            </button>
+          </>
         ) : (
-          <button className="login-button" onClick={redirectToLogin}>
+          <button className="login-button" onClick={() => redirectTo("/login")}>
             Login
           </button>
         )}
