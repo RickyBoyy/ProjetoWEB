@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 
 const CreatePost = () => {
-  // Função para pré-visualizar a imagem
+  const navigate = useNavigate();
+
+  
   const previewImage = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -14,6 +17,11 @@ const CreatePost = () => {
     if (file) {
       reader.readAsDataURL(file);
     }
+  };
+
+  
+  const redirectToCommunity = () => {
+    navigate("/community");
   };
 
   return (
@@ -53,7 +61,9 @@ const CreatePost = () => {
           alt="create_post"
         />
       </div>
-      <button type="submit" className="createpost_button">Submit Post</button>
+      <button type="submit" className="createpost_button" onClick={redirectToCommunity}>
+        Submit Post
+      </button>
     </div>
   );
 };
