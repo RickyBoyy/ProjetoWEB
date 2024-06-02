@@ -40,12 +40,12 @@ function App() {
           <Route path="/post" element={<PostPage />} />
           <Route path="/tags" element={<TagsPage />} />
           <Route path="/games/:id" element={<GamePage />} />
-          <Route path="/event" element={<EventPage />} />
+          <Route path="/events/:eventId" element={<EventPage />} />
           <Route path="/create_community" element={<CreateCommunitiesPage />} />
           <Route path="/maps" element={<MapPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/gamelist/:genreId" element={<GameListPage />} />
-          <Route path="/community" element={<CommunityPage />} />
+          <Route path="/community/:communityId" element={<CommunityPage />} />
           <Route path="/charts" element={<ChartsPage/>} />
         </Routes>
       </Router>

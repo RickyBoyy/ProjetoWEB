@@ -41,6 +41,7 @@ CREATE TABLE community (
   community_name VARCHAR(50) NOT NULL,
   community_description Text not null,
   community_user_id int not null,
+  community_image text,
   CONSTRAINT community_fk_user FOREIGN KEY (community_user_id) REFERENCES "user"(user_id) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );

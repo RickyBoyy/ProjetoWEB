@@ -8,6 +8,7 @@ import "../styles/footer.css";
 
 const Home = () => {
   const [genreList, setGenreList] = useState([]);
+  const [events, setEvents] = useState([]);
   const [communities, setCommunities] = useState([]);
   const [gamesList, setGamesList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -37,18 +38,35 @@ const Home = () => {
   useEffect(() => {
     const fetchCommunities = async () => {
       try {
-        const response = await fetch('http://localhost:4000/community');
+        const response = await fetch("http://localhost:4000/community");
         if (!response.ok) {
-          throw new Error('Failed to fetch communities');
+          throw new Error("Failed to fetch communities");
         }
         const data = await response.json();
         setCommunities(data);
       } catch (error) {
-        console.error('Error fetching communities:', error);
+        console.error("Error fetching communities:", error);
       }
     };
 
     fetchCommunities();
+  }, []);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/events");
+        if (!response.ok) {
+          throw new Error("Failed to fetch communities");
+        }
+        const data = await response.json();
+        setEvents(data);
+      } catch (error) {
+        console.error("Error fetching communities:", error);
+      }
+    };
+
+    fetchEvents();
   }, []);
 
   useEffect(() => {
@@ -89,12 +107,14 @@ const Home = () => {
   };
 
   const redirectToCommunity = (communityId) => {
-    navigate(`/community/${communityId}`);
+    navigate("/communities");
   };
 
-  const redirectToEvent = () => {
-    window.location.href = "/event";
+  const redirectToEvent = (eventId) => {
+    navigate(`/events/${eventId}`);
   };
+
+ 
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -172,73 +192,80 @@ const Home = () => {
               ))}
           </div>
         </div>
-        <div className="button_for_more">
-          <button className="the_button" onClick={redirectToGameList}>
-            See more
-          </button>
-          </div>
       </section>
 
       <section className="home-section">
         <h1 className="section-title">Communities</h1>
         <div className="slider-wrapper">
           <div className="image-list">
-            {communities && communities.map((community) => {
-              // Construct the image URL
-              const imageUrl = `http://localhost:4000/${community.community_image}`;
-              
-              // Log the URL to the console for debugging
-              console.log('Community Image URL:', imageUrl);
+            {communities &&
+              communities.map((community) => {
+                // Construct the image URL
+                const imageUrl = `http://localhost:4000/${community.community_image}`;
 
-              return (
-                <div
-                  key={community.community_id}
-                  className="image-item-wrapper"
-                  onClick={() => redirectToCommunity(community.community_id)}
-                >
-                  <img
-                    src={imageUrl}
-                    alt={community.community_name}
-                    className="image-item"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://via.placeholder.com/200x300?text=Image+Not+Available";
-                    }}
-                  />
-                  <p className="item-name">{community.community_name}</p>
-                </div>
-              );
-            })}
+                // Log the URL to the console for debugging
+                console.log("Community Image URL:", imageUrl);
+
+                return (
+                  <div
+                    key={community.community_id}
+                    className="image-item-wrapper"
+                  >
+                    <Link to={`/community/${community.community_id}`}>
+                      <img
+                        src={imageUrl}
+                        alt={community.community_name}
+                        className="image-item"
+                      />
+                      <p className="item-name">{community.community_name}</p>
+                    </Link>
+                  </div>
+                );
+              })}
           </div>
         </div>
         <div className="button_for_more">
           <button className="the_button" onClick={redirectToCommunity}>
             See more
           </button>
-          </div>
+        </div>
       </section>
 
       <section className="home-section">
-        <h1 className="section-title">Events</h1>
-        <div className="slider-wrapper">
-          <div className="image-list">
-            {[...Array(11).keys()].map((index) => (
-              <div
-                key={index}
-                className="image-item-wrapper"
-                onClick={redirectToEvent}
-              >
-                <img
-                  src={`https://via.placeholder.com/200x300?text=Event-${index + 1}`}
-                  alt={`Event-${index + 1}`}
-                  className="image-item"
-                />
-                <p className="item-name">Date {index + 1} Event</p>
-              </div>
-            ))}
-          </div>
+      <h1 className="section-title">Events</h1>
+      <div className="slider-wrapper">
+        <div className="image-list">
+          {events &&
+            events.map((event) => {
+              // Construct the image URL
+              const imageUrl = `http://localhost:4000/${event.event_img}`;
+
+              // Log the URL to the console for debugging
+              console.log("Event Image URL:", imageUrl);
+
+              // Check if image URL is valid
+              const img = new Image();
+              img.src = imageUrl;
+              img.onload = () => console.log(`${imageUrl} loaded successfully`);
+              img.onerror = () => console.error(`${imageUrl} failed to load`);
+
+              return (
+                <div key={event.event_id} className="image-item-wrapper">
+                  <Link to={`/events/${event.event_id}`}>
+                    <img
+                      src={imageUrl}
+                      alt={event.event_name}
+                      className="image-item"
+                    />
+                    <p className="item-name">{event.event_name}</p>
+                  </Link>
+                </div>
+              );
+            })}
         </div>
-      </section>
+      </div>
+    </section>
+  
     </div>
   );
 };

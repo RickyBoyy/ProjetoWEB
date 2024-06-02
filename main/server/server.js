@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
@@ -5,38 +7,67 @@ const jwt = require("jsonwebtoken");
 const axios = require("axios");
 const multer = require("multer");
 const path = require('path');
-const pool = require("./database.js"); // Ensure this points to your actual database connection file
+const pool = require("./database.js");
 const { body, validationResult } = require("express-validator");
 
 const app = express();
 
 // Serve static files from the 'uploads' directory
 app.use('/uploads', express.static('uploads'));
+app.use('/uploads/events', express.static(path.join(__dirname, 'uploads/events')));
 
 
-const storage = multer.diskStorage({
+// Storage configuration for community images
+const communityStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'uploads/');
+        cb(null, 'uploads');
     },
     filename: (req, file, cb) => {
-      cb(null, `${Date.now()}-${file.originalname}`);
+        cb(null, `${Date.now()}-${file.originalname}`);
     },
 });
 
-const upload = multer({
-    storage: storage,
+// Storage configuration for event images
+const eventStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/events'); // Certifique-se que a pasta 'uploads/events/' existe
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}-${file.originalname}`);
+    },
+});
+
+
+const uploadCommunityImage = multer({
+    storage: communityStorage,
     fileFilter: (req, file, cb) => {
-      const fileTypes = /jpeg|jpg|png|gif/;
-      const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
-      const mimetype = fileTypes.test(file.mimetype);
-      if (mimetype && extname) {
-        return cb(null, true);
-      } else {
-        cb('Error: Images Only!');
-      }
+        const fileTypes = /jpeg|jpg|png|gif/;
+        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = fileTypes.test(file.mimetype);
+        if (mimetype && extname) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Error: Images Only!'));
+        }
     },
     limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
 }).single('communityImage');
+
+const uploadEventImage = multer({
+    storage: eventStorage,
+    fileFilter: (req, file, cb) => {
+        const fileTypes = /jpeg|jpg|png|gif/;
+        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = fileTypes.test(file.mimetype);
+        if (mimetype && extname) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Error: Images Only!'));
+        }
+    },
+    limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+}).single('eventImage');
+
 
 const RAWG_API_KEY = process.env.RAWG_API_KEY;
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -48,6 +79,12 @@ const axiosInstance = axios.create({
 
 app.use(express.json());
 app.use(cors());
+
+// Middleware for logging requests
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 // Middleware for error handling
 app.use((err, req, res, next) => {
@@ -79,14 +116,11 @@ app.post("/adduser", [
 });
 
 // Create community route
-app.post('/create-community', (req, res, next) => {
-    upload(req, res, async (err) => {
+app.post('/create-community', (req, res) => {
+    uploadCommunityImage(req, res, async (err) => {
         if (err) {
             return res.status(400).send({ error: err.message });
         }
-
-        console.log(req.file); // Log the file information
-        console.log(req.body); // Log the body information
 
         try {
             const { communityName, communityDescription, communityUserId } = req.body;
@@ -106,7 +140,87 @@ app.post('/create-community', (req, res, next) => {
     });
 });
 
-app.get('/community', async (req, res, next) => {
+// Fetch community by ID
+app.get('/community/:id', async (req, res) => {
+    const communityId = req.params.id;
+
+    try {
+        const result = await pool.query('SELECT * FROM community WHERE community_id = $1', [communityId]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Community not found' });
+        }
+        res.status(200).json(result.rows[0]);
+    } catch (error) {
+        console.error('Error fetching community:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// Create event route
+app.post('/create-event', (req, res) => {
+    uploadEventImage(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json({ error: err.message });
+        }
+
+        const { title, location, time, description, userId } = req.body;
+        const eventImage = req.file ? req.file.path : null;
+
+        try {
+            const result = await pool.query(
+                `INSERT INTO events (event_name, event_location, event_time, event_description, event_user_id, event_img) 
+                 VALUES ($1, ST_GeomFromText($2, 4326), $3, $4, $5, $6) RETURNING event_id`,
+                [title, location, time, description, userId, eventImage]
+            );
+
+            res.status(201).json({ eventId: result.rows[0].event_id });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    });
+});
+
+// Fetch event by ID
+app.get('/events/:id', async (req, res) => {
+    const eventId = req.params.id;
+
+    try {
+        const result = await pool.query('SELECT * FROM events WHERE event_id = $1', [eventId]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Event not found' });
+        }
+        res.status(200).json(result.rows[0]);
+    } catch (error) {
+        console.error('Error fetching event:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// Fetch all events
+app.get('/events', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM events');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error('Error fetching events:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+app.get('/community', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM community');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error('Error fetching events:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// Fetch all communities
+app.get('/communities', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM community');
         res.status(200).json(result.rows);
@@ -156,23 +270,13 @@ app.get('/games', async (req, res) => {
     try {
         const result = await pool.query('SELECT game_name, game_genre, game_price FROM games_genre');
         res.json(result.rows);
-    } catch (err) {
-        console.error('Database query error:', err);
-        res.status(500).send('Server Error');
+    } catch (error) {
+        console.error('Error fetching games:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-// Get communities route
-app.get('/communities', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT community_name, community_count FROM community_users');
-        res.json(result.rows);
-    } catch (err) {
-        console.error('Database query error:', err);
-        res.status(500).send('Server Error');
-    }
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
 });
-
-// Start server
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

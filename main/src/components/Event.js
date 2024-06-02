@@ -1,75 +1,114 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "../styles/event_specific.css";
 
 const Event = () => {
+  const { eventId } = useParams();
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/events/${eventId}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch event details");
+        }
+        const data = await response.json();
+        setEvent(data);
+      } catch (error) {
+        setError("Error fetching event details: " + error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvent();
+  }, [eventId]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
-    <div class="page-event">
-      <div class="cover">
-        <div class="heading">events</div>
+    <div className="page-event">
+      <div className="cover">
+        <div className="heading">Events</div>
       </div>
-      <div class="container">
-        <div class="upcoming-sec">
-          <div class="heading">Upcoming Events</div>
+      <div className="container">
+        <div className="upcoming-sec">
+          <div className="heading">Upcoming Events</div>
         </div>
-        <div class="upcoming-event-list">
-          <div class="event-block">
-            <div class="row">
-              <div class="col-lg-2 sec-1">
+        <div className="upcoming-event-list">
+          <div className="event-block">
+            <div className="row">
+              <div className="col-lg-2 sec-1">
                 <table>
-                  <tr>
-                    <td>
-                      <div class="month">jan</div>
-                      <div class="month-date-devider"></div>
-                      <div class="date">27</div>
-                    </td>
-                    <td class="title">Event Title</td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div className="month">jan</div>
+                        <div className="month-date-devider"></div>
+                        <div className="date">27</div>
+                      </td>
+                      <td className="title">Event Title</td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
-              <div class="col-lg-5 sec-2">
-                <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" />
+              <div className="col-lg-5 sec-2">
+                <img
+                  src={event.event_image ? `http://localhost:4000/${event.event_image}` : "https://via.placeholder.com/150x150"}
+                  alt="Event"
+                  className="event-image"
+                />
               </div>
-              <div class="col-lg-5 sec-3">
-                <div class="title">Event Title</div>
-                <div class="venue">
+              <div className="col-lg-5 sec-3">
+                <div className="title">{event.event_name}</div>
+                <div className="venue">
                   <table>
-                    <tr>
-                      <td>
-                        <i class="fa fa-map-marker"></i>
-                      </td>
-                      <td>
-                        <div>Location</div>
-                        <div class="dim-color">
-                          <a href="https://www.google.co.in" target="blank">
-                            Get Directions
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <i className="fa fa-map-marker"></i>
+                        </td>
+                        <td>
+                          <div>{event.event_location}</div>
+                          <div className="dim-color">
+                            <a href="https://www.google.co.in" target="_blank" rel="noopener noreferrer">
+                              Get Directions
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
-                <div class="time">
+                <div className="time">
                   <table>
-                    <tr>
-                      <td>
-                        <i class="fa fa-clock-o"></i>
-                      </td>
-                      <td>
-                        <div>Date and Time</div>
-                        <div
-                          data-livestamp="1517054400"
-                          class="dim-color"
-                        ></div>
-                      </td>
-                    </tr>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <i className="fa fa-clock-o"></i>
+                        </td>
+                        <td>
+                          <div>{event.event_time}</div>
+                          <div
+                            data-livestamp="1517054400"
+                            className="dim-color"
+                          ></div>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
-                <div class="sort-story">Small description</div>
-                <div class="group-of-btn">
+                <div className="sort-story">{event.event_description}</div>
+                <div className="group-of-btn">
                   <a
                     href="https://www.google.com"
-                    target="blank"
-                    class="btn book-ticket"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn book-ticket"
                   >
                     Book Your Entry Pass
                   </a>
