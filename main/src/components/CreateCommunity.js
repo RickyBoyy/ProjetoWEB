@@ -89,7 +89,7 @@ const CreateCommunity = () => {
             </div>
             <div className="create_community_buttons">
               <button type="submit" onClick={redirectToHome}>
-                Save Event
+                Save Community
               </button>
               <button type="reset" onClick={redirectToHome}>
                 Cancel
