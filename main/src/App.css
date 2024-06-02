@@ -4,6 +4,7 @@
 }
 body {
   font-family: "TT Firs Neue", sans-serif;
+  margin-top: 50px;
 }
 .App {
   text-align: baseline;
@@ -416,7 +417,7 @@ body {
 
 .left-login {
   width: 50vw;
-  height: 100vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -425,6 +426,7 @@ body {
 
 .left-login > h1 {
   font-size: 3vw;
+  margin-top: 30px;
   color: white;
 }
 
@@ -523,11 +525,8 @@ body {
 
 /*Profile*/
 
-
 .main-profile {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 100vh;
   
 }
@@ -535,12 +534,12 @@ body {
 .left-profile {
   width: 50%;
   padding: 20px;
-  background-color: #652ec7;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-self: flex-start;
+  margin: 20px;
+  background-color: #652ec7;
   margin-top: 20px;
-  align-self: flex-start; 
-  margin: 20px; 
 }
 
 .profile-header {
@@ -548,15 +547,27 @@ body {
   align-items: center;
 }
 
-.profile-header h1 {
-  margin-right: 10px;
-}
-
 .profile-text {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+.profile-text h2 {
   margin-bottom: 10px;
-  margin-right: 10px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  background-color: #ddd;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
 }
 
 .profile-details {
@@ -566,6 +577,7 @@ body {
 .right-profile {
   width: 50%;
   height: 100%;
+  margin-top: 20px;
 }
 
 .right-profile-image {
@@ -580,6 +592,13 @@ body {
   gap: 5px; /* Adicionando um espaço de 5 pixels entre as tags */
 }
 
+.profile-textarea {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  resize: none;
+}
 
 /*SignUp*/
 
@@ -619,6 +638,8 @@ body {
   background: #652ec7;
   border-radius: 20px;
   box-shadow: 0px 10px 40px #00000056;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 .card_register > h1 {
   color: white;
@@ -799,6 +820,7 @@ body {
   width: 50vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -1076,7 +1098,6 @@ body {
 }
 /*CreatePost*/
 
-
 /* Container principal do componente */
 .createpost_mainDisplay {
   max-width: 600px;
@@ -1087,7 +1108,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .createpost_textEssentials {
   margin-bottom: 20px;
 }
@@ -1095,7 +1115,7 @@ body {
 .createpost_textEssentials h1 {
   font-size: 24px;
   margin-bottom: 10px;
-  color: #444;
+  color: #ffffff;
 }
 
 .createpost_textEssentials label {
@@ -1145,7 +1165,7 @@ body {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: darkslateblue;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -1155,14 +1175,14 @@ body {
 }
 
 .createpost_button:hover {
-  background-color: #0056b3;
+  background-color: #aa3bfc;
 }
 
 /*Create Community*/
 
 .createCommunity {
   display: flex;
-  margin-left: 50px;
+
   margin-top: 50px;
   color: white;
 }
@@ -1173,12 +1193,18 @@ body {
 }
 .create_community_title {
   font-style: oblique;
+  margin-top: 30px;
 }
 .create_community_essentials {
   flex-direction: row;
   display: flex;
   align-items: flex-start;
   gap: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  align-items: center;
 }
 
 .imag_community {
@@ -1276,7 +1302,29 @@ body {
 .createCommunity_textEssentials input {
   margin-bottom: 10px;
 }
+.create_community_buttons {
+  gap: 30px;
+  margin-top: 10px;
+}
 
+.create_community_buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.create_community_buttons button[type="submit"] {
+  background-color: #652ec7;
+  color: white;
+}
+
+.create_community_buttons button[type="reset"] {
+  background-color: #282c34;
+  color: white;
+}
 /*Create Events*/
 .createEvent_mainDisplay {
   display: flex;
@@ -1612,6 +1660,7 @@ body {
   background-color: #282c34;
   color: white;
 }
+
 @media only screen and (max-width: 950px) {
   .card-login {
     flex-direction: column;

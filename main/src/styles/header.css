@@ -6,10 +6,17 @@
   background-color: #333; /* Adjust as needed */
   color: white; /* Adjust as needed */
   position: fixed;
+
   top: 0; /* Ensures it stays at the top */
   left: 0; /* Ensures it's flush with the left side */
   width: 100%;
   z-index: 1000; /* Ensures it stays above other elements */
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it appears above other content */
+  font-family: "TT Firs Neue", sans-serif;
 }
 
 .genre-name{

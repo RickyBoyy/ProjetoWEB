@@ -1,5 +1,8 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
+import "../App.css";
+import Lottie from "lottie-react";
+import animationData from "../images/GhostyLogin.json";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -51,10 +54,11 @@ const Login = () => {
           <br />
           They respawn.
         </h1>
-        <img
-          src="../Login_animation2.svg"
-          className="left-login-image"
-          alt="Gaming"
+        <Lottie
+          animationData={animationData}
+          loop={true}
+          autoplay={true}
+          style={{ width: 400, height: 400 }}
         />
       </div>
       <div className="right-login">
@@ -81,8 +85,10 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="btn-login" type="submit">Login</button>
-          
+          <button className="btn-login" type="submit">
+            Login
+          </button>
+
           <div className="reference_signin">
             <p>If you don't have an account,</p>
             <a onClick={redirectToRegister} style={{ cursor: "pointer" }}>

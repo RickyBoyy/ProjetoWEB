@@ -3,6 +3,21 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import GlobalApi from "../Services/GlobalApi";
 import { AuthContext } from "../Contexts/AuthContext";
 
+
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
+import * as am5percent from "@amcharts/amcharts5/percent";
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import { Root, color, themes } from "@amcharts/amcharts5";
+import {
+  ColumnSeries,
+  XYChart,
+  CategoryAxis,
+  ValueAxis,
+} from "@amcharts/amcharts5/xy";
+import AnimatedTheme from "@amcharts/amcharts5/themes/Animated";
+import { Tooltip } from "@amcharts/amcharts5";
+
 import "../styles/home.css";
 import "../styles/footer.css";
 
@@ -102,11 +117,16 @@ const Home = () => {
     fetchSearchResults();
   }, [searchQuery]);
 
+
+  // Inside the useEffect block where you create the chart
+
+  
+
   const redirectToGameList = (genreId) => {
     navigate(`/gamelist/${genreId}`);
-  };
+  };  
 
-  const redirectToCommunity = (communityId) => {
+  const redirectToCommunities = (communityId) => {
     navigate("/communities");
   };
 
@@ -192,6 +212,12 @@ const Home = () => {
               ))}
           </div>
         </div>
+
+        <div className="button_for_more">
+          <button className="the_button" onClick={redirectToGameList}>
+            See more
+          </button>
+        </div>
       </section>
 
       <section className="home-section">
@@ -225,7 +251,7 @@ const Home = () => {
           </div>
         </div>
         <div className="button_for_more">
-          <button className="the_button" onClick={redirectToCommunity}>
+          <button className="the_button" onClick={redirectToCommunities}>
             See more
           </button>
         </div>

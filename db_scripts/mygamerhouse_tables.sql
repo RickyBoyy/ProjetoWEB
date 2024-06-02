@@ -68,4 +68,15 @@ CREATE Table reviews (
 
 
 );
+Create table Events (
+  event_id SERIAL PRIMARY key,
+  event_name VARCHAR(50) not null,
+  event_img text,
+  event_location geometry,
+  event_time Timestamp,
+  event_description text,
+  event_user_id int not null,
+  CONSTRAINT event_fk_user FOREIGN key (event_user_id) REFERENCES "user"(user_id)
+
+);
 

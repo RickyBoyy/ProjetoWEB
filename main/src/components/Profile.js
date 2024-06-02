@@ -2,7 +2,23 @@ import React from "react";
 import "../App.css";
 import profilePic from "../images/1547006.jpg";
 
-function Profile() {
+
+const previewImage = (event) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    document.getElementById("post_image_preview").src = reader.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+};
+
+
+
+const Profile = () => {
   return (
     <div className="main-profile">
       <div className="left-profile">
@@ -18,7 +34,7 @@ function Profile() {
             }}
           />
           <div className="profile-text">
-            <h2>Nome do Jogador</h2>
+            <h2>Display Name</h2>
             <div className="tags">
               <span className="tag">RPG</span>
               <span className="tag">FPS</span>
@@ -27,11 +43,30 @@ function Profile() {
           </div>
         </div>
         <div className="profile-details">
-          <p>Detalhes do perfil Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus hendrerit risus vitae nibh aliquet, eget scelerisque justo dapibus.</p>
+        <textarea
+            name="eventDescription"
+            placeholder="Describe your profile here"
+            rows="5"
+            cols="50"
+            className="profile-textarea"
+          ></textarea>
         </div>
       </div>
       <div className="right-profile">
-        <img src="image2.jpg" className="right-profile-image" alt="Imagem à direita" />
+        <input
+          type="file"
+          name="postImage"
+          accept="image/*"
+          className="create_post"
+          id="post_image_input"
+          onChange={previewImage}
+        />
+        <img
+          id="post_image_preview"
+          className="right-profile-image"
+          src="https://via.placeholder.com/550x550"
+          alt="Imagem à direita"
+        />
       </div>
     </div>
   );

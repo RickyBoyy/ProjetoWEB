@@ -35,6 +35,9 @@ const CreateCommunity = () => {
       reader.readAsDataURL(file);
     }
   };
+  const redirectToHome = () => {
+    window.location.href = "/";
+  };
 
   useEffect(() => {
     const textarea = textareaRef.current;
@@ -76,11 +79,11 @@ const CreateCommunity = () => {
 
   return (
     <div id="Create Community" className="createCommunity">
-      <div className="createcommunity_visuals">
-        <div className="create_community_title">
-          <h1>Create your community</h1>
+      <div className="createEvent_mainDisplay">
+        <div className="title_container">
+          <div className="heading">Create your Community</div>
         </div>
-        <div className="linha_horizontal_community"></div>
+
         <div className="create_community_essentials">
           <form onSubmit={handleFormSubmit}>
             <div className="imag_community">
@@ -140,9 +143,18 @@ const CreateCommunity = () => {
               </div>
             </div>
           </form>
+            <div className="create_community_buttons">
+              <button type="submit" onClick={redirectToHome}>
+                Save Event
+              </button>
+              <button type="reset" onClick={redirectToHome}>
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 
