@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
+import Lottie from "lottie-react";
+import animationData from "../images/SignUpAnimation.json";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -116,10 +118,11 @@ const SignIn = () => {
       </div>
       <div className="right_register">
         <h1>Join and talk about your favorite game!</h1>
-        <img
-          src="Register_animation2.svg"
-          className="left-login-image"
-          alt="Gaming"
+        <Lottie
+          animationData={animationData}
+          loop={true}
+          autoplay={true}
+          style={{ width: 450, height: 450 }}
         />
       </div>
     </div>

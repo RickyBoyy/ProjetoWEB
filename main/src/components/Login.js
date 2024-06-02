@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
+import Lottie from "lottie-react";
+import animationData from "../images/GhostyLogin.json";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -22,7 +24,7 @@ const Login = () => {
 
       if (response.ok) {
         alert("Login successful!");
-        window.location.href = "/";  // Redireciona para a página inicial
+        window.location.href = "/"; // Redireciona para a página inicial
       } else {
         const errorData = await response.json();
         alert(`Login failed: ${errorData.error}`);
@@ -44,10 +46,11 @@ const Login = () => {
           <br />
           They respawn.
         </h1>
-        <img
-          src="../Login_animation2.svg"
-          className="left-login-image"
-          alt="Gaming"
+        <Lottie
+          animationData={animationData}
+          loop={true}
+          autoplay={true}
+          style={{ width: 400, height: 400 }}
         />
       </div>
       <div className="right-login">
@@ -74,8 +77,10 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="btn-login" type="submit">Login</button>
-          
+          <button className="btn-login" type="submit">
+            Login
+          </button>
+
           <div className="reference_signin">
             <p>If you don't have an account,</p>
             <a onClick={redirectToRegister} style={{ cursor: "pointer" }}>
