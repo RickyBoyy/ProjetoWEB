@@ -43,7 +43,13 @@ const Profile = () => {
           </div>
         </div>
         <div className="profile-details">
-          <p>Detalhes do perfil:</p>
+        <textarea
+            name="eventDescription"
+            placeholder="Describe your profile here"
+            rows="5"
+            cols="50"
+            className="profile-textarea"
+          ></textarea>
         </div>
       </div>
       <div className="right-profile">
