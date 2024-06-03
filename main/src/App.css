@@ -80,73 +80,58 @@ body {
 
 /*GamesByGenreId*/
 
-.game-list-main {
-  margin-top: 30px;
-}
-
 .game-list-container {
   margin-top: 30px;
 }
 
 .games-list-title {
   color: white;
-  font: bold;
-  font-size: 30px;
-  margin-left: 20px;
-
-  background-image: linear-gradient(to top, #1f2937 0%, transparent 100%);
-  width: 100%;
-  bottom: 0;
-}
-
-/*GamesByGenreId*/
-
-.game-list-container {
-  margin-top: 30px;
-}
-
-.games-list-title {
-  color: white;
-  font: bold;
+  font-weight: bold; /* Changed from 'font: bold' */
   font-size: 30px;
   margin-left: 20px;
 }
 
 .games-list {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  ); /* Adjust 250px as needed */
-  gap: 10px; /* Space between items */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px; /* Increased gap for better spacing */
 }
 
 .games-list-container {
-  background-color: #f9f9f943; /* Optional: Add background color */
-  padding: 10px; /* Optional: Add padding */
-  border: 1px solid #ddd; /* Optional: Add border */
-  border-radius: 8px; /* Optional: Add border radius */
+  background-color: #282c34; /* Darker background for better contrast */
+  padding: 20px; /* Increased padding for better spacing */
+  border: 1px solid #444; /* Darker border for better contrast */
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow */
-  margin-left: 5px; /* Add margin to the left */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger box shadow */
   color: white;
+  text-align: center; /* Center text for better readability */
+  transition: transform 0.3s; /* Add transition for hover effect */
+}
+
+.games-list-container:hover {
+  transform: scale(1.05); /* Slight scale up on hover for better interactivity */
 }
 
 .games-image {
   width: 100%;
-  height: 200px; /* Fixed height */
-  object-fit: cover; /* Ensures image covers the container without distortion */
-  border-radius: 4px; /* Optional: Add border radius to image */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px; /* Increased border radius */
+  margin-bottom: 15px; /* Added margin bottom */
 }
 
 .review-tag {
-  background-color: yellow;
-  padding: 2px 5px;
-  border-radius: 3px;
-  margin-left: 8px; /* Add some margin for better spacing */
+  background-color: #ffd700; /* Changed to gold for better visibility */
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 8px;
+  font-weight: bold; /* Make the review tag text bold */
 }
+
+
 
 /*TrendingGames*/
 
