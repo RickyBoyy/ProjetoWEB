@@ -152,21 +152,26 @@ const CreateEvent = () => {
                       />
                     </div>
                   </div>
-                  <div className="description_stat">
-                    <label htmlFor="description" className="description_label">Description:</label>
-                    <textarea
-                      id="description"
-                      value={description}
-                      onChange={handleDescriptionChange}
-                      required
-                    />
-                  </div>
                 </div>
               </div>
             </div>
-            <div className="submit_button">
-              <button type="submit">Create Event</button>
-            </div>
+          </div>
+        </div>
+        <div className="any_description">
+          <label htmlFor="eventDescription">Event Description:</label>
+          <textarea
+            name="eventDescription"
+            placeholder="Describe your event here"
+            rows="5"
+            cols="50"
+          ></textarea>
+          <div className="create_event_buttons">
+            <button type="submit" onClick={handleSubmit}>
+              Save Event
+            </button>
+            <button type="reset" onClick={redirectToHome}>
+              Cancel
+            </button>
           </div>
         </div>
       </form>

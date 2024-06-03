@@ -71,3 +71,33 @@
   align-items: center;
   font-size: larger;
 }
+
+#score {
+  display: block;
+  margin-top: 10px;
+  padding: 5px;
+  width: 100%;
+  max-width: 200px;
+
+  font-family: "TT Firs Neue", monospace;
+
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.score-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.score-radio-group label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.score-radio-group input[type="radio"] {
+  margin-right: 5px;
+}

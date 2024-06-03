@@ -16,12 +16,11 @@ const AuthProvider = ({ children }) => {
       console.error('Error fetching user from local storage:', error);
     }
   }, []);
-  
-  
-  const loginUser = (userData) => { // Corrected function name to "login"
+
+  const loginUser = (userData) => {
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
-  }
+  };
 
   const logout = () => {
     console.log('User logged out');

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { format } from "date-fns";
 import "../styles/event_specific.css";
 
 const Event = () => {
   const { eventId } = useParams();
   const [event, setEvent] = useState(null);
+  const [locationName, setLocationName] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,7 +18,11 @@ const Event = () => {
           throw new Error("Failed to fetch event details");
         }
         const data = await response.json();
+        console.log("Fetched event data:", data); // Debug log
         setEvent(data);
+
+        const location = await fetchLocationName(data.event_location);
+        setLocationName(location);
       } catch (error) {
         setError("Error fetching event details: " + error.message);
       } finally {
@@ -27,8 +33,38 @@ const Event = () => {
     fetchEvent();
   }, [eventId]);
 
+  const fetchLocationName = async (location) => {
+    const coords = location.match(/POINT\(([^)]+)\)/)[1].split(" ");
+    const [longitude, latitude] = coords;
+
+    const apiKey = 'AIzaSyAQM1pFqrpXSOfn8nzKmb8o3lV0Tmw6rQs';
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch location name");
+    }
+
+    const data = await response.json();
+    if (data.results && data.results.length > 0) {
+      return data.results[0].formatted_address;
+    } else {
+      return "Unknown Location";
+    }
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+  if (!event) return <div>No event data available</div>;
+
+  const eventDate = new Date(event.event_time);
+  const formattedDate = format(eventDate, "dd-MM-yyyy 'às' HH:mm");
+  const month = format(eventDate, "MMM").toLowerCase();
+  const day = format(eventDate, "dd");
+
+  const eventImageURL = event.event_img ? `http://localhost:4000/${event.event_img}` : "https://via.placeholder.com/150x150";
+  console.log("Event image URL:", eventImageURL); // Debug log
 
   return (
     <div className="page-event">
@@ -47,9 +83,9 @@ const Event = () => {
                   <tbody>
                     <tr>
                       <td>
-                        <div className="month">jan</div>
+                        <div className="month">{month}</div>
                         <div className="month-date-devider"></div>
-                        <div className="date">27</div>
+                        <div className="date">{day}</div>
                       </td>
                       <td className="title">Event Title</td>
                     </tr>
@@ -58,7 +94,7 @@ const Event = () => {
               </div>
               <div className="col-lg-5 sec-2">
                 <img
-                  src={event.event_image ? `http://localhost:4000/${event.event_image}` : "https://via.placeholder.com/150x150"}
+                  src={eventImageURL}
                   alt="Event"
                   className="event-image"
                 />
@@ -73,7 +109,7 @@ const Event = () => {
                           <i className="fa fa-map-marker"></i>
                         </td>
                         <td>
-                          <div>{event.event_location}</div>
+                          <div>{locationName}</div>
                           <div className="dim-color">
                             <a href="https://www.google.co.in" target="_blank" rel="noopener noreferrer">
                               Get Directions
@@ -92,7 +128,7 @@ const Event = () => {
                           <i className="fa fa-clock-o"></i>
                         </td>
                         <td>
-                          <div>{event.event_time}</div>
+                          <div>{formattedDate}</div>
                           <div
                             data-livestamp="1517054400"
                             className="dim-color"

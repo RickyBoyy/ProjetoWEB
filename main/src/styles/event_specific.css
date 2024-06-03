@@ -17,6 +17,13 @@
   margin-top: 30px;
 }
 
+.event-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Maintains aspect ratio and fills the container */
+  border-radius: 8px; /* Optional: to add some rounded corners */
+}
+
 .cover .heading {
   font-family: "TT Firs Neue";
   font-size: 243px;

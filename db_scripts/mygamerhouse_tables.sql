@@ -35,6 +35,17 @@ CREATE TABLE tag_game (
   CONSTRAINT tag_game_fk_tags FOREIGN KEY (tag_game_id) REFERENCES tags(tag_id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
+Create table Events (
+  event_id SERIAL PRIMARY key,
+  event_name VARCHAR(50) not null,
+  event_img text,
+  event_location geometry,
+  event_time Timestamp,
+  event_description text,
+  event_user_id int not null,
+  CONSTRAINT event_fk_user FOREIGN key (event_user_id) REFERENCES "user"(user_id)
+
+);
 
 CREATE TABLE community (
   community_id SERIAL PRIMARY KEY,

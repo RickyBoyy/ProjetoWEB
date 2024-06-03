@@ -64,13 +64,13 @@ const Header = () => {
   const redirectTo = (path) => {
     navigate(path);
   };
+
   const redirectToGameList = (genreId) => {
     navigate(`/gamelist/${genreId}`);
   };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  
 
   return (
     <header className="header">
@@ -82,33 +82,37 @@ const Header = () => {
       <div className="genre-dropbar">
         <button className="dropbtn">Genres</button>
         <div className="dropdown-content">
-        {genreList.map((item) => (
-              <div
-                className="image-item-wrapper"
-                key={item.id}
-                onClick={() => redirectToGameList(item.id)}
-              >
-                <p className="genre-name">{item.name}</p>
-              </div>
-            ))}
+          {genreList.map((item) => (
+            <div
+              className="image-item-wrapper"
+              key={item.id}
+              onClick={() => redirectToGameList(item.id)}
+            >
+              <p className="genre-name">{item.name}</p>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="create-community-container">
-        <button
-          className="create-community-button"
-          onClick={() => redirectTo("/create_community")}
-        >
-          Create Community
-        </button>
-      </div>
-      <div className="create-event-container">
-        <button
-          className="create-event-button"
-          onClick={() => redirectTo("/create_event")}
-        >
-          Create Event
-        </button>
-      </div>
+      {user && (
+        <div className="create-community-container">
+          <button
+            className="create-community-button"
+            onClick={() => redirectTo("/create_community")}
+          >
+            Create Community
+          </button>
+        </div>
+      )}
+      {user && (
+        <div className="create-event-container">
+          <button
+            className="create-event-button"
+            onClick={() => redirectTo("/create_event")}
+          >
+            Create Event
+          </button>
+        </div>
+      )}
       <div className="search-container">
         <form onSubmit={handleSearch}>
           <input
@@ -142,21 +146,22 @@ const Header = () => {
         )}
       </div>
       <div className="login-container">
-        {user ? (
-          <>
-            <button className="profile-button" onClick={() => redirectTo("/profile")}>
-              Profile
-            </button>
-            <button className="logout-button" onClick={logout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <button className="login-button" onClick={() => redirectTo("/login")}>
-            Login
-          </button>
-        )}
-      </div>
+  {user ? (
+    <>
+      <button className="login-button" onClick={() => redirectTo(`/profile/${user.user_id}`)}>
+        Profile
+      </button>
+      <button className="login-button" onClick={logout}>
+        Logout
+      </button>
+    </>
+  ) : (
+    <button className="login-button" onClick={() => redirectTo("/login")}>
+      Login
+    </button>
+  )}
+</div>
+
     </header>
   );
 };

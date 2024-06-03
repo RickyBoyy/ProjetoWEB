@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { useParams } from 'react-router-dom';
 import GlobalApi from "../Services/GlobalApi";
 import profilePic from "../images/1547006.jpg";
@@ -10,6 +10,8 @@ const Game = () => {
   const [gameDetails, setGameDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const textareaRef = useRef(null);
+  const [score, setScore] = useState("");
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -26,8 +28,22 @@ const Game = () => {
     fetchGameDetails();
   }, [id]);
 
+  const redirectToHome = () => {
+    window.location.href = "/";
+  };
+
   const redirectToReviewsFromGames = () => {
     window.location.href = "/reviews";
+  };
+
+  const handleReset = () => {
+    if (textareaRef.current) {
+      textareaRef.current.value = "";
+    }
+    setScore("");
+  };
+  const handleScoreChange = (event) => {
+    setScore(event.target.value);
   };
 
   const redirectToVideosFromGames = () => {
@@ -63,6 +79,33 @@ const Game = () => {
       </div>
       <div className="linha-horizontal"></div>
       <h1 className="Reviews-title">Reviews</h1>
+      <div className="any_description" style={{ marginLeft: "160px" }}>
+        <label htmlFor="eventDescription">Write your review:</label>
+        <select id="score" value={score} onChange={handleScoreChange}>
+          <option value="">Select a score</option>
+          {[...Array(10)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
+        </select>
+        <textarea
+          ref={textareaRef}
+          name="eventDescription"
+          placeholder="Tell us your review!!"
+          rows="5"
+          cols="50"
+          style={{ width: "83vw" }}
+        ></textarea>
+        <div className="create_event_buttons">
+          <button type="submit" onClick={redirectToHome}>
+            Save Review
+          </button>
+          <button type="reset" onClick={handleReset}>
+            Reset
+          </button>
+        </div>
+      </div>
       <div className="container">
         <div className="card_review">
           <div className="user-info">
@@ -109,8 +152,9 @@ const Game = () => {
                 rating and the user-info.
               </p>
             </div>
-            <h5 className="score">8/10</h5>
+           
           </div>
+          <h5 className="score">8/10</h5>
         </div>
         <div className="button_for_more">
           <button

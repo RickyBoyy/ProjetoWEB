@@ -9,37 +9,63 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [displayname, setDisplayName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Frontend validation
+    if (username.trim() === "") {
+      alert("Username cannot be empty");
+      return;
+    }
+    if (displayname.trim() === "") {
+      alert("Display name cannot be empty");
+      return;
+    }
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long");
+      return;
+    }
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
-    } else {
-      try {
-        const response = await fetch("http://localhost:4000/adduser", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_name: username,
-            user_email: email,
-            user_password: password,
-            user_displayname: displayname,
-          }),
-        });
+      return;
+    }
 
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("http://localhost:4000/adduser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_name: username,
+          user_email: email,
+          user_password: password,
+          user_displayname: displayname,
+        }),
+      });
+
+      const contentType = response.headers.get("content-type");
+
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        const data = await response.json();
         if (response.ok) {
           alert("Registration successful!");
           window.location.href = "/tags";
         } else {
-          const errorData = await response.json();
-          alert(`Registration failed: ${errorData.error}`);
+          alert(`Registration failed: ${data.errors ? data.errors.map(e => e.msg).join(', ') : data.error}`);
         }
-      } catch (error) {
-        alert(`Registration failed: ${error.message}`);
+      } else {
+        const errorText = await response.text();
+        alert(`Registration failed: ${errorText}`);
       }
+    } catch (error) {
+      alert(`Registration failed: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -62,6 +88,7 @@ const SignIn = () => {
                 maxLength="12"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
               />
             </div>
             <div className="textfield_email">
@@ -72,6 +99,7 @@ const SignIn = () => {
                 placeholder="E-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="textfield_displayname">
@@ -82,6 +110,7 @@ const SignIn = () => {
                 placeholder="Display Name"
                 value={displayname}
                 onChange={(e) => setDisplayName(e.target.value)}
+                required
               />
             </div>
             <div className="textfield_register_password">
@@ -92,6 +121,7 @@ const SignIn = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div className="textfield_confirm_password">
@@ -102,10 +132,11 @@ const SignIn = () => {
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required
               />
             </div>
-            <button type="submit" className="btn_register">
-              Register
+            <button type="submit" className="btn_register" disabled={isSubmitting}>
+              {isSubmitting ? "Registering..." : "Register"}
             </button>
           </form>
           <div className="reference_signin">

@@ -35,6 +35,7 @@ const CreateCommunity = () => {
       reader.readAsDataURL(file);
     }
   };
+
   const redirectToHome = () => {
     window.location.href = "/";
   };
@@ -56,17 +57,17 @@ const CreateCommunity = () => {
     if (error) {
       return;
     }
-  
+
     const formData = new FormData();
     formData.append('communityName', communityName);
     formData.append('communityDescription', communityDescription);
     formData.append('communityUserId', '1'); // Example user ID
     formData.append('communityImage', communityImage);
-  
+
     try {
       const response = await axios.post('http://localhost:4000/create-community', formData);
       console.log(response.data);
-  
+
       // Assuming response.data contains the saved community data including the image path
       if (response.data.communityImage) {
         setPreviewUrl(`http://localhost:4000/uploads/${response.data.communityImage}`);
@@ -85,8 +86,8 @@ const CreateCommunity = () => {
         </div>
 
         <div className="create_community_essentials">
-          <form onSubmit={handleFormSubmit}>
-            <div className="imag_community">
+          <form className="imag_community" onSubmit={handleFormSubmit}>
+            
               <label htmlFor="community_img">Your community profile...</label>
               <input
                 type="file"
@@ -95,13 +96,13 @@ const CreateCommunity = () => {
                 className="create_community"
                 id="community_image_input"
                 onChange={previewImage}
-              ></input>
+              />
               <img
                 id="community_image_preview"
                 src={previewUrl}
                 alt="community_profile"
               />
-            </div>
+            
             {error && <div className="error_message">{error}</div>}
             <div className="createCommunity_textEssentials">
               <div className="card_create_community">
@@ -119,7 +120,8 @@ const CreateCommunity = () => {
                     placeholder="Here!!"
                     value={communityName}
                     onChange={(e) => setCommunityName(e.target.value)}
-                  ></input>
+                    required
+                  />
                 </div>
                 <div className="community_description_essential">
                   <label
@@ -137,24 +139,19 @@ const CreateCommunity = () => {
                       setCommunityDescription(e.target.value);
                       handleTextareaChange();
                     }}
-                  ></textarea>
+                    required
+                  />
                 </div>
-                <button type="submit">Create Community</button>
+              </div>
+              <div className="create_community_buttons">
+                <button type="submit">Save Community</button>
+                <button type="button" onClick={redirectToHome}>Cancel</button>
               </div>
             </div>
           </form>
-            <div className="create_community_buttons">
-              <button type="submit" onClick={redirectToHome}>
-                Save Event
-              </button>
-              <button type="reset" onClick={redirectToHome}>
-                Cancel
-              </button>
-            </div>
-          </div>
         </div>
       </div>
-    
+    </div>
   );
 };
 
