@@ -53,8 +53,8 @@ const SignIn = () => {
       if (contentType && contentType.indexOf("application/json") !== -1) {
         const data = await response.json();
         if (response.ok) {
-          alert("Registration successful!");
-          window.location.href = "/tags";
+          
+          window.location.href = "/";
         } else {
           alert(`Registration failed: ${data.errors ? data.errors.map(e => e.msg).join(', ') : data.error}`);
         }

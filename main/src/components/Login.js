@@ -26,7 +26,7 @@ const Login = () => {
 
       if (response.ok) {
         const userData = await response.json(); // Assuming server responds with user data
-        alert("Login successful!");
+        
         loginUser(userData); // Update user state in context
         window.location.href = "/"; // Redirect to home page
       } else {
