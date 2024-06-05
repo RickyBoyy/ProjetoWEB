@@ -5,10 +5,10 @@ const apiKey = "d0ee56e7217a47749aabaee06fcfc3f1";
 const baseURL = 'https://api.rawg.io/api';
 
 const axiosInstance = axios.create({
-    baseURL: baseURL,
-    params: {
-        key: apiKey
-    }
+  baseURL: baseURL,
+  params: {
+    key: apiKey
+  }
 });
 
 // Helper function to log errors
@@ -85,7 +85,7 @@ const searchSuggestions = async (query) => {
     const response = await axiosInstance.get('/games', {
       params: {
         search: query,
-        page_size: 5  // Limitar o número de sugestões
+        page_size: 5  // Limiting the number of suggestions
       }
     });
     return response.data;
@@ -105,11 +105,34 @@ const getGameDetailsById = async (id) => {
   }
 };
 
-export default {
+const GlobalApi = {
   getGenreList,
   getGames,
   getGameListByGenreId,
   searchGames,
   searchSuggestions,
-  getGameDetailsById
+  getGameDetailsById,
+  getReviewsByGameId: async (id) => {
+    const response = await fetch(`http://localhost:4000/reviews/${id}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  },
+  createReview: async (review) => {
+    const response = await fetch('http://localhost:4000/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(review)
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  }
+
 };
+
+export default GlobalApi;

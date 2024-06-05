@@ -136,6 +136,32 @@ app.use((req, res, next) => {
     next();
 });
 
+app.post('/reviews', async (req, res) => {
+    const { review_description, review_rating, user_id, game_id } = req.body;
+    try {
+      const result = await pool.query(
+        'INSERT INTO reviews (review_description, review_rating, user_id, game_id) VALUES ($1, $2, $3, $4) RETURNING *',
+        [review_description, review_rating, user_id, game_id]
+      );
+      res.status(201).json(result.rows[0]);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+  // Endpoint to get reviews for a specific game
+  app.get('/reviews/:gameId', async (req, res) => {
+    const { gameId } = req.params;
+    try {
+      const result = await pool.query('SELECT * FROM reviews WHERE game_id = $1', [gameId]);
+      res.status(200).json(result.rows);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 // Middleware for error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
@@ -146,26 +172,26 @@ app.use((err, req, res, next) => {
 app.post("/adduser", [
     body('user_name').notEmpty().withMessage('Username is required'),
     body('user_email').isEmail().withMessage('Email is not valid'),
-    body('user_password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
+    body('user_password').isLength({ min: 6 }).withMessage('Passwor d must be at least 6 characters long'),
     body('user_displayname').notEmpty().withMessage('Display name is required')
-  ], async (req, res) => {
+], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ errors: errors.array() });
     }
-  
+
     try {
-      const { user_name, user_email, user_password, user_displayname } = req.body;
-      const hashedPassword = await bcrypt.hash(user_password, 10);
-      const query = `INSERT INTO "user" (user_name, user_email, user_password, user_displayname) VALUES ($1, $2, $3, $4) RETURNING *`;
-      const result = await pool.query(query, [user_name, user_email, hashedPassword, user_displayname]);
-      res.status(201).json({ message: "User added successfully", user: result.rows[0] });
+        const { user_name, user_email, user_password, user_displayname } = req.body;
+        const hashedPassword = await bcrypt.hash(user_password, 10);
+        const query = `INSERT INTO "user" (user_name, user_email, user_password, user_displayname) VALUES ($1, $2, $3, $4) RETURNING *`;
+        const result = await pool.query(query, [user_name, user_email, hashedPassword, user_displayname]);
+        res.status(201).json({ message: "User added successfully", user: result.rows[0] });
     } catch (error) {
-      console.error("Error adding user:", error);
-      res.status(500).json({ error: "Internal server error" });
+        console.error("Error adding user:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-  });
-  
+});
+
 // Fetch user profile by user_id
 app.get('/profile/:user_id', async (req, res) => {
     const userId = req.params.user_id;
@@ -343,7 +369,7 @@ app.get('/events/:id', async (req, res) => {
 // Fetch all events
 app.get('/events', async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM events');
+        const result = await pool.query('SELECT event_id, event_name, ST_AsText(event_location) as event_location, event_time, event_description, event_user_id, event_img FROM events');
         res.status(200).json(result.rows);
     } catch (error) {
         console.error('Error fetching events:', error);

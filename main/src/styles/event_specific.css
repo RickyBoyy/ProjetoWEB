@@ -37,6 +37,15 @@
   transition: font-size 0.3s;
 }
 
+.directions-btn{
+  padding: 5px 10px;
+  background-color: #333; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+  border: none;
+  border-radius: 5px; /* Adjust as needed */
+  cursor: pointer;
+}
+
 .cover .heading::first-letter {
   color: #652ec7;
 }

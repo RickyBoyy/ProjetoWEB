@@ -18,10 +18,11 @@ const Event = () => {
           throw new Error("Failed to fetch event details");
         }
         const data = await response.json();
-        console.log("Fetched event data:", data); // Debug log
         setEvent(data);
 
-        const location = await fetchLocationName(data.event_location);
+        const { latitude, longitude } = await fetchCoordinates(data.event_location);
+
+        const location = await fetchLocationName(latitude, longitude);
         setLocationName(location);
       } catch (error) {
         setError("Error fetching event details: " + error.message);
@@ -33,11 +34,19 @@ const Event = () => {
     fetchEvent();
   }, [eventId]);
 
-  const fetchLocationName = async (location) => {
-    const coords = location.match(/POINT\(([^)]+)\)/)[1].split(" ");
-    const [longitude, latitude] = coords;
+  const fetchCoordinates = async (location) => {
+    const match = location.match(/POINT\(([^)]+)\)/);
+    if (!match) {
+        throw new Error("Formato de localização inválido");
+    }
 
-    const apiKey = 'AIzaSyAQM1pFqrpXSOfn8nzKmb8o3lV0Tmw6rQs';
+    const coords = match[1].split(" ");
+    return { latitude: coords[1], longitude: coords[0] }; // Revertendo a ordem das coordenadas
+};
+
+
+  const fetchLocationName = async (latitude, longitude) => {
+    const apiKey = 'AIzaSyAVcNMQUzkUOyrTdetXMPQ7jKqA6BnEMrQ';
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`
     );
@@ -47,12 +56,20 @@ const Event = () => {
     }
 
     const data = await response.json();
+
     if (data.results && data.results.length > 0) {
       return data.results[0].formatted_address;
     } else {
       return "Unknown Location";
     }
-  };
+};
+
+const handleGetDirections = () => {
+  const locationQuery = encodeURIComponent(locationName); // Encode o nome da localização para ser seguro na URL
+  const googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${locationQuery}`;
+  window.open(googleMapsURL, "_blank"); // Abre o Google Maps em uma nova aba
+};
+
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -64,7 +81,6 @@ const Event = () => {
   const day = format(eventDate, "dd");
 
   const eventImageURL = event.event_img ? `http://localhost:4000/${event.event_img}` : "https://via.placeholder.com/150x150";
-  console.log("Event image URL:", eventImageURL); // Debug log
 
   return (
     <div className="page-event">
@@ -87,7 +103,7 @@ const Event = () => {
                         <div className="month-date-devider"></div>
                         <div className="date">{day}</div>
                       </td>
-                      <td className="title">Event Title</td>
+                      <td className="title">{event.event_name}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -111,9 +127,7 @@ const Event = () => {
                         <td>
                           <div>{locationName}</div>
                           <div className="dim-color">
-                            <a href="https://www.google.co.in" target="_blank" rel="noopener noreferrer">
-                              Get Directions
-                            </a>
+                          <button className="directions-btn" onClick={handleGetDirections}>Get Directions</button>
                           </div>
                         </td>
                       </tr>
@@ -129,26 +143,13 @@ const Event = () => {
                         </td>
                         <td>
                           <div>{formattedDate}</div>
-                          <div
-                            data-livestamp="1517054400"
-                            className="dim-color"
-                          ></div>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div className="sort-story">{event.event_description}</div>
-                <div className="group-of-btn">
-                  <a
-                    href="https://www.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn book-ticket"
-                  >
-                    Book Your Entry Pass
-                  </a>
-                </div>
+                
               </div>
             </div>
           </div>

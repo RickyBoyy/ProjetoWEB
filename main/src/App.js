@@ -44,7 +44,7 @@ function App() {
             <Route path="/events/:eventId" element={<EventPage />} />
             <Route path="/create_community" element={<CreateCommunityPage />} />
             <Route path="/maps" element={<MapPage />} />
-            <Route path="/reviews" element={<ReviewsPage />} />
+            <Route path="/reviews/:id" element={<ReviewsPage />} />
             <Route path="/gamelist/:genreId" element={<GameListPage />} />
             <Route path="/community/:communityId" element={<CommunityPage />} />
             <Route path="/charts" element={<ChartsPage />} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from 'react-router-dom';
 import GlobalApi from "../Services/GlobalApi";
 import profilePic from "../images/1547006.jpg";
@@ -10,8 +10,14 @@ const Game = () => {
   const [gameDetails, setGameDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const textareaRef = useRef(null);
   const [score, setScore] = useState("");
+  const [reviewDescription, setReviewDescription] = useState("");
+
+  const redirectToReviewsFromGames = () => {
+    window.location.href = `/reviews/${id}`;
+  };
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -24,16 +30,32 @@ const Game = () => {
         setLoading(false);
       }
     };
-
+  
+    const fetchReviews = async () => {
+      try {
+        const response = await GlobalApi.getReviewsByGameId(id);
+        setReviews(response);
+      } catch (error) {
+        setError('Error fetching reviews');
+      }
+    };
+  
     fetchGameDetails();
+    fetchReviews();
   }, [id]);
-
-  const redirectToHome = () => {
-    window.location.href = "/";
+  
+  const calculateAverageRating = () => {
+    if (reviews.length === 0) return "?";
+    const totalRating = reviews.reduce((acc, review) => acc + review.review_rating, 0);
+    return (totalRating / reviews.length).toFixed(1); // Rounded to one decimal place
   };
 
-  const redirectToReviewsFromGames = () => {
-    window.location.href = "/reviews";
+  const handleScoreChange = (event) => {
+    setScore(event.target.value);
+  };
+
+  const handleReviewDescriptionChange = (event) => {
+    setReviewDescription(event.target.value);
   };
 
   const handleReset = () => {
@@ -41,18 +63,34 @@ const Game = () => {
       textareaRef.current.value = "";
     }
     setScore("");
-  };
-  const handleScoreChange = (event) => {
-    setScore(event.target.value);
+    setReviewDescription("");
   };
 
-  const redirectToVideosFromGames = () => {
-    window.location.href = "/videos";
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const userId = 1; // Replace with actual user ID
+      const newReview = {
+        review_description: reviewDescription,
+        review_rating: parseInt(score),
+        user_id: userId,
+        game_id: parseInt(id)
+      };
+      await GlobalApi.createReview(newReview);
+      handleReset();
+      // Fetch updated reviews
+      const response = await GlobalApi.getReviewsByGameId(id);
+      setReviews(response);
+    } catch (error) {
+      setError('Error saving review');
+    }
   };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!gameDetails) return <div>No game details found</div>;
+
+  const averageRating = calculateAverageRating();
 
   return (
     <div className="Game_Page">
@@ -69,7 +107,7 @@ const Game = () => {
           <div className="game_profile">
             <div className="upper_game">
               <h2 className="name_overall">Overall Rating:</h2>
-              <span className="rating">{gameDetails.rating}/5</span>
+              <span className="rating">{averageRating}/10</span>
             </div>
             <div className="description">
               <p>{gameDetails.description_raw}</p>
@@ -92,13 +130,15 @@ const Game = () => {
         <textarea
           ref={textareaRef}
           name="eventDescription"
+          value={reviewDescription}
+          onChange={handleReviewDescriptionChange}
           placeholder="Tell us your review!!"
           rows="5"
           cols="50"
           style={{ width: "83vw" }}
         ></textarea>
         <div className="create_event_buttons">
-          <button type="submit" onClick={redirectToHome}>
+          <button type="submit" onClick={handleSubmit}>
             Save Review
           </button>
           <button type="reset" onClick={handleReset}>
@@ -107,55 +147,30 @@ const Game = () => {
         </div>
       </div>
       <div className="container">
-        <div className="card_review">
-          <div className="user-info">
-            <img
-              src={profilePic}
-              alt="user_profile_picture"
-              style={{
-                width: "150px",
-                height: "150px",
-                borderRadius: "50%",
-                marginRight: "10px",
-              }}
-            />
-            <h4>User Display Name</h4>
-          </div>
-          <div className="review_content">
-            <div className="review_part">
-              <p>
-                The review will go here and occupy the middle space between the
-                rating and the user-info.
-              </p>
+        {reviews.slice(0, 2).map((review) => ( // Displaying only the first two reviews
+          <div className="card_review" key={review.review_id}>
+            <div className="user-info">
+              <img
+                src={profilePic}
+                alt="user_profile_picture"
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  borderRadius: "50%",
+                  marginRight: "10px",
+                }}
+              />
+              <h4>User Display Name</h4>
             </div>
-          </div>
-          <h5 className="score">8/10</h5>
-        </div>
-        <div className="card_review">
-          <div className="user-info">
-            <img
-              src={profilePic}
-              alt="user_profile_picture"
-              style={{
-                width: "150px",
-                height: "150px",
-                borderRadius: "50%",
-                marginRight: "10px",
-              }}
-            />
-            <h4>User Display Name</h4>
-          </div>
-          <div className="review_content">
-            <div className="review_part">
-              <p>
-                The review will go here and occupy the middle space between the
-                rating and the user-info.
-              </p>
+            <div className="review_content">
+              <div className="review_part">
+                <p>{review.review_description}</p>
+              </div>
             </div>
-           
+            <h5 className="score">{review.review_rating}/10</h5>
           </div>
-          <h5 className="score">8/10</h5>
-        </div>
+        ))}
+        {/* Button for navigation */}
         <div className="button_for_more">
           <button
             className="the_button"

@@ -14,7 +14,7 @@ function GamesByGenreId({ genre, gamesList }) {
           <Link to={`/games/${item.id}`} key={item.id} className="games-list-container">
             <img src={item.background_image} className="games-image" alt={item.name} />
             <h2>{item.name} <span className="review-tag">{item.metacritic}</span></h2>
-            <h2>⭐{item.rating}💬{item.reviews_count}🔥{item.suggestions_count}</h2>
+            <h2>⭐{item.rating}💬{item.reviews_count}</h2>
           </Link>
         ))}
       </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState,useRef } from "react";
 import axios from 'axios';
 import "../App.css";
 import { AuthContext } from "../Contexts/AuthContext";
@@ -7,6 +7,7 @@ import profilePicPlaceholder from "../images/1547006.jpg";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
+  const fileInputRef = useRef(null);
   const [profile, setProfile] = useState({
     user_displayname: '',
     profile_pic: '',
@@ -85,6 +86,17 @@ const Profile = () => {
     }
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfile(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   if (!user) return <div>Loading...</div>;
 
   return (
@@ -92,8 +104,9 @@ const Profile = () => {
       <form onSubmit={handleSubmit}>
         <div className="left-profile">
           <div className="profile-header">
+          <label htmlFor="profilePicInput">
             <img
-              src={preview}
+              src={profile || "https://via.placeholder.com/70x70"}
               alt="user_profile_picture"
               style={{
                 width: "70px",
@@ -102,6 +115,15 @@ const Profile = () => {
                 marginRight: "10px",
               }}
             />
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            id="profilePicInput"
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+            ref={fileInputRef}
+          />
             <div className="profile-text">
               <h2>{profile.user_displayname || 'Display Name'}</h2>
               <div className="tags">
