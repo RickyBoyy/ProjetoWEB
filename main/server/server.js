@@ -128,7 +128,14 @@ const axiosInstance = axios.create({
 });
 
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+    origin: 'https://6661c5137d1f5f04a3c78cb5--resonant-torte-2563a6.netlify.app/', // Substitua pela URL do seu site no Netlify
+    optionsSuccessStatus: 200
+  };
+  
+  app.use(cors(corsOptions));
+  
 
 // Middleware for logging requests
 app.use((req, res, next) => {
