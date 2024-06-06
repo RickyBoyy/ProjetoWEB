@@ -130,7 +130,7 @@ const axiosInstance = axios.create({
 app.use(express.json());
 
 const corsOptions = {
-    origin: 'https://6661c5137d1f5f04a3c78cb5--resonant-torte-2563a6.netlify.app/', // Substitua pela URL do seu site no Netlify
+    origin: 'https://6661c5d399627503c0ad400e--magnificent-dango-f326a4.netlify.app/', // Substitua pela URL do seu site no Netlify
     optionsSuccessStatus: 200
   };
   
