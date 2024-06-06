@@ -138,10 +138,17 @@ const corsOptions = {
   
 
 // Middleware for logging requests
+
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();
 });
+
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
+
+
 
 app.post('/reviews', async (req, res) => {
     const { review_description, review_rating, user_id, game_id } = req.body;
