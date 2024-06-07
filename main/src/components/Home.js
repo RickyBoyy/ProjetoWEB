@@ -2,22 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import GlobalApi from "../Services/GlobalApi";
 import { AuthContext } from "../Contexts/AuthContext";
-
-
-import * as am5 from "@amcharts/amcharts5";
-import * as am5xy from "@amcharts/amcharts5/xy";
-import * as am5percent from "@amcharts/amcharts5/percent";
-import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import { Root, color, themes } from "@amcharts/amcharts5";
-import {
-  ColumnSeries,
-  XYChart,
-  CategoryAxis,
-  ValueAxis,
-} from "@amcharts/amcharts5/xy";
-import AnimatedTheme from "@amcharts/amcharts5/themes/Animated";
-import { Tooltip } from "@amcharts/amcharts5";
-
 import "../styles/home.css";
 import "../styles/footer.css";
 
@@ -72,12 +56,12 @@ const Home = () => {
       try {
         const response = await fetch("https://projetoweb-13.onrender.com/events");
         if (!response.ok) {
-          throw new Error("Failed to fetch communities");
+          throw new Error("Failed to fetch events");
         }
         const data = await response.json();
         setEvents(data);
       } catch (error) {
-        console.error("Error fetching communities:", error);
+        console.error("Error fetching events:", error);
       }
     };
 
@@ -117,24 +101,17 @@ const Home = () => {
     fetchSearchResults();
   }, [searchQuery]);
 
-
-  // Inside the useEffect block where you create the chart
-
-  
-
   const redirectToGameList = (genreId) => {
     navigate(`/gamelist/${genreId}`);
-  };  
+  };
 
-  const redirectToCommunities = (communityId) => {
-    navigate(`/communities/${communityId}`);
+  const redirectToCommunities = () => {
+    navigate(`/communities`);
   };
 
   const redirectToEvent = (eventId) => {
     navigate(`/events/${eventId}`);
   };
-
- 
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -214,7 +191,7 @@ const Home = () => {
         </div>
 
         <div className="button_for_more">
-          <button className="the_button" onClick={redirectToGameList}>
+          <button className="the_button" onClick={() => redirectToGameList()}>
             See more
           </button>
         </div>
@@ -224,30 +201,24 @@ const Home = () => {
         <h1 className="section-title">Communities</h1>
         <div className="slider-wrapper">
           <div className="image-list">
-            {communities &&
-              communities.map((community) => {
-                // Construct the image URL
-                const imageUrl = `https://projetoweb-13.onrender.com/${community.community_image}`;
-
-                // Log the URL to the console for debugging
-                console.log("Community Image URL:", imageUrl);
-
-                return (
-                  <div
-                    key={community.community_id}
-                    className="image-item-wrapper"
-                  >
-                    <Link to={`/community/${community.community_id}`}>
-                      <img
-                        src={imageUrl}
-                        alt={community.community_name}
-                        className="image-item"
-                      />
-                      <p className="item-name">{community.community_name}</p>
-                    </Link>
-                  </div>
-                );
-              })}
+            {communities.map((community) => {
+              const imageUrl = `https://projetoweb-13.onrender.com/${community.community_image}`;
+              return (
+                <div
+                  key={community.community_id}
+                  className="image-item-wrapper"
+                >
+                  <Link to={`/community/${community.community_id}`}>
+                    <img
+                      src={imageUrl}
+                      alt={community.community_name}
+                      className="image-item"
+                    />
+                    <p className="item-name">{community.community_name}</p>
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="button_for_more">
@@ -258,23 +229,11 @@ const Home = () => {
       </section>
 
       <section className="home-section">
-      <h1 className="section-title">Events</h1>
-      <div className="slider-wrapper">
-        <div className="image-list">
-          {events &&
-            events.map((event) => {
-              // Construct the image URL
+        <h1 className="section-title">Events</h1>
+        <div className="slider-wrapper">
+          <div className="image-list">
+            {events.map((event) => {
               const imageUrl = `https://projetoweb-13.onrender.com/${event.event_img}`;
-
-              // Log the URL to the console for debugging
-              console.log("Event Image URL:", imageUrl);
-
-              // Check if image URL is valid
-              const img = new Image();
-              img.src = imageUrl;
-              img.onload = () => console.log(`${imageUrl} loaded successfully`);
-              img.onerror = () => console.error(`${imageUrl} failed to load`);
-
               return (
                 <div key={event.event_id} className="image-item-wrapper">
                   <Link to={`/events/${event.event_id}`}>
@@ -288,10 +247,9 @@ const Home = () => {
                 </div>
               );
             })}
+          </div>
         </div>
-      </div>
-    </section>
-  
+      </section>
     </div>
   );
 };

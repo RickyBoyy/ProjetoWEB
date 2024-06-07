@@ -12,7 +12,7 @@ const Community = () => {
     useEffect(() => {
       const fetchCommunity = async () => {
         try {
-          const response = await fetch(`https://projetoweb-13.onrender.com/${communityId}`);
+          const response = await fetch(`https://projetoweb-13.onrender.com/community/${communityId}`);
           const data = await response.json();
           setCommunity(data);
           setLoading(false);
