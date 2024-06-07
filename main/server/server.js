@@ -442,16 +442,7 @@ app.post("/login", [
     }
 });
 
-// Get games route
-app.get('/games', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT game_name, game_genre, game_price FROM games_genre');
-        res.json(result.rows);
-    } catch (error) {
-        console.error('Error fetching games:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
+
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
