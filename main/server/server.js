@@ -144,7 +144,7 @@ app.get('/health', (req, res) => {
 
 
 
-app.post('/reviews', async (req, res) => {
+app.post('https://projetoweb-13.onrender.com/reviews', async (req, res) => {
     const { review_description, review_rating, user_id, game_id } = req.body;
     try {
       const result = await pool.query(
@@ -159,7 +159,7 @@ app.post('/reviews', async (req, res) => {
   });
   
   // Endpoint to get reviews for a specific game
-  app.get('/reviews/:gameId', async (req, res) => {
+  app.get('https://projetoweb-13.onrender.com/reviews/:gameId', async (req, res) => {
     const { gameId } = req.params;
     try {
       const result = await pool.query('SELECT * FROM reviews WHERE game_id = $1', [gameId]);
@@ -177,7 +177,7 @@ app.use((err, req, res, next) => {
 });
 
 // User registration route
-app.post("/adduser", [
+app.post("https://projetoweb-13.onrender.com/adduser", [
     body('user_name').notEmpty().withMessage('Username is required'),
     body('user_email').isEmail().withMessage('Email is not valid'),
     body('user_password').isLength({ min: 6 }).withMessage('Passwor d must be at least 6 characters long'),
@@ -201,7 +201,7 @@ app.post("/adduser", [
 });
 
 // Fetch user profile by user_id
-app.get('/profile/:user_id', async (req, res) => {
+app.get('https://projetoweb-13.onrender.com/profile/:user_id', async (req, res) => {
     const userId = req.params.user_id;
 
     try {
@@ -222,7 +222,7 @@ app.get('/profile/:user_id', async (req, res) => {
 });
 
 // Update user profile by user_id
-app.put('/profile/:user_id', (req, res) => {
+app.put('https://projetoweb-13.onrender.com/profile/:user_id', (req, res) => {
     uploadProfileImage(req, res, async (err) => {
         if (err) {
             return res.status(400).json({ error: err.message });
@@ -261,7 +261,7 @@ app.put('/profile/:user_id', (req, res) => {
 
 
 // Create community route
-app.post('/create-community', (req, res) => {
+app.post('https://projetoweb-13.onrender.com/create-community', (req, res) => {
     uploadCommunityImage(req, res, async (err) => {
         if (err) {
             return res.status(400).send({ error: err.message });
@@ -286,7 +286,7 @@ app.post('/create-community', (req, res) => {
 });
 
 // Fetch community by ID
-app.get('/community/:id', async (req, res) => {
+app.get('https://projetoweb-13.onrender.com/community/:id', async (req, res) => {
     const communityId = req.params.id;
 
     try {
@@ -302,7 +302,7 @@ app.get('/community/:id', async (req, res) => {
 });
 
 // Create event route
-app.post('/create-event', (req, res) => {
+app.post('https://projetoweb-13.onrender.com/create-event', (req, res) => {
     uploadEventImage(req, res, async (err) => {
         if (err) {
             return res.status(400).json({ error: err.message });
@@ -326,7 +326,7 @@ app.post('/create-event', (req, res) => {
     });
 });
 
-app.post('/create-post', (req, res) => {
+app.post('https://projetoweb-13.onrender.com/create-post', (req, res) => {
     uploadPostImage(req, res, async (err) => {
         if (err) {
             return res.status(400).send({ error: err.message });
@@ -352,7 +352,7 @@ app.post('/create-post', (req, res) => {
 
 // Fetch event by ID
 // Fetch event by ID
-app.get('/events/:id', async (req, res) => {
+app.get('https://projetoweb-13.onrender.com/events/:id', async (req, res) => {
     const eventId = req.params.id;
 
     try {
@@ -375,7 +375,7 @@ app.get('/events/:id', async (req, res) => {
 
 
 // Fetch all events
-app.get('/events', async (req, res) => {
+app.get('https://projetoweb-13.onrender.com/events', async (req, res) => {
     try {
         const result = await pool.query('SELECT event_id, event_name, ST_AsText(event_location) as event_location, event_time, event_description, event_user_id, event_img FROM events');
         res.status(200).json(result.rows);
@@ -386,7 +386,7 @@ app.get('/events', async (req, res) => {
 });
 
 
-app.get('/community', async (req, res) => {
+app.get('https://projetoweb-13.onrender.com/community', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM community');
         res.status(200).json(result.rows);
@@ -397,7 +397,7 @@ app.get('/community', async (req, res) => {
 });
 
 // Fetch all communities
-app.get('/communities', async (req, res) => {
+app.get('https://projetoweb-13.onrender.com/communities', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM community');
         res.status(200).json(result.rows);
@@ -408,7 +408,7 @@ app.get('/communities', async (req, res) => {
 });
 
 // User login route
-app.post("/login", [
+app.post("https://projetoweb-13.onrender.com/login", [
     body('user_name').notEmpty(),
     body('user_password').notEmpty()
 ], async (req, res) => {

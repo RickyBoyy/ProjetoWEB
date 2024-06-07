@@ -13,7 +13,7 @@ const Event = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/events/${eventId}`);
+        const response = await fetch(`https://projetoweb-13.onrender.com/events/${eventId}`);
         if (!response.ok) {
           throw new Error("Failed to fetch event details");
         }
@@ -80,7 +80,7 @@ const handleGetDirections = () => {
   const month = format(eventDate, "MMM").toLowerCase();
   const day = format(eventDate, "dd");
 
-  const eventImageURL = event.event_img ? `http://localhost:4000/${event.event_img}` : "https://via.placeholder.com/150x150";
+  const eventImageURL = event.event_img ? `https://projetoweb-13.onrender.com/${event.event_img}` : "https://via.placeholder.com/150x150";
 
   return (
     <div className="page-event">

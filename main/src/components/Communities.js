@@ -10,7 +10,7 @@ const Communities = () => {
   useEffect(() => {
     const fetchCommunities = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/community'); // Adjust the URL as necessary
+        const response = await axios.get('https://projetoweb-13.onrender.com/community'); // Adjust the URL as necessary
         setCommunities(response.data);
         setLoading(false);
       } catch (error) {
@@ -49,7 +49,7 @@ const Communities = () => {
                 <div className="communities-header">
                   <div className="community-icon">
                     <img
-                      src={`http://localhost:4000/${community.community_image}`} // Adjust the URL as necessary
+                      src={`https://projetoweb-13.onrender.com/${community.community_image}`} // Adjust the URL as necessary
                       alt={`${community.name} icon`}
                       width="60"
                       height="60"

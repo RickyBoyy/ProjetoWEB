@@ -113,14 +113,14 @@ const GlobalApi = {
   searchSuggestions,
   getGameDetailsById,
   getReviewsByGameId: async (id) => {
-    const response = await fetch(`http://localhost:4000/reviews/${id}`);
+    const response = await fetch(`https://projetoweb-13.onrender.com/reviews/${id}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
     return await response.json();
   },
   createReview: async (review) => {
-    const response = await fetch('http://localhost:4000/reviews', {
+    const response = await fetch('https://projetoweb-13.onrender.com/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

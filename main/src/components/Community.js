@@ -12,7 +12,7 @@ const Community = () => {
     useEffect(() => {
       const fetchCommunity = async () => {
         try {
-          const response = await fetch(`http://localhost:4000/community/${communityId}`);
+          const response = await fetch(`https://projetoweb-13.onrender.com/${communityId}`);
           const data = await response.json();
           setCommunity(data);
           setLoading(false);
@@ -43,7 +43,7 @@ const Community = () => {
   return (
     <div className="container2">
     <div className="community-header2">
-      <img src={community.community_image ? `http://localhost:4000/${community.community_image}` : "https://via.placeholder.com/150x150"} alt="Community Image" className="community-image2" />
+      <img src={community.community_image ? `https://projetoweb-13.onrender.com/${community.community_image}` : "https://via.placeholder.com/150x150"} alt="Community Image" className="community-image2" />
       <h1 className="community-name2">{community.community_name}</h1>
     </div>
 

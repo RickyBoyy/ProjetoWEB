@@ -65,12 +65,12 @@ const CreateCommunity = () => {
     formData.append('communityImage', communityImage);
 
     try {
-      const response = await axios.post('http://localhost:4000/create-community', formData);
+      const response = await axios.post('https://projetoweb-13.onrender.com/create-community', formData);
       console.log(response.data);
 
       // Assuming response.data contains the saved community data including the image path
       if (response.data.communityImage) {
-        setPreviewUrl(`http://localhost:4000/uploads/${response.data.communityImage}`);
+        setPreviewUrl(`https://projetoweb-13.onrender.com/uploads/${response.data.communityImage}`);
       }
     } catch (err) {
       console.error('Error uploading the form:', err);

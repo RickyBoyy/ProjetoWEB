@@ -70,7 +70,7 @@ const CreateEvent = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/create-event", formData, {
+      const response = await axios.post("https://projetoweb-13.onrender.com/create-event", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

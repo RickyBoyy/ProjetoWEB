@@ -35,7 +35,7 @@ const SignIn = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:4000/adduser", {
+      const response = await fetch("https://projetoweb-13.onrender.com/adduser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

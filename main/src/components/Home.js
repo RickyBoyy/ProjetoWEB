@@ -53,7 +53,7 @@ const Home = () => {
   useEffect(() => {
     const fetchCommunities = async () => {
       try {
-        const response = await fetch("http://localhost:4000/community");
+        const response = await fetch("https://projetoweb-13.onrender.com/community");
         if (!response.ok) {
           throw new Error("Failed to fetch communities");
         }
@@ -70,7 +70,7 @@ const Home = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://localhost:4000/events");
+        const response = await fetch("https://projetoweb-13.onrender.com/events");
         if (!response.ok) {
           throw new Error("Failed to fetch communities");
         }
@@ -227,7 +227,7 @@ const Home = () => {
             {communities &&
               communities.map((community) => {
                 // Construct the image URL
-                const imageUrl = `http://localhost:4000/${community.community_image}`;
+                const imageUrl = `https://projetoweb-13.onrender.com/${community.community_image}`;
 
                 // Log the URL to the console for debugging
                 console.log("Community Image URL:", imageUrl);
@@ -264,7 +264,7 @@ const Home = () => {
           {events &&
             events.map((event) => {
               // Construct the image URL
-              const imageUrl = `http://localhost:4000/${event.event_img}`;
+              const imageUrl = `https://projetoweb-13.onrender.com/${event.event_img}`;
 
               // Log the URL to the console for debugging
               console.log("Event Image URL:", imageUrl);

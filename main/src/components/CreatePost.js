@@ -33,7 +33,7 @@ const CreatePost = () => {
     formData.append("communityId", 1); // Assuming you have communityId available
 
     try {
-      const response = await fetch("http://localhost:4000/create-post", {
+      const response = await fetch("https://projetoweb-13.onrender.com/create-post", {
         method: "POST",
         body: formData,
       });
