@@ -127,7 +127,7 @@ const Home = () => {
   };  
 
   const redirectToCommunities = (communityId) => {
-    navigate("/communities");
+    navigate(`/communities/${communityId}`);
   };
 
   const redirectToEvent = (eventId) => {
