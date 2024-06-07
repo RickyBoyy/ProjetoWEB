@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("./Fonts/TT Firs Neue Trial Bold.ttf") format("truetype");
+}
+body {
+  font-family: "TT Firs Neue", sans-serif;
+}
+
 .section_padding {
   padding: 4rem 4rem;
 }

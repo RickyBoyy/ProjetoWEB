@@ -1,5 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
-@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("./Fonts/TT Firs Neue Trial Bold.ttf") format("truetype");
+}
+body {
+  font-family: "TT Firs Neue", sans-serif;
+}
 
 .page-event {
   background-color: #212121;
