@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
@@ -12,6 +11,19 @@ const { body, validationResult } = require("express-validator");
 const wkx = require('wkx');
 
 const app = express();
+
+
+app.use(express.json());
+app.use(cors());
+
+
+const RAWG_API_KEY = process.env.RAWG_API_KEY;
+const JWT_SECRET = process.env.JWT_SECRET;
+
+const axiosInstance = axios.create({
+    baseURL: 'https://api.rawg.io/api',
+    params: { key: RAWG_API_KEY }
+});
 
 // Serve static files from the 'uploads' directory
 app.use('/uploads', express.static('uploads'));
@@ -117,24 +129,6 @@ const uploadEventImage = multer({
     },
     limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
 }).single('eventImage');
-
-
-const RAWG_API_KEY = process.env.RAWG_API_KEY;
-const JWT_SECRET = process.env.JWT_SECRET;
-
-const axiosInstance = axios.create({
-    baseURL: 'https://api.rawg.io/api',
-    params: { key: RAWG_API_KEY }
-});
-
-app.use(express.json());
-
-const corsOptions = {
-    origin: 'https://6661c5d399627503c0ad400e--magnificent-dango-f326a4.netlify.app/', // Substitua pela URL do seu site no Netlify
-    optionsSuccessStatus: 200
-  };
-  
-  app.use(cors(corsOptions));
   
 
 // Middleware for logging requests

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "TT Firs Neue";
-  src: url("./Fonts/TT Firs Neue Trial Bold.ttf") format("truetype");
+  src: url("../Fonts/TT Firs Neue Trial Bold.ttf") format("truetype");
 }
 
 
@@ -174,6 +174,8 @@ body {
   outline: 1px solid #652ec7;
   outline-offset: calc(-1 * var(--s));
   background: conic-gradient(from 90deg at 1px 1px, #0000 25%, #652ec7 0);
+  height: 30vh;
+  width: 20vw;
 }
 
 .image-item-wrapper:hover {

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "TT Firs Neue";
-  src: url("./Fonts/TT Firs Neue Trial Bold.ttf") format("truetype");
+  src: url("../Fonts/TT Firs Neue Trial Bold.ttf") format("truetype");
 }
 body {
   font-family: "TT Firs Neue", sans-serif;
@@ -23,10 +23,9 @@ body {
 }
 
 .event-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Maintains aspect ratio and fills the container */
-  border-radius: 8px; /* Optional: to add some rounded corners */
+  width: 10%;
+  height: 10%;
+  
 }
 
 .cover .heading {
